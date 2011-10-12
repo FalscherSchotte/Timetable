@@ -1,7 +1,0 @@
-E:\HsKA\Semester2\Projektarbeit\Studenplaner\TimetablePlanner\TimetablePlannerTests\bin\Debug\TimetablePlannerTests.dll
-E:\HsKA\Semester2\Projektarbeit\Studenplaner\TimetablePlanner\TimetablePlannerTests\bin\Debug\TimetablePlannerTests.pdb
-E:\HsKA\Semester2\Projektarbeit\Studenplaner\TimetablePlanner\TimetablePlannerTests\bin\Debug\TimetablePlanner.dll
-E:\HsKA\Semester2\Projektarbeit\Studenplaner\TimetablePlanner\TimetablePlannerTests\bin\Debug\TimetablePlanner.pdb
-E:\HsKA\Semester2\Projektarbeit\Studenplaner\TimetablePlanner\TimetablePlannerTests\obj\Debug\ResolveAssemblyReference.cache
-E:\HsKA\Semester2\Projektarbeit\Studenplaner\TimetablePlanner\TimetablePlannerTests\obj\Debug\TimetablePlannerTests.dll
-E:\HsKA\Semester2\Projektarbeit\Studenplaner\TimetablePlanner\TimetablePlannerTests\obj\Debug\TimetablePlannerTests.pdb

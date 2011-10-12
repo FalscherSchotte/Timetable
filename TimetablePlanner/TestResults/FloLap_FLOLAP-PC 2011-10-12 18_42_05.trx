@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<TestRun id="f879faca-0ac3-4992-9983-77a76d2314f9" name="FloLap@FLOLAP-PC 2011-10-12 18:42:05" runUser="FloLap-PC\FloLap" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
+  <TestSettings name="Lokal" id="6ed96bb3-d821-4eee-a79d-3a3069da9890">
+    <Description>Dies sind die standardmäßigen Testeinstellungen für einen lokalen Testlauf.</Description>
+    <Deployment enabled="false" runDeploymentRoot="FloLap_FLOLAP-PC 2011-10-12 18_42_05">
+      <DeploymentItem filename="E:\HsKA\Semester2\Projektarbeit\Stundenplangenerator\TimetablePlanner\TimetablePlanner\bin\Debug\TimetablePlanner.dll" />
+    </Deployment>
+    <Execution>
+      <TestTypeSpecific />
+      <AgentRule name="Execution Agents">
+      </AgentRule>
+    </Execution>
+  </TestSettings>
+  <Times creation="2011-10-12T18:42:05.0511124+02:00" queuing="2011-10-12T18:42:06.3791883+02:00" start="2011-10-12T18:42:06.5892003+02:00" finish="2011-10-12T18:42:28.9534795+02:00" />
+  <ResultSummary outcome="Completed">
+    <Counters total="1" executed="1" passed="1" error="0" failed="0" timeout="0" aborted="0" inconclusive="0" passedButRunAborted="0" notRunnable="0" notExecuted="0" disconnected="0" warning="0" completed="0" inProgress="0" pending="0" />
+  </ResultSummary>
+  <TestDefinitions>
+    <UnitTest name="createTimetableInstanceTest" storage="e:\hska\semester2\projektarbeit\stundenplangenerator\timetableplanner\timetableplannertests\bin\debug\timetableplannertests.dll" id="ab441b29-9837-01bf-f43f-7839c8f73716">
+      <Execution id="aa6517bc-ab1f-4e70-8ee8-75bc8960c3f6" />
+      <TestMethod codeBase="E:/HsKA/Semester2/Projektarbeit/Stundenplangenerator/TimetablePlanner/TimetablePlannerTests/bin/Debug/TimetablePlannerTests.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="TimetablePlannerTests.TimetableTest, TimetablePlannerTests, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="createTimetableInstanceTest" />
+    </UnitTest>
+  </TestDefinitions>
+  <TestLists>
+    <TestList name="Nicht in einer Liste enthaltene Ergebnisse" id="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestList name="Alle geladenen Ergebnisse" id="19431567-8539-422a-85d7-44ee4e166bda" />
+  </TestLists>
+  <TestEntries>
+    <TestEntry testId="ab441b29-9837-01bf-f43f-7839c8f73716" executionId="aa6517bc-ab1f-4e70-8ee8-75bc8960c3f6" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+  </TestEntries>
+  <Results>
+    <UnitTestResult executionId="aa6517bc-ab1f-4e70-8ee8-75bc8960c3f6" testId="ab441b29-9837-01bf-f43f-7839c8f73716" testName="createTimetableInstanceTest" computerName="FLOLAP-PC" duration="00:00:20.7494329" startTime="2011-10-12T18:42:06.7882117+02:00" endTime="2011-10-12T18:42:28.8244721+02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="aa6517bc-ab1f-4e70-8ee8-75bc8960c3f6">
+      <Output>
+        <DebugTrace>Time to create population of size 50: 196ms
+10000: 000|000,000|000,000|000,000|000,000|000,000|000,000|000,016|016,000|000,000|000,000|000,000|000,000|000,000|000,026|026,000|000,000|000,000|000,000|000,000|000,000|000,000|000,000|000,000|000,000|000,000|000,006|006,000|000,000|000,000|000,018|018,000|000,003|003,000|000,000|000,000|000,000|000,000|000,031|031,000|000,000|000,000|000,000|000,000|000,000|000,000|000,000|000,000|000,000|000,000|000,007|007,000|000,001|001,000|000,000|000,000|000,000|000,000|000,027|027,000|000,000|000,000|000,000|000,000|000,010|010,000|000,000|000,000|000,000|000,008|008,008|008,000|000,000|000,000|000,000|000,000|000,000|000,033|033,000|000,000|000,000|000,000|000,000|000,000|000,000|000,000|000,000|000,000|000,000|000,000|000,000|000,000|000,015|015,000|000,024|024,000|000,000|000,000|000,000|000,000|000,000|000,000|000,005|005,000|000,000|000,000|000,000|000,000|000,000|000,000|000,000|000,000|000,000|000,000|000,000|000,000|000,000|000,000|000,000|000,000|000,000|000,000|000,012|012,000|000,000|000,034|034,000|000,000|000,004|004,000|000,000|000,000|000,000|000,000|000,000|000,000|000,000|000,000|000,000|000,000|000,000|000,000|000,000|000,030|030,000|000,000|000,000|000,000|000,000|000,000|000,025|025,023|023,007|007,000|000,000|000,000|000,000|000,000|000,000|000,000|000,000|000,000|000,000|000,000|000,000|000,000|000,000|000,000|000,000|000,000|000,000|000,000|000,000|000,000|000,000|000,000|000,000|000,000|000,000|000,000|000,000|000,000|000,000|000,000|000,006|006,000|000,000|000,000|000,000|000,000|000,000|000,000|000,000|000,009|009,000|000,000|000,000|000,000|000,000|000,000|000,000|000,000|000,000|000,000|000,000|000,000|000,000|000,016|016,000|000,000|000,000|000,000|000,000|000,000|000,000|000,000|000,000|000,000|000,000|000,000|000,000|000,000|000,000|000,000|000,000|000,000|000,000|000,000|000,000|000,000|000,000|000,000|000,000|000,021|021,000|000,000|000,000|000,037|037,037|037,000|000,000|000,000|000,000|000,000|000,011|011,011|011,000|000,000|000,000|000,000|000,000|000,000|000,000|000,028|028,028|028,028|028,000|000,000|000,000|000,000|000,000|000,000|000,000|000,038|038,000|000,000|000,000|000,000|000,000|000,000|000,005|005,001|001,000|000,000|000,020|020,000|000,000|000,000|000,000|000,000|000,000|000,000|000,000|000,000|000,035|035,003|003,000|000,000|000,000|000,000|000,000|000,000|000,000|000,000|000,000|000,000|000,000|000,000|000,000|000,000|000,000|000,000|000,000|000,019|019,000|000,000|000,000|000,032|032,036|036,000|000,000|000,000|000,000|000,000|000,000|000,000|000,009|009,014|014,029|029,013|013,000|000,000|000,000|000,000|000,000|000,000|000,000|000,010|010,000|000,000|000,000|000,000|000,000|000,000|000,022|022,000|000,000|000,017|017,017|017,017|017,000|000,000|000,002|002,000|000,011|011,011|011,000|000,000|000,000|000,000|000,000|000,000|000,000|000,000|000,000|000,000|000,000|000,000|000,000|000,000|000,
+</DebugTrace>
+      </Output>
+    </UnitTestResult>
+  </Results>
+</TestRun>

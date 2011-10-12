@@ -18,7 +18,7 @@ namespace TimetablePlanner
         public bool NeedsLab { get; private set; }
         public bool IsDummy { get; private set; }
 
-        private static short indexCtr = 1;
+        private static short globalIndex = 1;
         public short Index { get; private set; }
 
         public Course(string id, string name, Lecturer[] lecturers, Room roomPreference, Group group, bool needsLab, bool isDummy, int repeatsPerWeek, int numberOfBlocks)
@@ -33,8 +33,8 @@ namespace TimetablePlanner
             this.NumberOfBlocks = numberOfBlocks;
             this.Group = group;
 
-            this.Index = indexCtr;
-            indexCtr++;
+            Index = globalIndex;
+            globalIndex++;
         }
 
         public override string ToString()

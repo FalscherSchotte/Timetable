@@ -43,6 +43,7 @@
     <Compile Include="Block.cs" />
     <Compile Include="Course.cs" />
     <Compile Include="Group.cs" />
+    <Compile Include="Individual.cs" />
     <Compile Include="Lecturer.cs" />
     <Compile Include="Room.cs" />
     <Compile Include="TimetableGenerator.cs" />

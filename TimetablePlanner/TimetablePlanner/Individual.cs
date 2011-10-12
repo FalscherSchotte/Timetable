@@ -7,6 +7,8 @@ namespace TimetablePlanner
 {
     public class Individual
     {
+        private int maxIndex = -1;
+
         public int Fitness { get; set; }
 
         /// <summary>
@@ -15,11 +17,11 @@ namespace TimetablePlanner
         public List<List<List<short>>> CourseChromosomes { get; set; }
 
         /// <summary>
-        /// Days\Rooms\Blocks\Lecturers\free|occupied
+        /// Days\Rooms\Blocks\Lecturers\CourseIndex
         /// </summary>
-        public List<List<List<List<bool>>>> LecturerChromosomes { get; set; }
+        public List<List<List<List<short>>>> LecturerChromosomes { get; set; }
 
-        public Individual(List<List<List<short>>> courseChromosomes, List<List<List<List<bool>>>> lecturerChromosomes)
+        public Individual(List<List<List<short>>> courseChromosomes, List<List<List<List<short>>>> lecturerChromosomes)
         {
             this.CourseChromosomes = courseChromosomes;
             this.LecturerChromosomes = lecturerChromosomes;
@@ -45,7 +47,7 @@ namespace TimetablePlanner
         internal void SetCourseAt(int day, int room, int block, short courseIndex, short lecturerIndex)
         {
             CourseChromosomes[day][room][block] = courseIndex;
-            LecturerChromosomes[day][room][block][lecturerIndex] = true;
+            LecturerChromosomes[day][room][block][lecturerIndex] = courseIndex;
         }
     }
 }

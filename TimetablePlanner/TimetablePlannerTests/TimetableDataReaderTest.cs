@@ -16,7 +16,15 @@ namespace TimetablePlannerTests
 
             int populationSize = 50;
             int numberOfGenerations = 1000;
+
+            long start = DateTime.Now.Ticks;
             TimetableGenerator generator = new TimetableGenerator(numberOfGenerations, populationSize, data);
+            long end = DateTime.Now.Ticks;
+            System.Diagnostics.Debug.WriteLine("Time to create population of size " + populationSize + ": " + (end - start) / 10000 + "ms");
+            foreach (Individual i in generator.Population)
+            {
+                System.Diagnostics.Debug.WriteLine(i.ToString());
+            }
 
             //Population complete?
             Assert.IsTrue(generator.Population.Count == populationSize);
@@ -33,6 +41,13 @@ namespace TimetablePlannerTests
                 }
             }
             Assert.IsTrue(courses.Count == data.Courses.Length);
+
+
+            start = DateTime.Now.Ticks;
+            generator.PerformEvolution();
+            end = DateTime.Now.Ticks;
+            System.Diagnostics.Debug.WriteLine(numberOfGenerations + " Generations finished after " + (end - start) / 10000 + "ms");
+
         }
     }
 }

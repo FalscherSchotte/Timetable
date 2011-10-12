@@ -27,20 +27,10 @@ namespace TimetablePlanner
             if (random == null)
                 random = new Random(DateTime.Now.Millisecond);
 
-
-            long start = DateTime.Now.Ticks;
-
             CreatePopulation();
-
-            long end = DateTime.Now.Ticks;
-            System.Diagnostics.Debug.WriteLine("Time to create population of size " + populationSize + ": " + (end - start) / 10000 + "ms");
-
-            foreach (Individual i in Population)
-            {
-                System.Diagnostics.Debug.WriteLine(i.ToString());
-            }
         }
 
+        #region Population creation ---------------------------------------------------------------------------------------------
 
         private void CreatePopulation()
         {
@@ -76,22 +66,22 @@ namespace TimetablePlanner
             CalculateFitness(Population);
         }
 
-        private List<List<List<List<bool>>>> CreatePlainLecturerChromosomes()
+        private List<List<List<List<short>>>> CreatePlainLecturerChromosomes()
         {
-            // Days\Rooms\Blocks\Courses\Lecturers\true
-            List<List<List<List<bool>>>> chromosomes = new List<List<List<List<bool>>>>();
+            // Days\Rooms\Blocks\Courses\Lecturers\CourseIndex
+            List<List<List<List<short>>>> chromosomes = new List<List<List<List<short>>>>();
             for (int dayCtr = 0; dayCtr < 5; dayCtr++)
             {
-                chromosomes.Add(new List<List<List<bool>>>());
+                chromosomes.Add(new List<List<List<short>>>());
                 for (int roomCtr = 0; roomCtr < ttData.Rooms.Length; roomCtr++)
                 {
-                    chromosomes[dayCtr].Add(new List<List<bool>>());
+                    chromosomes[dayCtr].Add(new List<List<short>>());
                     for (int blockCtr = 0; blockCtr < ttData.Blocks.Length; blockCtr++)
                     {
-                        chromosomes[dayCtr][roomCtr].Add(new List<bool>());
+                        chromosomes[dayCtr][roomCtr].Add(new List<short>());
                         for (int lecturerCtr = 0; lecturerCtr < ttData.Lecturers.Length; lecturerCtr++)
                         {
-                            chromosomes[dayCtr][roomCtr][blockCtr].Add(false);
+                            chromosomes[dayCtr][roomCtr][blockCtr].Add(0);
                         }
                     }
                 }
@@ -137,7 +127,7 @@ namespace TimetablePlanner
             return possibilities;
         }
 
-        private List<int[]> GetAvailableBlocksOfSize(List<short> courseBlockList, List<List<bool>> lecturerBlockList, int numberOfBlocks, int day, int room)
+        private List<int[]> GetAvailableBlocksOfSize(List<short> courseBlockList, List<List<short>> lecturerBlockList, int numberOfBlocks, int day, int room)
         {
             List<int[]> freeBlockIndizes = new List<int[]>();
             for (int blockIndex = 0; blockIndex < courseBlockList.Count; blockIndex++)
@@ -148,7 +138,7 @@ namespace TimetablePlanner
                     if (blockIndex + neededBlockCtr >= courseBlockList.Count) //Block limit per day reached?
                         free = false;
                     //Lecturer available? 
-                    else if (lecturerBlockList[blockIndex + neededBlockCtr][ttData.Courses[courseBlockList[blockIndex + neededBlockCtr]].Lecturers[0].Index] == true)
+                    else if (lecturerBlockList[blockIndex + neededBlockCtr][ttData.Courses[courseBlockList[blockIndex + neededBlockCtr]].Lecturers[0].Index] != 0)
                         free = false;
 
 
@@ -157,6 +147,17 @@ namespace TimetablePlanner
 
                     else if (courseBlockList[blockIndex + neededBlockCtr] != 0) //Room available?
                         free = false;
+
+                    if (ttData.Blocks[blockIndex].Exceptions.Length > 0 && free)
+                    {
+                        //Regard exceptions on blocks
+                        for (int exception = 0; exception < ttData.Blocks[blockIndex].Exceptions.Length; exception++)
+                        {
+                            if (((int)ttData.Blocks[blockIndex].Exceptions[exception]) == day)
+                                free = false;
+                        }
+                    }
+
                     if (!free)
                         break;
                 }
@@ -166,50 +167,48 @@ namespace TimetablePlanner
             return freeBlockIndizes;
         }
 
+        #endregion
+
+        #region Evolution -------------------------------------------------------------------------------------------------------
+
+        public void PerformEvolution()
+        {
+            for (int generation = 0; generation < numberOfGenerations; generation++)
+            {
+                List<Individual> selection = SelectIndividuals();
+                for (int i = 0; i < selection.Count; i = i + 2)
+                {
+                    Population.Add(PMX(selection[i], selection[i + 1]));
+                }
+                CalculateFitness(Population);
+                Population = Population.GetRange(0, populationSize);
+            }
+        }
+
+        private List<Individual> SelectIndividuals()
+        {
+
+            //TODO: Better algorithm (Roulette!)
+
+            List<Individual> selection = new List<Individual>();
+            for (int i = 0; i < 10; i++)
+            {
+                selection.Add(Population[i]);
+            }
+            return selection;
+        }
+
+        private Individual PMX(Individual parent1, Individual parent2)
+        {
+            Individual child = parent1;
 
 
+            //TODO
+
+            return child;
+        }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-        //public Individual PerformEvolution()
-        //{
-        //    long start = DateTime.Now.Ticks;
-        //    for (int generation = 0; generation < numberOfGenerations; generation++)
-        //    {
-        //        List<Individual> selection = new List<Individual>();
-
-        //        //DUMMY
-        //        for (int i = 0; i < 10; i++)
-        //        {
-        //            selection.Add(population[i]);
-        //        }
-
-        //        for (int selectionIndex = 0; selectionIndex < selection.Count; selectionIndex = selectionIndex + 2)
-        //        {
-        //            PMX(selection[selectionIndex], selection[selectionIndex + 1], population);
-        //        }
-
-        //        foreach (Individual individual in population)
-        //        {
-        //            CalculateFitness(individual, tableData);
-        //        }
-        //        population.Sort(SortByFitness);
-        //        population.RemoveRange(populationSize, population.Count - populationSize);
-        //    }
-        //    long end = DateTime.Now.Ticks;
-        //    System.Diagnostics.Debug.WriteLine(numberOfGenerations + " Generations finished after " + (end - start) / 10000 + "ms");
-        //}
 
         //private void PMX(Individual parent1, Individual parent2, List<Individual> population)
         //{
@@ -255,7 +254,9 @@ namespace TimetablePlanner
         //    population.Add(new Individual(decendent2.ToArray()));
         //}
 
-        #region Fitness calculation ---------------------------------------------------------------------------------------
+        #endregion
+
+        #region Fitness calculation ---------------------------------------------------------------------------------------------
 
         private void CalculateFitness(List<Individual> individuals)
         {
@@ -268,20 +269,13 @@ namespace TimetablePlanner
 
         private void CalculateFitness(Individual individual)
         {
-            int fitness = 0;
-
             //Bewertungselemente:
-            //Keine zwei gleichen Fächer am selben Tag
             //Freistunden der Lehrer minimal
             //Freistunden der Jahrgänge minimal
-            //Beachten wie Dozenten verfügbar sind
-            //Kurse nur an bestimmten Tagen
             //Es sollen möglichst keine Tage mit nur einem Kurs existieren
-            //Keine Kurse an Vorlesungsausnahmen
+            //Keine zwei gleichen Fächer am selben Tag
 
-
-
-            DateTime midDay = DateTime.Parse("13:00");
+            int fitness = 0;
             for (int day = 0; day < individual.CourseChromosomes.Count; day++)
             {
                 for (int room = 0; room < individual.CourseChromosomes[day].Count; room++)
@@ -293,11 +287,12 @@ namespace TimetablePlanner
                             Course c = ttData.Courses[individual.CourseChromosomes[day][room][block] - 1];
 
                             //Courses should begin before midday
-                            fitness += ttData.Blocks[block].Start.Hour - 13;
+                            fitness += (ttData.Blocks[block].Start.Hour - 13) * 2;
 
                             //Reward it when room preference fits
                             if (c.RoomPreference != null && ttData.Rooms[room] == c.RoomPreference)
-                                fitness -= 10;
+                                fitness -= 100;
+
 
                         }
                     }

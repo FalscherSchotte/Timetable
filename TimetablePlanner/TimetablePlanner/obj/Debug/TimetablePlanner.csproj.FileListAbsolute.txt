@@ -1,0 +1,5 @@
+E:\HsKA\Semester2\Projektarbeit\Studenplaner\TimetablePlanner\TimetablePlanner\obj\Debug\ResolveAssemblyReference.cache
+E:\HsKA\Semester2\Projektarbeit\Studenplaner\TimetablePlanner\TimetablePlanner\bin\Debug\TimetablePlanner.dll
+E:\HsKA\Semester2\Projektarbeit\Studenplaner\TimetablePlanner\TimetablePlanner\bin\Debug\TimetablePlanner.pdb
+E:\HsKA\Semester2\Projektarbeit\Studenplaner\TimetablePlanner\TimetablePlanner\obj\Debug\TimetablePlanner.dll
+E:\HsKA\Semester2\Projektarbeit\Studenplaner\TimetablePlanner\TimetablePlanner\obj\Debug\TimetablePlanner.pdb

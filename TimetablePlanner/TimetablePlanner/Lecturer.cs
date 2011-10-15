@@ -10,7 +10,7 @@ namespace TimetablePlanner
         public string Id { get; private set; }
         public string LastName { get; private set; }
 
-        private static short globalIndex = 1;
+        private static short globalIndex = 0;
         public short Index { get; private set; }
 
         public Lecturer(string id, string lastName)

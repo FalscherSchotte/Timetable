@@ -37,7 +37,10 @@ namespace TimetablePlanner
                 {
                     for (int k = 0; k < CourseChromosomes[i][j].Count; k++)
                     {
-                        builder.Append(String.Format("{0:000},", CourseChromosomes[i][j][k]));
+                        if (CourseChromosomes[i][j][k] >= 0)
+                            builder.Append(String.Format("{0:000}|", CourseChromosomes[i][j][k]));
+                        else
+                            builder.Append("---|");
                     }
                 }
             }
@@ -48,6 +51,45 @@ namespace TimetablePlanner
         {
             CourseChromosomes[day][room][block] = courseIndex;
             LecturerChromosomes[day][room][block][lecturerIndex] = courseIndex;
+        }
+
+        internal Individual Clone()
+        {
+            // Days\Rooms\Blocks\Courses
+            List<List<List<short>>> courseChromosomesClone = new List<List<List<short>>>(); ;
+            for (int day = 0; day < CourseChromosomes.Count; day++)
+            {
+                courseChromosomesClone.Add(new List<List<short>>());
+                for (int room = 0; room < CourseChromosomes[day].Count; room++)
+                {
+                    courseChromosomesClone[day].Add(new List<short>());
+                    for (int block = 0; block < CourseChromosomes[day][room].Count; block++)
+                    {
+                        courseChromosomesClone[day][room].Add(CourseChromosomes[day][room][block]);
+                    }
+                }
+            }
+
+            // Days\Rooms\Blocks\Lecturers\CourseIndex
+            List<List<List<List<short>>>> lecturerChromosomesClone = new List<List<List<List<short>>>>(); ;
+            for (int day = 0; day < LecturerChromosomes.Count; day++)
+            {
+                lecturerChromosomesClone.Add(new List<List<List<short>>>());
+                for (int room = 0; room < LecturerChromosomes[day].Count; room++)
+                {
+                    lecturerChromosomesClone[day].Add(new List<List<short>>());
+                    for (int block = 0; block < LecturerChromosomes[day][room].Count; block++)
+                    {
+                        lecturerChromosomesClone[day][room].Add(new List<short>());
+                        for (int lecturer = 0; lecturer < LecturerChromosomes[day][room][block].Count; lecturer++)
+                        {
+                            lecturerChromosomesClone[day][room][block].Add(LecturerChromosomes[day][room][block][lecturer]);
+                        }
+                    }
+                }
+            }
+
+            return new Individual(courseChromosomesClone, lecturerChromosomesClone);
         }
     }
 }

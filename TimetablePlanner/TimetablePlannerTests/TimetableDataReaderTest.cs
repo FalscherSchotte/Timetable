@@ -14,11 +14,24 @@ namespace TimetablePlannerTests
             string configurationFile = "E:\\HsKA\\Semester2\\Projektarbeit\\Stundenplangenerator\\TimetablePlanner\\TimetablePlanner\\TimetableData.xml";
             TimetableData data = TimetableDataReader.createTimetableInstance(configurationFile);
 
-            int populationSize = 50;
-            int numberOfGenerations = 1000;
+            int populationSize = 20;
+            int numberOfGenerations = 5000;
 
             long start = DateTime.Now.Ticks;
-            TimetableGenerator generator = new TimetableGenerator(numberOfGenerations, populationSize, data);
+
+            TimetableGenerator generator = null;
+            try
+            {
+                generator = new TimetableGenerator(numberOfGenerations, populationSize, data);
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine(ex.ToString());
+                Assert.IsTrue(false);
+                return;
+            }
+            
+            
             long end = DateTime.Now.Ticks;
             System.Diagnostics.Debug.WriteLine("Time to create population of size " + populationSize + ": " + (end - start) / 10000 + "ms");
             foreach (Individual i in generator.Population)
@@ -31,15 +44,17 @@ namespace TimetablePlannerTests
 
             //All courses set?
             List<short> courses = new List<short>();
-            foreach (String element in generator.Population[0].ToString().Substring(generator.Population[0].ToString().IndexOf(":") + 1).Split(','))
+            String[] pop0Elements = generator.Population[0].ToString().Substring(6).Split('|');
+            foreach (String element in pop0Elements)
             {
                 short courseNumber;
                 if (element.Length == 3 && short.TryParse(element.Substring(0, 3), out courseNumber))
                 {
-                    if (!courses.Contains(courseNumber) && courseNumber != 0)
+                    if (!courses.Contains(courseNumber))
                         courses.Add(courseNumber);
                 }
             }
+            courses.Sort();
             Assert.IsTrue(courses.Count == data.Courses.Length);
 
 
@@ -47,7 +62,12 @@ namespace TimetablePlannerTests
             generator.PerformEvolution();
             end = DateTime.Now.Ticks;
             System.Diagnostics.Debug.WriteLine(numberOfGenerations + " Generations finished after " + (end - start) / 10000 + "ms");
+            foreach (Individual i in generator.Population)
+            {
+                System.Diagnostics.Debug.WriteLine(i.ToString());
+            }
 
+            TimetablePrinter.PrintTable(generator.Population[0], data);
         }
     }
 }

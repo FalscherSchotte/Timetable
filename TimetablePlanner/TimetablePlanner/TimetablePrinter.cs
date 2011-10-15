@@ -9,6 +9,21 @@ namespace TimetablePlanner
     {
         public static void PrintTable(Individual individual, TimetableData ttData)
         {
+            PrintCourses(individual, ttData);
+
+            //PrintLecturers(individual, ttData);
+        }
+
+        private static void PrintCourses(Individual individual, TimetableData ttData)
+        {
+            foreach (Course c in ttData.Courses)
+            {
+
+            }
+        }
+
+        private static void PrintLecturers(Individual individual, TimetableData ttData)
+        {
             foreach (Lecturer lecturer in ttData.Lecturers)
             {
                 StringBuilder builder = new StringBuilder();
@@ -25,7 +40,7 @@ namespace TimetablePlanner
                             {
                                 if (individual.LecturerChromosomes[day][room][block][lecturerIndex] == lecturer.Index)
                                 {
-                                    builder.AppendLine("Block " + block + " in Raum " + ttData.Rooms[room].ToString() + " Kurs " + 
+                                    builder.AppendLine("Block " + block + " in Raum " + ttData.Rooms[room].ToString() + " Kurs " +
                                         ttData.Courses[individual.CourseChromosomes[day][room][block]].ToString());
                                     break;
                                 }

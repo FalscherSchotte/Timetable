@@ -8,10 +8,15 @@ namespace TimetablePlanner
     public class Group
     {
         public string Id { get; private set; }
-        
+
+        private static short globalIndex = 0;
+        public short Index { get; private set; }
+
         public Group(string id)
         {
             this.Id = id;
+            Index = globalIndex;
+            globalIndex++;
         }
 
         public override string ToString()

@@ -9,11 +9,17 @@ namespace TimetablePlanner
     {
         public string Number { get; private set; }
         public bool IsLab { get; private set; }
-        
+
+        private static short globalIndex = 0;
+        public short Index { get; private set; }
+
         public Room(string number, bool isLab)
         {
             this.Number = number;
             this.IsLab = isLab;
+
+            Index = globalIndex;
+            globalIndex++;
         }
 
         public override string ToString()

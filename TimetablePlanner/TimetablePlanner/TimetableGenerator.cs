@@ -10,197 +10,126 @@ namespace TimetablePlanner
     {
         private TimetableData ttData;
         private int numberOfGenerations;
-        private int populationSize;
         private static Random random;
-
-        public List<Individual> Population { get; private set; }
+        private static short numberOfDays = 5;
+        public Individual[] Population { get; private set; }
 
         public TimetableGenerator(int numberOfGenerations, int populationSize, TimetableData tableData)
         {
-            ttData = tableData;
-            this.numberOfGenerations = numberOfGenerations;
-            this.populationSize = populationSize;
             if (random == null)
                 random = new Random(DateTime.Now.Millisecond);
-
-            CreatePopulation();
+            this.ttData = tableData;
+            this.numberOfGenerations = numberOfGenerations;
+            CreatePopulation(populationSize);
+            SortIndividuals(Population);
         }
 
         #region Population creation ---------------------------------------------------------------------------------------------
 
-        private void CreatePopulation()
+        private void CreatePopulation(int populationSize)
         {
-            Population = new List<Individual>();
-            for (int individualIndex = 0; individualIndex < populationSize; individualIndex++)
+            Population = new Individual[populationSize];
+            for (int i = 0; i < populationSize; i++)
             {
-                Individual individual = new Individual(CreatePlainCourseChromosomes(), CreatePlainLecturerChromosomes());
-                Population.Add(individual);
-
-                //set a time for each course
-                for (int courseIndex = 0; courseIndex < ttData.Courses.Length; courseIndex++)
-                {
-                    //set time for all course instances per week
-                    for (int iii = 0; iii < ttData.Courses[courseIndex].RepeatsPerWeek; iii++)
-                    {
-                        List<int[]> possibilities = GetValidPositionsForCourse(individual, ttData.Courses[courseIndex]);
-                        if (possibilities.Count <= 0)
-                            throw new Exception("No space for this course available!");
-                        
-                        int posIndex = random.Next(possibilities.Count);
-                        //occupy all needed blocks
-                        for (int blockCtr = 0; blockCtr < ttData.Courses[courseIndex].NumberOfBlocks; blockCtr++)
-                        {
-                            individual.SetCourseAt(possibilities[posIndex][0], possibilities[posIndex][1],
-                                possibilities[posIndex][2] + blockCtr, ttData.Courses[courseIndex].Index, ttData.Courses[courseIndex].Lecturers[0].Index);
-                        }
-                    }
-                }
+                Population[i] = new Individual(numberOfDays, (short)ttData.Blocks.Length,
+                    (short)ttData.Courses.Length, (short)ttData.Lecturers.Length,
+                    (short)ttData.Rooms.Length, (short)ttData.Groups.Length);
+                RandomFillIndividual(Population[i]);
             }
             CalculateFitness(Population);
         }
 
-        private List<List<List<List<short>>>> CreatePlainLecturerChromosomes()
+        private void RandomFillIndividual(Individual individual)
         {
-            // Days\Rooms\Blocks\Courses\Lecturers\CourseIndex
-            List<List<List<List<short>>>> chromosomes = new List<List<List<List<short>>>>();
-            for (int dayCtr = 0; dayCtr < 5; dayCtr++)
+            for (short courseIndex = 0; courseIndex < individual.Courses.GetLength(0); courseIndex++)
             {
-                chromosomes.Add(new List<List<List<short>>>());
-                for (int roomCtr = 0; roomCtr < ttData.Rooms.Length; roomCtr++)
+                for (int courseRepetition = 0; courseRepetition < ttData.Courses[courseIndex].RepeatsPerWeek; courseRepetition++)
                 {
-                    chromosomes[dayCtr].Add(new List<List<short>>());
-                    for (int blockCtr = 0; blockCtr < ttData.Blocks.Length; blockCtr++)
+                    List<PossibilitiyContainer> posList = GetPossibilitiesForCourse(courseIndex, individual);
+                    int chosPos = random.Next(0, posList.Count);
+                    for (short blockOffset = 0; blockOffset < ttData.Courses[courseIndex].NumberOfBlocks; blockOffset++)
                     {
-                        chromosomes[dayCtr][roomCtr].Add(new List<short>());
-                        for (int lecturerCtr = 0; lecturerCtr < ttData.Lecturers.Length; lecturerCtr++)
+                        short day = posList[chosPos].day;
+                        short block = posList[chosPos].block;
+                        short room = posList[chosPos].room;
+                        individual.SetCourse(courseIndex, day, (short)(block + blockOffset), room);
+                        for (int lecturerIndex = 0; lecturerIndex < ttData.Courses[courseIndex].Lecturers.Length; lecturerIndex++)
                         {
-                            chromosomes[dayCtr][roomCtr][blockCtr].Add(-1);
+                            individual.SetLecturer(ttData.Courses[courseIndex].Lecturers[lecturerIndex].Index, day, (short)(block + blockOffset), courseIndex);
                         }
+                        individual.SetRoom(room, day, (short)(block + blockOffset), courseIndex);
+                        individual.SetGroup(ttData.Courses[courseIndex].Group.Index, day, (short)(block + blockOffset), courseIndex);
                     }
                 }
             }
-            return chromosomes;
         }
 
-        private List<List<List<short>>> CreatePlainCourseChromosomes()
+        private struct PossibilitiyContainer
         {
-            // Days\Rooms\Blocks\Courses
-            List<List<List<short>>> chromosomes = new List<List<List<short>>>();
-            for (int dayCtr = 0; dayCtr < 5; dayCtr++)
-            {
-                chromosomes.Add(new List<List<short>>());
-                for (int roomCtr = 0; roomCtr < ttData.Rooms.Length; roomCtr++)
-                {
-                    chromosomes[dayCtr].Add(new List<short>());
-                    for (int blockCtr = 0; blockCtr < ttData.Blocks.Length; blockCtr++)
-                    {
-                        chromosomes[dayCtr][roomCtr].Add(-1);
-                    }
-                }
-            }
-            return chromosomes;
+            public short day;
+            public short block;
+            public short room;
         }
 
-        /// <summary>
-        /// Returns a list of all valid positions for that course
-        /// </summary>
-        /// <param name="individual">Individual to use</param>
-        /// <param name="course">Course to inspect</param>
-        /// <returns>list of the valid positions</returns>
-        private List<int[]> GetValidPositionsForCourse(Individual individual, Course course)
+        private List<PossibilitiyContainer> GetPossibilitiesForCourse(short course, Individual individual)
         {
-            List<int[]> possibilities = new List<int[]>();
-
-            //Restriction -> Same day for one course instance
-            for (int day = 0; day < individual.CourseChromosomes.Count; day++)
+            List<PossibilitiyContainer> possibilities = new List<PossibilitiyContainer>();
+            short neededNumberOfBlocks = (short)ttData.Courses[course].NumberOfBlocks;
+            for (short day = 0; day < individual.Courses.GetLength(1); day++)
             {
-                //Restriction -> A course does not change rooms when taking more time than one block 
-                for (int room = 0; room < individual.CourseChromosomes[day].Count; room++)
+                for (short block = 0; block < individual.Courses.GetLength(2); block++)
                 {
-                    //Restriction -> Course with lab restriction
-                    if (ttData.Rooms[room].IsLab == course.NeedsLab)
+                    if (block + neededNumberOfBlocks < individual.Courses.GetLength(2))
                     {
-                        possibilities.AddRange(GetAvailableBlocksOfSize(individual.CourseChromosomes[day][room],
-                            individual.LecturerChromosomes[day][room],
-                            course.NumberOfBlocks, course.Lecturers, course.Group,
-                            day, room));
+                        for (short room = 0; room < individual.Rooms.GetLength(0); room++)
+                        {
+                            if (IsValidForCourse(course, day, block, room, individual))
+                            {
+                                PossibilitiyContainer c = new PossibilitiyContainer();
+                                c.day = day;
+                                c.block = block;
+                                c.room = room;
+                                possibilities.Add(c);
+                            }
+                        }
                     }
                 }
             }
             return possibilities;
         }
 
-        /// <summary>
-        /// Returns a list of indizes of the blocks that are not occupied
-        /// </summary>
-        /// <param name="blockListCourses"></param>
-        /// <param name="blockListLecturers"></param>
-        /// <param name="neededBlocks"></param>
-        /// <param name="dayIndex"></param>
-        /// <param name="roomIndex"></param>
-        /// <returns>List of int-Arrays (day, room, block) that are meet the requirements</returns>
-        private List<int[]> GetAvailableBlocksOfSize(List<short> blockListCourses, List<List<short>> blockListLecturers,
-            int neededBlocks, Lecturer[] neededLecturers, Group neededGroup, int dayIndex, int roomIndex)
+        private bool IsValidForCourse(short course, int day, int block, int room, Individual individual)
         {
-            List<int[]> freeBlockIndizes = new List<int[]>();
-            for (int blockIndex = 0; blockIndex < blockListCourses.Count; blockIndex++)
+            //block available at that day?
+            foreach (DayOfWeek exceptionDay in ttData.Blocks[block].Exceptions)
             {
-                for (int neededBlockCtr = 0; neededBlockCtr < neededBlocks; neededBlockCtr++)
-                {
-                    if (BlockMeetsRequirements(blockListCourses, blockListLecturers,
-                        dayIndex, roomIndex, blockIndex + neededBlockCtr,
-                        neededBlocks, neededLecturers, neededGroup))
-                        freeBlockIndizes.Add(new int[] { dayIndex, roomIndex, blockIndex }); //day, room, block
-                }
+                if ((short)exceptionDay == day)
+                    return false;
             }
-            return freeBlockIndizes;
-        }
 
-        /// <summary>
-        /// Checks if the block meets the requirements
-        /// </summary>
-        /// <param name="blockListCourses">List of blocks of that specific day in that specific room with course number as content</param>
-        /// <param name="blockListLecturers">List of blocks of that day and room with the list of all lecturers as content (value is the index of the course they are lecturing)</param>
-        /// <param name="neededBlocks">Number of blocks the course needs</param>
-        /// <param name="neededLecturers">Array of lecturers the course needs</param>
-        /// <param name="blockIndex">Blockindex to inspect</param>
-        /// <returns>block fits true/false</returns>
-        private bool BlockMeetsRequirements(List<short> blockListCourses, List<List<short>> blockListLecturers,
-            int dayIndex, int roomIndex, int blockIndex,
-            int neededBlocks, Lecturer[] neededLecturers, Group neededGroup)
-        {
-            //does course fit?
-            if (blockIndex + neededBlocks >= blockListCourses.Count)
+            //Course already set?
+            if (individual.Courses[course, day, block] != -1)
                 return false;
 
-            //Requirements must fit for each of the needed blocks
-            for (int neededBlockCtr = 0; neededBlockCtr < neededBlocks; neededBlockCtr++)
+            //Room already occupied?
+            if (individual.Rooms[room, day, block] != -1)
+                return false;
+
+            //Lab?
+            if (ttData.Courses[course].NeedsLab != ttData.Rooms[room].IsLab)
+                return false;
+
+            //Lecturers available?
+            for (int neededLecturer = 0; neededLecturer < ttData.Courses[course].Lecturers.Length; neededLecturer++)
             {
-                ////group of course already occupied in that block?
-                //if (blockListCourses[blockIndex + neededBlockCtr] != -1)
-                //{
-                //    if (neededGroup.Id.Equals(ttData.Courses[blockListCourses[blockIndex + neededBlockCtr]].Group.Id))
-                //        return false;
-                //}
-
-                //are the needed lecturers available?
-                foreach (Lecturer lecturer in neededLecturers)
-                {
-                    if (blockListLecturers[blockIndex + neededBlockCtr][lecturer.Index] != -1)
-                        return false;
-                }
-
-                //is the room available?
-                if (blockListCourses[blockIndex + neededBlockCtr] != -1)
+                if (individual.Lecturers[ttData.Courses[course].Lecturers[neededLecturer].Index, day, block] != -1)
                     return false;
-
-                //is that block an exception?
-                foreach (DayOfWeek day in ttData.Blocks[blockIndex + neededBlockCtr].Exceptions)
-                {
-                    if ((int)day == dayIndex)
-                        return false;
-                }
             }
+
+            //group available?
+            if (individual.Groups[ttData.Courses[course].Group.Index, day, block] != -1)
+                return false;
+
             return true;
         }
 
@@ -212,14 +141,25 @@ namespace TimetablePlanner
         {
             for (int generation = 0; generation < numberOfGenerations; generation++)
             {
-                //if (random.Next(1, 2) <= 1)
-                PerformMutation();
-                //else
-                //    PerformRecombination();
-
-                CalculateFitness(Population);
-                Population = Population.GetRange(0, populationSize);
+                List<Individual> individuals = new List<Individual>();
+                foreach (Individual individual in Population)
+                {
+                    individuals.Add(PerformMutation(individual));
+                }
+                CalculateFitness(individuals);
+                individuals.AddRange(Population);
+                SortIndividuals(individuals);
+                Population = individuals.GetRange(0, Population.Length).ToArray();
             }
+        }
+
+        
+        private Individual PerformMutation(Individual individual)
+        {
+            Individual mutation = Individual.Clone(individual);
+
+
+            return mutation;
         }
 
         private void PerformRecombination()
@@ -231,86 +171,87 @@ namespace TimetablePlanner
 
         private void PerformMutation()
         {
-            //choose one individual
-            Individual template = RouletteSelection(1)[0];
-            Individual mutation = template.Clone();
+            ////choose one individual
+            //Individual template = RouletteSelection(1)[0];
+            //Individual mutation = template.Clone();
 
-            //produce a new individual via mutation
-            //-> choose random course and position it new
-            short courseIndex = (short)random.Next(0, ttData.Courses.Length);
-            short courseRepetitionNumber = (short)random.Next(0, ttData.Courses[courseIndex].RepeatsPerWeek);
+            ////produce a new individual via mutation
+            ////-> choose random course and position it new
+            //short courseIndex = (short)random.Next(0, ttData.Courses.Length);
+            //short courseRepetitionNumber = (short)random.Next(0, ttData.Courses[courseIndex].RepeatsPerWeek);
 
-            List<int[]> possibilities = GetValidPositionsForCourse(mutation, ttData.Courses[courseIndex]);
-            if (possibilities.Count <= 0)
-                return;
+            //List<int[]> possibilities = GetValidPositionsForCourse(mutation, ttData.Courses[courseIndex]);
+            //if (possibilities.Count <= 0)
+            //    return;
 
-            RemoveCourseOccurence(mutation, courseIndex, courseRepetitionNumber);
-            int[] choosenPossibility = possibilities[random.Next(possibilities.Count)];
-            for (int blockCtr = 0; blockCtr < ttData.Courses[courseIndex].NumberOfBlocks; blockCtr++)
-            {
-                mutation.SetCourseAt(choosenPossibility[0], choosenPossibility[1], choosenPossibility[2] + blockCtr,
-                    courseIndex, ttData.Courses[courseIndex].Lecturers[0].Index);
-            }
+            //RemoveCourseOccurence(mutation, courseIndex, courseRepetitionNumber);
+            //int[] choosenPossibility = possibilities[random.Next(possibilities.Count)];
+            //for (int blockCtr = 0; blockCtr < ttData.Courses[courseIndex].NumberOfBlocks; blockCtr++)
+            //{
+            //    mutation.SetCourseAt(choosenPossibility[0], choosenPossibility[1], choosenPossibility[2] + blockCtr,
+            //        courseIndex, ttData.Courses[courseIndex].Lecturers[0].Index);
+            //}
 
-            //add to population
-            Population.Add(mutation);
+            ////add to population
+            //Population.Add(mutation);
         }
 
         private void RemoveCourseOccurence(Individual individual, short courseIndex, short courseRepetitionNumber)
         {
-            int removeAfter = ttData.Courses[courseIndex].NumberOfBlocks * courseRepetitionNumber;
-            int stopBefore = ttData.Courses[courseIndex].NumberOfBlocks * (courseRepetitionNumber + 1);
-            int occurenceCtr = 0;
-            for (int day = 0; day < 5; day++)
-            {
-                for (int room = 0; room < ttData.Rooms.Length; room++)
-                {
-                    for (int block = 0; block < ttData.Blocks.Length; block++)
-                    {
-                        if (individual.CourseChromosomes[day][room][block] == courseIndex)
-                        {
-                            if (removeAfter <= occurenceCtr)
-                            {
-                                individual.CourseChromosomes[day][room][block] = -1;
-                                foreach (Lecturer lecturer in ttData.Courses[courseIndex].Lecturers)
-                                {
-                                    individual.LecturerChromosomes[day][room][block][lecturer.Index] = -1;
-                                }
-                            }
-                            if (stopBefore >= occurenceCtr)
-                                return;
-                            occurenceCtr++;
-                        }
-                    }
-                }
-            }
+            //int removeAfter = ttData.Courses[courseIndex].NumberOfBlocks * courseRepetitionNumber;
+            //int stopBefore = ttData.Courses[courseIndex].NumberOfBlocks * (courseRepetitionNumber + 1);
+            //int occurenceCtr = 0;
+            //for (int day = 0; day < 5; day++)
+            //{
+            //    for (int room = 0; room < ttData.Rooms.Length; room++)
+            //    {
+            //        for (int block = 0; block < ttData.Blocks.Length; block++)
+            //        {
+            //            if (individual.CourseChromosomes[day][room][block] == courseIndex)
+            //            {
+            //                if (removeAfter <= occurenceCtr)
+            //                {
+            //                    individual.CourseChromosomes[day][room][block] = -1;
+            //                    foreach (Lecturer lecturer in ttData.Courses[courseIndex].Lecturers)
+            //                    {
+            //                        individual.LecturerChromosomes[day][room][block][lecturer.Index] = -1;
+            //                    }
+            //                }
+            //                if (stopBefore >= occurenceCtr)
+            //                    return;
+            //                occurenceCtr++;
+            //            }
+            //        }
+            //    }
+            //}
         }
 
         private List<Individual> RouletteSelection(int numberOfIndividualsToChoose)
         {
-            List<Individual> individuals = new List<Individual>();
+            //List<Individual> individuals = new List<Individual>();
 
-            int totalFitness = 0;
-            foreach (Individual i in Population)
-            {
-                totalFitness += i.Fitness;
-            }
+            //int totalFitness = 0;
+            //foreach (Individual i in Population)
+            //{
+            //    totalFitness += i.Fitness;
+            //}
 
-            int ivoryBall = random.Next(1, totalFitness);
-            for (int numberOfRolls = 0; numberOfRolls < numberOfIndividualsToChoose; numberOfRolls++)
-            {
-                int currentFitness = 0;
-                for (int individualIndex = 0; individualIndex < Population.Count; individualIndex++)
-                {
-                    if ((currentFitness += Population[individualIndex].Fitness) >= ivoryBall)
-                    {
-                        individuals.Add(Population[individualIndex]);
-                        break;
-                    }
-                }
-            }
+            //int ivoryBall = random.Next(1, totalFitness);
+            //for (int numberOfRolls = 0; numberOfRolls < numberOfIndividualsToChoose; numberOfRolls++)
+            //{
+            //    int currentFitness = 0;
+            //    for (int individualIndex = 0; individualIndex < Population.Count; individualIndex++)
+            //    {
+            //        if ((currentFitness += Population[individualIndex].Fitness) >= ivoryBall)
+            //        {
+            //            individuals.Add(Population[individualIndex]);
+            //            break;
+            //        }
+            //    }
+            //}
 
-            return individuals;
+            //return individuals;
+            return null;
         }
 
 
@@ -378,42 +319,24 @@ namespace TimetablePlanner
             {
                 CalculateFitness(individual);
             }
+        }
+
+        private void CalculateFitness(Individual[] individuals)
+        {
+            foreach (Individual individual in individuals)
+            {
+                CalculateFitness(individual);
+            }
+        }
+
+        private void SortIndividuals(List<Individual> individuals)
+        {
             individuals.Sort(SortByFitness);
         }
 
-        private void CalculateFitness(Individual individual)
+        private void SortIndividuals(Individual[] individuals)
         {
-            //Bewertungselemente:
-            //Freistunden der Lehrer minimal
-            //Freistunden der Jahrgänge minimal
-            //Es sollen möglichst keine Tage mit nur einem Kurs existieren
-            //Keine zwei gleichen Fächer am selben Tag
-
-            int fitness = 0;
-            for (int day = 0; day < individual.CourseChromosomes.Count; day++)
-            {
-                for (int room = 0; room < individual.CourseChromosomes[day].Count; room++)
-                {
-                    for (int block = 0; block < individual.CourseChromosomes[day][room].Count; block++)
-                    {
-                        if (individual.CourseChromosomes[day][room][block] != -1)
-                        {
-                            Course c = ttData.Courses[individual.CourseChromosomes[day][room][block]];
-
-                            //Courses should begin before midday
-                            fitness += (ttData.Blocks[block].Start.Hour - 13) * 2;
-
-                            //Reward it when room preference fits
-                            if (c.RoomPreference != null && ttData.Rooms[room] == c.RoomPreference)
-                                fitness -= 100;
-
-
-                        }
-                    }
-                }
-            }
-
-            individual.Fitness = -fitness;
+            Array.Sort(individuals, SortByFitness);
         }
 
         private static int SortByFitness(Individual x, Individual y)
@@ -422,8 +345,63 @@ namespace TimetablePlanner
                 return -1;
             if (x.Fitness < y.Fitness)
                 return +1;
-            else
-                return 0;
+            return 0;
+        }
+
+        private void CalculateFitness(Individual individual)
+        {
+            int fitness = 0;
+            for (short day = 0; day < numberOfDays; day++)
+            {
+                List<short> courseBlackList = new List<short>();
+                for (short block = 0; block < ttData.Blocks.Length; block++)
+                {
+                    for (short course = 0; course < individual.Courses.GetLength(0); course++)
+                    {
+                        if (individual.Courses[course, day, block] != -1)
+                        {
+                            //Courses should not appear more than once a day
+                            courseBlackList.Add(course);
+                            if (courseBlackList.Count<short>(p => p == course) > ttData.Courses[course].NumberOfBlocks)
+                                fitness -= 100;
+
+                            //Courses should start before 13:00
+                            fitness += (ttData.Blocks[block].Start.Hour - 13) * -2;
+
+                            //Roompreference
+                            if (ttData.Courses[course].RoomPreference != null)
+                            {
+                                if (individual.Courses[course, day, block] == ttData.Courses[course].RoomPreference.Index)
+                                    fitness += 100;
+                            }
+                        }
+
+
+
+                        //Es sollen möglichst keine Tage mit nur einem Kurs existieren
+
+
+                        //Roompreference fits?
+                    }
+
+                    for (int lecturer = 0; lecturer < individual.Lecturers.GetLength(0); lecturer++)
+                    {
+                        //Freistunden der Lehrer minimal
+
+                    }
+
+                    for (int room = 0; room < individual.Rooms.GetLength(0); room++)
+                    {
+                    }
+
+                    for (int group = 0; group < individual.Groups.GetLength(0); group++)
+                    {
+                        //Freistunden der Jahrgänge minimal
+
+                    }
+                }
+            }
+            individual.Fitness = fitness;
         }
 
         #endregion

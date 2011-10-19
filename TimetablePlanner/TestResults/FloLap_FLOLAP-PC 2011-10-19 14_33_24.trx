@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<TestRun id="3a958ad4-8420-4f29-a489-e3c466f79768" name="FloLap@FLOLAP-PC 2011-10-19 14:33:24" runUser="FloLap-PC\FloLap" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
+  <TestSettings name="Lokal" id="6ed96bb3-d821-4eee-a79d-3a3069da9890">
+    <Description>Dies sind die standardmäßigen Testeinstellungen für einen lokalen Testlauf.</Description>
+    <Deployment enabled="false" runDeploymentRoot="FloLap_FLOLAP-PC 2011-10-19 14_33_24">
+      <DeploymentItem filename="E:\HsKA\Semester2\Projektarbeit\Stundenplangenerator\TimetablePlanner\TimetablePlanner\bin\Debug\TimetablePlanner.dll" />
+    </Deployment>
+    <Execution>
+      <TestTypeSpecific />
+      <AgentRule name="Execution Agents">
+      </AgentRule>
+    </Execution>
+  </TestSettings>
+  <Times creation="2011-10-19T14:33:24.7678414+02:00" queuing="2011-10-19T14:33:25.8910433+02:00" start="2011-10-19T14:33:26.0470436+02:00" finish="2011-10-19T14:35:21.8928471+02:00" />
+  <ResultSummary outcome="Error">
+    <Counters total="1" executed="1" error="0" failed="0" timeout="0" aborted="1" inconclusive="0" passedButRunAborted="0" notRunnable="0" notExecuted="0" disconnected="0" warning="0" passed="0" completed="0" inProgress="0" pending="0" />
+    <RunInfos>
+      <RunInfo computerName="FLOLAP-PC" outcome="Error" timestamp="2011-10-19T14:35:21.8928471+02:00">
+        <Text>Der Testhostprozess wurde unerwartet beendet.</Text>
+      </RunInfo>
+    </RunInfos>
+  </ResultSummary>
+  <TestDefinitions>
+    <UnitTest name="createTimetableInstanceTest" storage="e:\hska\semester2\projektarbeit\stundenplangenerator\timetableplanner\timetableplannertests\bin\debug\timetableplannertests.dll" id="ab441b29-9837-01bf-f43f-7839c8f73716">
+      <Execution id="eb4f7894-722e-42dc-8f15-51a802d66468" />
+      <TestMethod codeBase="E:/HsKA/Semester2/Projektarbeit/Stundenplangenerator/TimetablePlanner/TimetablePlannerTests/bin/Debug/TimetablePlannerTests.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="TimetablePlannerTests.TimetableTest, TimetablePlannerTests, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="createTimetableInstanceTest" />
+    </UnitTest>
+  </TestDefinitions>
+  <TestLists>
+    <TestList name="Nicht in einer Liste enthaltene Ergebnisse" id="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestList name="Alle geladenen Ergebnisse" id="19431567-8539-422a-85d7-44ee4e166bda" />
+  </TestLists>
+  <TestEntries>
+    <TestEntry testId="ab441b29-9837-01bf-f43f-7839c8f73716" executionId="eb4f7894-722e-42dc-8f15-51a802d66468" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+  </TestEntries>
+  <Results>
+    <UnitTestResult executionId="eb4f7894-722e-42dc-8f15-51a802d66468" testId="ab441b29-9837-01bf-f43f-7839c8f73716" testName="createTimetableInstanceTest" computerName="FLOLAP-PC" duration="00:01:55.7210033" startTime="2011-10-19T14:33:26.1718438+02:00" endTime="2011-10-19T14:35:21.8928471+02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Aborted" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="eb4f7894-722e-42dc-8f15-51a802d66468">
+    </UnitTestResult>
+  </Results>
+</TestRun>

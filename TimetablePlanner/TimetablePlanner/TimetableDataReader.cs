@@ -139,7 +139,7 @@ namespace TimetablePlanner
                     if (p1Found && p2Found)
                         break;
                 }
-                
+
                 string roomPreference = node.GetAttribute("roomPreference", "");
                 Room preference = null;
                 foreach (Room room in rooms)
@@ -162,9 +162,14 @@ namespace TimetablePlanner
                     }
                 }
 
-                courses.Add(new Course(cId, name, courseLecturers.ToArray(), preference, group,
-                    needsLab.Length > 0 ? bool.Parse(needsLab) : false, isDummy.Length > 0 ? bool.Parse(isDummy) : false,
-                    repeatsPerWeek.Length > 0 ? int.Parse(repeatsPerWeek) : 1, numberOfBlocks.Length > 0 ? int.Parse(numberOfBlocks) : 1));
+                int repeatitionsPerWeek = repeatsPerWeek.Length > 0 ? int.Parse(repeatsPerWeek) : 1;
+                for (int repeatition = 0; repeatition < repeatitionsPerWeek; repeatition++)
+                {
+                    courses.Add(new Course(cId, name, courseLecturers.ToArray(), preference, group,
+                        needsLab.Length > 0 ? bool.Parse(needsLab) : false, isDummy.Length > 0 ? bool.Parse(isDummy) : false,
+                        numberOfBlocks.Length > 0 ? int.Parse(numberOfBlocks) : 1));
+                }
+
             }
             return courses.ToArray();
         }

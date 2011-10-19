@@ -14,11 +14,11 @@ namespace TimetablePlannerTests
             string configurationFile = "E:\\HsKA\\Semester2\\Projektarbeit\\Stundenplangenerator\\TimetablePlanner\\TimetablePlanner\\TimetableData.xml";
             TimetableData data = TimetableDataReader.createTimetableInstance(configurationFile);
 
-            int populationSize = 50;
-            int numberOfGenerations = 1000;
+            int populationSize = 75;
+            int numberOfGenerations = 2000;
 
             long start = DateTime.Now.Ticks;
-            TimetableGenerator generator = new TimetableGenerator(numberOfGenerations, populationSize, data);
+            TimetableGenerator generator = new TimetableGenerator(populationSize, data);
             long end = DateTime.Now.Ticks;
             System.Diagnostics.Debug.WriteLine("Time to create population of size " + populationSize + ": " + (end - start) / 10000 + "ms");
             foreach (Individual i in generator.Population)
@@ -29,9 +29,8 @@ namespace TimetablePlannerTests
             //Population complete?
             Assert.IsTrue(generator.Population.Length == populationSize);
 
-
             start = DateTime.Now.Ticks;
-            generator.PerformEvolution();
+            generator.PerformEvolution(numberOfGenerations);
             end = DateTime.Now.Ticks;
             System.Diagnostics.Debug.WriteLine("Evolution time: " + (end - start) / 10000 + "ms");
             foreach (Individual i in generator.Population)
@@ -39,6 +38,17 @@ namespace TimetablePlannerTests
                 System.Diagnostics.Debug.WriteLine(i.ToString());
             }
 
+            //Print all groups
+            foreach (Group g in data.Groups)
+            {
+                TimetablePrinter.printGroup(g.Index, generator.Population[0], data);
+            }
+
+            ////Print all lecturers
+            //foreach (Lecturer l in data.Lecturers)
+            //{
+            //    TimetablePrinter.printLecturer(l.Index, generator.Population[0], data);
+            //}
         }
     }
 }

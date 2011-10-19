@@ -7,49 +7,42 @@ namespace TimetablePlanner
 {
     public class TimetablePrinter
     {
-        public static void PrintTable(Individual individual, TimetableData ttData)
+        public static void printGroup(int group, Individual i, TimetableData ttData)
         {
-            PrintCourses(individual, ttData);
-
-            //PrintLecturers(individual, ttData);
-        }
-
-        private static void PrintCourses(Individual individual, TimetableData ttData)
-        {
-            foreach (Course c in ttData.Courses)
+            System.Diagnostics.Debug.WriteLine("");
+            System.Diagnostics.Debug.WriteLine("Group " + group);
+            for (int block = 0; block < i.Courses.GetLength(2); block++)
             {
-
+                System.Diagnostics.Debug.Write("Block " + block + ": ");
+                for (int day = 0; day < 5; day++)
+                {
+                    int course = i.Groups[group, day, block];
+                    if (course == -1)
+                        System.Diagnostics.Debug.Write("--- ");
+                    else
+                        System.Diagnostics.Debug.Write(course.ToString().PadLeft(3, '0') + " ");
+                }
+                System.Diagnostics.Debug.WriteLine("");
             }
         }
 
-        private static void PrintLecturers(Individual individual, TimetableData ttData)
+        public static void printLecturer(int lecturer, Individual i, TimetableData ttData)
         {
-            //foreach (Lecturer lecturer in ttData.Lecturers)
-            //{
-            //    StringBuilder builder = new StringBuilder();
-            //    builder.AppendLine("############");
-            //    builder.AppendLine(lecturer.LastName);
-            //    for (int day = 0; day < 5; day++)
-            //    {
-            //        builder.AppendLine("Tag " + day);
-            //        for (int room = 0; room < ttData.Rooms.Length; room++)
-            //        {
-            //            for (int block = 0; block < ttData.Blocks.Length; block++)
-            //            {
-            //                for (int lecturerIndex = 0; lecturerIndex < ttData.Lecturers.Length; lecturerIndex++)
-            //                {
-            //                    if (individual.LecturerChromosomes[day][room][block][lecturerIndex] == lecturer.Index)
-            //                    {
-            //                        builder.AppendLine("Block " + block + " in Raum " + ttData.Rooms[room].ToString() + " Kurs " +
-            //                            ttData.Courses[individual.CourseChromosomes[day][room][block]].ToString());
-            //                        break;
-            //                    }
-            //                }
-            //            }
-            //        }
-            //    }
-            //    System.Diagnostics.Debug.WriteLine(builder.ToString());
-            //}
+            System.Diagnostics.Debug.WriteLine("");
+            System.Diagnostics.Debug.WriteLine("Lecturer " + lecturer);
+            for (int block = 0; block < i.Courses.GetLength(2); block++)
+            {
+                System.Diagnostics.Debug.Write("Block " + block + ": ");
+                for (int day = 0; day < 5; day++)
+                {
+                    int course = i.Lecturers[lecturer, day, block];
+                    if (course == -1)
+                        System.Diagnostics.Debug.Write("--- ");
+                    else
+                        System.Diagnostics.Debug.Write(course.ToString().PadLeft(3, '0') + " ");
+                }
+                System.Diagnostics.Debug.WriteLine("");
+            }
         }
     }
 }

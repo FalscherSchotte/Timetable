@@ -1,0 +1,536 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<TestRun id="d18a6c4b-8ae8-4f34-be2d-df3752a1cb46" name="FloLap@FLOLAP-PC 2011-10-19 15:33:48" runUser="FloLap-PC\FloLap" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
+  <TestSettings name="Lokal" id="6ed96bb3-d821-4eee-a79d-3a3069da9890">
+    <Description>Dies sind die standardmäßigen Testeinstellungen für einen lokalen Testlauf.</Description>
+    <Deployment enabled="false" runDeploymentRoot="FloLap_FLOLAP-PC 2011-10-19 15_33_48">
+      <DeploymentItem filename="E:\HsKA\Semester2\Projektarbeit\Stundenplangenerator\TimetablePlanner\TimetablePlanner\bin\Debug\TimetablePlanner.dll" />
+    </Deployment>
+    <Execution>
+      <TestTypeSpecific />
+      <AgentRule name="Execution Agents">
+      </AgentRule>
+    </Execution>
+  </TestSettings>
+  <Times creation="2011-10-19T15:33:48.1793842+02:00" queuing="2011-10-19T15:33:49.2713861+02:00" start="2011-10-19T15:33:49.4273864+02:00" finish="2011-10-19T15:33:58.3350020+02:00" />
+  <ResultSummary outcome="Completed">
+    <Counters total="1" executed="1" passed="1" error="0" failed="0" timeout="0" aborted="0" inconclusive="0" passedButRunAborted="0" notRunnable="0" notExecuted="0" disconnected="0" warning="0" completed="0" inProgress="0" pending="0" />
+  </ResultSummary>
+  <TestDefinitions>
+    <UnitTest name="createTimetableInstanceTest" storage="e:\hska\semester2\projektarbeit\stundenplangenerator\timetableplanner\timetableplannertests\bin\debug\timetableplannertests.dll" id="ab441b29-9837-01bf-f43f-7839c8f73716">
+      <Execution id="a416ec76-58db-4dc7-892f-a40c1b1b1fcc" />
+      <TestMethod codeBase="E:/HsKA/Semester2/Projektarbeit/Stundenplangenerator/TimetablePlanner/TimetablePlannerTests/bin/Debug/TimetablePlannerTests.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="TimetablePlannerTests.TimetableTest, TimetablePlannerTests, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="createTimetableInstanceTest" />
+    </UnitTest>
+  </TestDefinitions>
+  <TestLists>
+    <TestList name="Nicht in einer Liste enthaltene Ergebnisse" id="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestList name="Alle geladenen Ergebnisse" id="19431567-8539-422a-85d7-44ee4e166bda" />
+  </TestLists>
+  <TestEntries>
+    <TestEntry testId="ab441b29-9837-01bf-f43f-7839c8f73716" executionId="a416ec76-58db-4dc7-892f-a40c1b1b1fcc" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+  </TestEntries>
+  <Results>
+    <UnitTestResult executionId="a416ec76-58db-4dc7-892f-a40c1b1b1fcc" testId="ab441b29-9837-01bf-f43f-7839c8f73716" testName="createTimetableInstanceTest" computerName="FLOLAP-PC" duration="00:00:07.5063893" startTime="2011-10-19T15:33:49.5677866+02:00" endTime="2011-10-19T15:33:58.2414019+02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="a416ec76-58db-4dc7-892f-a40c1b1b1fcc">
+      <Output>
+        <DebugTrace>Time to create population of size 75: 748ms
+332
+315
+309
+290
+288
+283
+267
+264
+260
+258
+255
+244
+239
+235
+235
+232
+231
+229
+229
+226
+223
+217
+215
+214
+209
+207
+206
+205
+184
+182
+176
+173
+167
+161
+161
+161
+159
+158
+155
+155
+154
+154
+152
+149
+146
+146
+143
+143
+139
+135
+129
+129
+128
+126
+125
+124
+122
+114
+102
+102
+101
+84
+84
+75
+72
+63
+57
+54
+40
+33
+30
+25
+25
+7
+7
+Early abort after 193 generations.
+Mean time per generation: 27ms
+Evolution time: 5272ms
+650
+650
+650
+650
+650
+650
+650
+650
+650
+650
+650
+650
+650
+650
+650
+650
+650
+650
+650
+650
+650
+650
+650
+650
+650
+650
+650
+650
+650
+650
+650
+650
+650
+650
+650
+650
+650
+650
+650
+650
+650
+650
+650
+650
+650
+650
+650
+650
+650
+650
+650
+650
+650
+650
+650
+650
+650
+650
+650
+650
+647
+647
+647
+647
+647
+647
+647
+647
+647
+647
+647
+647
+647
+647
+647
+
+Group 0
+Block 0: 012 000 007 002 006 
+Block 1: 012 003 010 011 004 
+Block 2: 008 009 --- 001 005 
+Block 3: --- --- --- --- --- 
+Block 4: --- --- --- --- --- 
+Block 5: --- --- --- --- --- 
+
+Group 1
+Block 0: 014 022 017 016 018 
+Block 1: 019 021 017 013 018 
+Block 2: 015 025 --- 020 024 
+Block 3: --- 025 --- 023 --- 
+Block 4: --- 025 --- --- --- 
+Block 5: --- --- --- --- --- 
+
+Group 2
+Block 0: 030 031 028 032 036 
+Block 1: 029 035 027 033 036 
+Block 2: 026 --- --- 034 036 
+Block 3: --- --- --- --- --- 
+Block 4: --- --- --- --- --- 
+Block 5: --- --- --- --- --- 
+
+Group 3
+Block 0: 039 038 045 040 043 
+Block 1: 037 041 045 046 042 
+Block 2: --- --- --- 044 --- 
+Block 3: --- --- --- --- --- 
+Block 4: --- --- --- --- --- 
+Block 5: --- --- --- --- --- 
+
+Lecturer 0
+Block 0: --- --- 045 --- 036 
+Block 1: --- --- 045 046 036 
+Block 2: --- --- --- --- 036 
+Block 3: --- --- --- --- --- 
+Block 4: --- --- --- --- --- 
+Block 5: --- --- --- --- --- 
+
+Lecturer 1
+Block 0: 012 --- 017 --- 018 
+Block 1: 012 --- 017 --- 018 
+Block 2: --- --- --- --- --- 
+Block 3: --- --- --- --- --- 
+Block 4: --- --- --- --- --- 
+Block 5: --- --- --- --- --- 
+
+Lecturer 2
+Block 0: --- --- --- --- --- 
+Block 1: --- --- --- --- --- 
+Block 2: --- --- --- --- --- 
+Block 3: --- --- --- --- --- 
+Block 4: --- --- --- --- --- 
+Block 5: --- --- --- --- --- 
+
+Lecturer 3
+Block 0: --- --- --- --- --- 
+Block 1: 037 --- --- --- --- 
+Block 2: --- --- --- --- --- 
+Block 3: --- --- --- --- --- 
+Block 4: --- --- --- --- --- 
+Block 5: --- --- --- --- --- 
+
+Lecturer 4
+Block 0: --- --- --- --- --- 
+Block 1: --- --- --- --- --- 
+Block 2: --- 025 --- --- 024 
+Block 3: --- 025 --- 023 --- 
+Block 4: --- 025 --- --- --- 
+Block 5: --- --- --- --- --- 
+
+Lecturer 5
+Block 0: --- --- --- --- --- 
+Block 1: --- --- --- --- --- 
+Block 2: --- --- --- --- --- 
+Block 3: --- --- --- --- --- 
+Block 4: --- --- --- --- --- 
+Block 5: --- --- --- --- --- 
+
+Lecturer 6
+Block 0: --- --- --- 032 --- 
+Block 1: --- --- --- --- --- 
+Block 2: --- --- --- --- --- 
+Block 3: --- --- --- --- --- 
+Block 4: --- --- --- --- --- 
+Block 5: --- --- --- --- --- 
+
+Lecturer 7
+Block 0: --- --- --- --- --- 
+Block 1: --- --- --- --- --- 
+Block 2: --- --- --- --- --- 
+Block 3: --- --- --- --- --- 
+Block 4: --- --- --- --- --- 
+Block 5: --- --- --- --- --- 
+
+Lecturer 8
+Block 0: --- --- --- --- --- 
+Block 1: --- --- --- --- --- 
+Block 2: --- --- --- --- --- 
+Block 3: --- --- --- --- --- 
+Block 4: --- --- --- --- --- 
+Block 5: --- --- --- --- --- 
+
+Lecturer 9
+Block 0: 039 031 --- --- --- 
+Block 1: --- --- --- --- --- 
+Block 2: --- --- --- --- --- 
+Block 3: --- --- --- --- --- 
+Block 4: --- --- --- --- --- 
+Block 5: --- --- --- --- --- 
+
+Lecturer 10
+Block 0: --- --- --- --- --- 
+Block 1: --- --- --- 033 --- 
+Block 2: --- --- --- --- --- 
+Block 3: --- --- --- --- --- 
+Block 4: --- --- --- --- --- 
+Block 5: --- --- --- --- --- 
+
+Lecturer 11
+Block 0: --- --- --- --- --- 
+Block 1: --- --- --- --- --- 
+Block 2: --- --- --- --- --- 
+Block 3: --- --- --- --- --- 
+Block 4: --- --- --- --- --- 
+Block 5: --- --- --- --- --- 
+
+Lecturer 12
+Block 0: 030 --- --- --- --- 
+Block 1: 029 --- --- --- --- 
+Block 2: --- --- --- --- --- 
+Block 3: --- --- --- --- --- 
+Block 4: --- --- --- --- --- 
+Block 5: --- --- --- --- --- 
+
+Lecturer 13
+Block 0: --- --- --- --- --- 
+Block 1: --- 003 027 --- 004 
+Block 2: --- --- --- --- 005 
+Block 3: --- --- --- --- --- 
+Block 4: --- --- --- --- --- 
+Block 5: --- --- --- --- --- 
+
+Lecturer 14
+Block 0: --- --- --- --- --- 
+Block 1: --- --- --- --- --- 
+Block 2: --- --- --- --- --- 
+Block 3: --- --- --- --- --- 
+Block 4: --- --- --- --- --- 
+Block 5: --- --- --- --- --- 
+
+Lecturer 15
+Block 0: --- --- --- --- --- 
+Block 1: --- --- --- --- --- 
+Block 2: --- --- --- 034 --- 
+Block 3: --- --- --- --- --- 
+Block 4: --- --- --- --- --- 
+Block 5: --- --- --- --- --- 
+
+Lecturer 16
+Block 0: --- --- 007 --- 006 
+Block 1: --- --- --- --- 042 
+Block 2: --- --- --- 020 --- 
+Block 3: --- --- --- --- --- 
+Block 4: --- --- --- --- --- 
+Block 5: --- --- --- --- --- 
+
+Lecturer 17
+Block 0: --- 022 --- --- --- 
+Block 1: --- 021 --- --- --- 
+Block 2: --- --- --- 044 --- 
+Block 3: --- --- --- --- --- 
+Block 4: --- --- --- --- --- 
+Block 5: --- --- --- --- --- 
+
+Lecturer 18
+Block 0: --- --- --- --- --- 
+Block 1: --- --- --- --- --- 
+Block 2: 026 025 --- --- --- 
+Block 3: --- 025 --- --- --- 
+Block 4: --- 025 --- --- --- 
+Block 5: --- --- --- --- --- 
+
+Lecturer 19
+Block 0: --- --- --- --- --- 
+Block 1: --- --- --- --- --- 
+Block 2: --- --- --- --- --- 
+Block 3: --- --- --- --- --- 
+Block 4: --- --- --- --- --- 
+Block 5: --- --- --- --- --- 
+
+Lecturer 20
+Block 0: --- --- --- --- --- 
+Block 1: --- --- --- --- --- 
+Block 2: --- --- --- --- --- 
+Block 3: --- --- --- --- --- 
+Block 4: --- --- --- --- --- 
+Block 5: --- --- --- --- --- 
+
+Lecturer 21
+Block 0: --- --- --- --- --- 
+Block 1: --- --- --- --- --- 
+Block 2: --- --- --- --- --- 
+Block 3: --- --- --- --- --- 
+Block 4: --- --- --- --- --- 
+Block 5: --- --- --- --- --- 
+
+Lecturer 22
+Block 0: --- --- --- --- --- 
+Block 1: --- --- --- --- --- 
+Block 2: --- --- --- --- --- 
+Block 3: --- --- --- --- --- 
+Block 4: --- --- --- --- --- 
+Block 5: --- --- --- --- --- 
+
+Lecturer 23
+Block 0: --- --- --- --- --- 
+Block 1: --- --- --- --- --- 
+Block 2: --- --- --- --- --- 
+Block 3: --- --- --- --- --- 
+Block 4: --- --- --- --- --- 
+Block 5: --- --- --- --- --- 
+
+Lecturer 24
+Block 0: --- --- 028 --- --- 
+Block 1: --- --- --- --- --- 
+Block 2: --- --- --- --- --- 
+Block 3: --- --- --- --- --- 
+Block 4: --- --- --- --- --- 
+Block 5: --- --- --- --- --- 
+
+Lecturer 25
+Block 0: --- --- --- --- --- 
+Block 1: --- --- --- --- --- 
+Block 2: --- --- --- --- --- 
+Block 3: --- --- --- --- --- 
+Block 4: --- --- --- --- --- 
+Block 5: --- --- --- --- --- 
+
+Lecturer 26
+Block 0: --- 000 --- 002 043 
+Block 1: 019 --- --- --- --- 
+Block 2: --- --- --- 001 --- 
+Block 3: --- --- --- --- --- 
+Block 4: --- --- --- --- --- 
+Block 5: --- --- --- --- --- 
+
+Lecturer 27
+Block 0: --- --- --- --- --- 
+Block 1: --- 035 --- --- --- 
+Block 2: --- --- --- --- --- 
+Block 3: --- --- --- --- --- 
+Block 4: --- --- --- --- --- 
+Block 5: --- --- --- --- --- 
+
+Lecturer 28
+Block 0: --- --- --- --- --- 
+Block 1: --- --- --- --- --- 
+Block 2: --- --- --- --- --- 
+Block 3: --- --- --- --- --- 
+Block 4: --- --- --- --- --- 
+Block 5: --- --- --- --- --- 
+
+Lecturer 29
+Block 0: --- --- --- --- --- 
+Block 1: --- --- --- --- --- 
+Block 2: --- --- --- --- --- 
+Block 3: --- --- --- --- --- 
+Block 4: --- --- --- --- --- 
+Block 5: --- --- --- --- --- 
+
+Lecturer 30
+Block 0: --- --- --- 040 --- 
+Block 1: --- 041 010 011 --- 
+Block 2: 008 009 --- --- --- 
+Block 3: --- --- --- --- --- 
+Block 4: --- --- --- --- --- 
+Block 5: --- --- --- --- --- 
+
+Lecturer 31
+Block 0: --- --- --- --- --- 
+Block 1: --- --- --- --- --- 
+Block 2: --- --- --- --- --- 
+Block 3: --- --- --- --- --- 
+Block 4: --- --- --- --- --- 
+Block 5: --- --- --- --- --- 
+
+Lecturer 32
+Block 0: --- --- --- --- --- 
+Block 1: --- --- --- --- --- 
+Block 2: --- --- --- --- --- 
+Block 3: --- --- --- --- --- 
+Block 4: --- --- --- --- --- 
+Block 5: --- --- --- --- --- 
+
+Lecturer 33
+Block 0: --- --- --- --- --- 
+Block 1: --- --- --- --- --- 
+Block 2: --- --- --- --- --- 
+Block 3: --- --- --- --- --- 
+Block 4: --- --- --- --- --- 
+Block 5: --- --- --- --- --- 
+
+Lecturer 34
+Block 0: --- --- --- --- --- 
+Block 1: --- --- --- --- --- 
+Block 2: --- --- --- --- --- 
+Block 3: --- --- --- --- --- 
+Block 4: --- --- --- --- --- 
+Block 5: --- --- --- --- --- 
+
+Lecturer 35
+Block 0: 014 038 --- 016 --- 
+Block 1: --- --- --- 013 --- 
+Block 2: 015 --- --- --- --- 
+Block 3: --- --- --- --- --- 
+Block 4: --- --- --- --- --- 
+Block 5: --- --- --- --- --- 
+
+Lecturer 36
+Block 0: --- --- --- 016 --- 
+Block 1: --- --- --- --- --- 
+Block 2: 015 --- --- --- --- 
+Block 3: --- --- --- --- --- 
+Block 4: --- --- --- --- --- 
+Block 5: --- --- --- --- --- 
+
+Lecturer 37
+Block 0: --- --- --- --- --- 
+Block 1: --- --- --- --- --- 
+Block 2: --- --- --- --- --- 
+Block 3: --- --- --- --- --- 
+Block 4: --- --- --- --- --- 
+Block 5: --- --- --- --- --- 
+
+Lecturer 38
+Block 0: --- --- --- --- --- 
+Block 1: --- --- --- --- --- 
+Block 2: --- --- --- --- --- 
+Block 3: --- --- --- --- --- 
+Block 4: --- --- --- --- --- 
+Block 5: --- --- --- --- --- 
+</DebugTrace>
+      </Output>
+    </UnitTestResult>
+  </Results>
+</TestRun>

@@ -20,7 +20,7 @@ namespace TimetablePlanner
                     if (course == -1)
                         System.Diagnostics.Debug.Write("--- ");
                     else
-                        System.Diagnostics.Debug.Write(course.ToString().PadLeft(3, '0') + " ");
+                        System.Diagnostics.Debug.Write(course.ToString().PadLeft(3, ttData.Courses[course].IsDummy ? 'x' : '0') + " ");
                 }
                 System.Diagnostics.Debug.WriteLine("");
             }
@@ -39,7 +39,7 @@ namespace TimetablePlanner
                     if (course == -1)
                         System.Diagnostics.Debug.Write("--- ");
                     else
-                        System.Diagnostics.Debug.Write(course.ToString().PadLeft(3, '0') + " ");
+                        System.Diagnostics.Debug.Write(course.ToString().PadLeft(3, ttData.Courses[course].IsDummy ? 'x' : '0') + " ");
                 }
                 System.Diagnostics.Debug.WriteLine("");
             }

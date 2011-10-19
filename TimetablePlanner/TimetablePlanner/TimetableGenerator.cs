@@ -74,7 +74,7 @@ namespace TimetablePlanner
         {
             for (int courseIndex = 0; courseIndex < individual.Courses.GetLength(0); courseIndex++)
             {
-                List<PossibilitiyContainer> possibilities = GetPossibilitiesForCourse(courseIndex, individual);
+                List<PlacementContainer> possibilities = GetPossibilitiesForCourse(courseIndex, individual);
                 if (possibilities.Count <= 0)
                 {
                     //When no possibilities left, restart
@@ -114,7 +114,7 @@ namespace TimetablePlanner
         /// <summary>
         /// Container for a possibility for course placement
         /// </summary>
-        private struct PossibilitiyContainer
+        private struct PlacementContainer
         {
             public int day;
             public int block;
@@ -127,21 +127,21 @@ namespace TimetablePlanner
         /// <param name="course">course to inspect</param>
         /// <param name="individual">individual to be inspected</param>
         /// <returns>List of the possibilities</returns>
-        private List<PossibilitiyContainer> GetPossibilitiesForCourse(int course, Individual individual)
+        private List<PlacementContainer> GetPossibilitiesForCourse(int course, Individual individual)
         {
-            List<PossibilitiyContainer> possibilities = new List<PossibilitiyContainer>();
+            List<PlacementContainer> possibilities = new List<PlacementContainer>();
             int neededNumberOfBlocks = ttData.Courses[course].NumberOfBlocks;
             for (int day = 0; day < individual.Courses.GetLength(1); day++)
             {
                 for (int block = 0; block < individual.Courses.GetLength(2); block++)
                 {
-                    if (block + neededNumberOfBlocks < individual.Courses.GetLength(2))
+                    if (block + neededNumberOfBlocks - 1 < individual.Courses.GetLength(2))
                     {
                         for (int room = 0; room < individual.Rooms.GetLength(0); room++)
                         {
                             if (IsValidForCourse(course, day, block, room, individual))
                             {
-                                PossibilitiyContainer c = new PossibilitiyContainer();
+                                PlacementContainer c = new PlacementContainer();
                                 c.day = day;
                                 c.block = block;
                                 c.room = room;
@@ -220,7 +220,15 @@ namespace TimetablePlanner
                 List<Individual> individuals = new List<Individual>();
                 foreach (Individual individual in Population)
                 {
-                    individuals.Add(PerformMutation(individual));
+                    if (random.Next(0, 100) < 15)
+                    {
+                        List<Individual> selection = RouletteSelection(2);
+                        Individual[] recombination = PerformRecombination(selection[0], selection[1]);
+                        individuals.Add(recombination[0]);
+                        individuals.Add(recombination[1]);
+                    }
+                    else
+                        individuals.Add(PerformMutation(individual));
                 }
                 CalculateFitness(individuals);
                 individuals.AddRange(Population);
@@ -295,7 +303,7 @@ namespace TimetablePlanner
             Individual mutation = Individual.Clone(individual);
             int chosenCourse = random.Next(0, mutation.Courses.GetLength(0));
 
-            List<PossibilitiyContainer> possibilities = GetPossibilitiesForCourse(chosenCourse, mutation);
+            List<PlacementContainer> possibilities = GetPossibilitiesForCourse(chosenCourse, mutation);
             if (possibilities.Count <= 0)
                 return mutation;
             int chosenPossibility = random.Next(0, possibilities.Count);
@@ -321,95 +329,127 @@ namespace TimetablePlanner
             return mutation;
         }
 
-        private void PerformRecombination()
+        /// <summary>
+        /// Create two new individuals via crossbreeding of two existing individuals
+        /// </summary>
+        /// <param name="parent1"></param>
+        /// <param name="parent2"></param>
+        /// <returns></returns>
+        private Individual[] PerformRecombination(Individual parent1, Individual parent2)
         {
-            //choose two individuals 
-            //produce two new individuals via crossbreeding
-            //add to population
+            int crossPoint1 = random.Next(1, parent1.Courses.GetLength(0) - 2);
+            int crossPoint2 = random.Next(crossPoint1, parent1.Courses.GetLength(0) - 1);
+            Individual combination1 = new Individual(numberOfDays, ttData.Blocks.Length, ttData.Courses.Length,
+                ttData.Lecturers.Length, ttData.Rooms.Length, ttData.Groups.Length);
+            Individual combination2 = new Individual(numberOfDays, ttData.Blocks.Length, ttData.Courses.Length,
+                ttData.Lecturers.Length, ttData.Rooms.Length, ttData.Groups.Length);
+
+            for (int i = 0; i < crossPoint1; i++)
+            {
+                if (!AdoptSettingOfCourse(i, ref combination1, parent1))
+                    return new Individual[] { parent1, parent2 };
+                if (!AdoptSettingOfCourse(i, ref combination2, parent2))
+                    return new Individual[] { parent1, parent2 };
+            }
+            for (int i = crossPoint1; i < crossPoint2; i++)
+            {
+                if (!AdoptSettingOfCourse(i, ref combination1, parent2))
+                    return new Individual[] { parent1, parent2 };
+                if (!AdoptSettingOfCourse(i, ref combination2, parent1))
+                    return new Individual[] { parent1, parent2 };
+            }
+            for (int i = crossPoint2; i < parent1.Courses.GetLength(0); i++)
+            {
+                if (!AdoptSettingOfCourse(i, ref combination1, parent1))
+                    return new Individual[] { parent1, parent2 };
+                if (!AdoptSettingOfCourse(i, ref combination2, parent2))
+                    return new Individual[] { parent1, parent2 };
+            }
+
+            return new Individual[] { combination1, combination2 };
+        }
+
+        private bool AdoptSettingOfCourse(int course, ref Individual targetIndividual, Individual sourceIndividual)
+        {
+            List<PlacementContainer> placementList = GetPlacementCopyList(course, targetIndividual, sourceIndividual);
+
+            if (placementList.Count > 0)
+            {
+                foreach (PlacementContainer placement in placementList)
+                {
+                    targetIndividual.SetChromosome(course, placement.day,
+                        placement.block,
+                        placement.room,
+                        ttData.Courses[course].Group.Index,
+                        GetLecturerIndices(course).ToArray());
+                }
+            }
+            else
+            {
+                List<PlacementContainer> availablePlacements = GetPossibilitiesForCourse(course, targetIndividual);
+                if (availablePlacements.Count <= 0)
+                    return false;
+                int chosenPos = random.Next(0, availablePlacements.Count);
+                for (int blockOffset = 0; blockOffset < ttData.Courses[course].NumberOfBlocks; blockOffset++)
+                {
+                    targetIndividual.SetChromosome(course, availablePlacements[chosenPos].day,
+                        availablePlacements[chosenPos].block + blockOffset,
+                        availablePlacements[chosenPos].room,
+                        ttData.Courses[course].Group.Index,
+                        GetLecturerIndices(course).ToArray());
+                }
+            }
+
+            return true;
+        }
+
+        private List<PlacementContainer> GetPlacementCopyList(int course, Individual targetIndividual, Individual sourceIndividual)
+        {
+            List<PlacementContainer> placementList = new List<PlacementContainer>();
+            for (int day = 0; day < sourceIndividual.Courses.GetLength(1); day++)
+            {
+                for (int block = 0; block < sourceIndividual.Courses.GetLength(2); block++)
+                {
+                    if (block + ttData.Courses[course].NumberOfBlocks - 1 < sourceIndividual.Courses.GetLength(2))
+                    {
+                        if (sourceIndividual.Courses[course, day, block] != -1)
+                        {
+                            int room = sourceIndividual.Courses[course, day, block];
+                            if (!IsValidForCourse(course, day, block, room, targetIndividual))
+                                return new List<PlacementContainer>();
+
+                            PlacementContainer container = new PlacementContainer();
+                            container.day = day;
+                            container.block = block;
+                            container.room = room;
+                            placementList.Add(container);
+                        }
+                    }
+                }
+            }
+            return placementList;
         }
 
         private List<Individual> RouletteSelection(int numberOfIndividualsToChoose)
         {
-            //List<Individual> individuals = new List<Individual>();
+            List<Individual> individuals = new List<Individual>();
+            int totalFitness = Population.Sum(p => p.Fitness);
+            int ivoryBall = random.Next(1, totalFitness);
 
-            //int totalFitness = 0;
-            //foreach (Individual i in Population)
-            //{
-            //    totalFitness += i.Fitness;
-            //}
-
-            //int ivoryBall = random.Next(1, totalFitness);
-            //for (int numberOfRolls = 0; numberOfRolls < numberOfIndividualsToChoose; numberOfRolls++)
-            //{
-            //    int currentFitness = 0;
-            //    for (int individualIndex = 0; individualIndex < Population.Count; individualIndex++)
-            //    {
-            //        if ((currentFitness += Population[individualIndex].Fitness) >= ivoryBall)
-            //        {
-            //            individuals.Add(Population[individualIndex]);
-            //            break;
-            //        }
-            //    }
-            //}
-
-            //return individuals;
-            return null;
+            for (int numberOfRolls = 0; numberOfRolls < numberOfIndividualsToChoose; numberOfRolls++)
+            {
+                int currentFitness = 0;
+                for (int individualIndex = 0; individualIndex < Population.Length; individualIndex++)
+                {
+                    if ((currentFitness += Population[individualIndex].Fitness) >= ivoryBall)
+                    {
+                        individuals.Add(Population[individualIndex]);
+                        break;
+                    }
+                }
+            }
+            return individuals;
         }
-
-
-
-        private Individual CrossBreedIndividuals(Individual individual, Individual individual_2)
-        {
-            throw new NotImplementedException();
-        }
-
-
-
-
-
-        //private void PMX(Individual parent1, Individual parent2, List<Individual> population)
-        //{
-        //    int point2 = random.Next(2, maxIndex);
-        //    int point1 = random.Next(1, point2 - 1);
-        //    List<int> decendent1 = new List<int>();
-        //    List<int> decendent2 = new List<int>();
-
-        //    for (int i = 0; i < point1; i++)
-        //    {
-        //        decendent1.Add(parent1.Occupancy[i]);
-        //        decendent2.Add(parent2.Occupancy[i]);
-        //    }
-        //    for (int i = point1; i < point2; i++)
-        //    {
-        //        decendent1.Add(parent2.Occupancy[i]);
-        //        decendent2.Add(parent1.Occupancy[i]);
-        //    }
-        //    for (int i = point2; i < parent2.Occupancy.Length; i++)
-        //    {
-        //        decendent1.Add(parent1.Occupancy[i]);
-        //        decendent2.Add(parent2.Occupancy[i]);
-        //    }
-
-        //    int index = 0;
-        //    for (int i = 0; i < decendent1.Count; i++)
-        //    {
-        //        if (decendent1[i] != 0)
-        //        {
-        //            while ((index = decendent1.FindIndex(index + 1, item => item == decendent1[i])) >= 0)
-        //            {
-        //                if (index != i)
-        //                {
-        //                    int tmp = decendent1[index];
-        //                    decendent1[index] = decendent2[index];
-        //                    decendent2[index] = tmp;
-        //                }
-        //            }
-        //        }
-        //    }
-
-        //    population.Add(new Individual(decendent1.ToArray()));
-        //    population.Add(new Individual(decendent2.ToArray()));
-        //}
 
         #endregion
 
@@ -455,6 +495,10 @@ namespace TimetablePlanner
             int fitness = 0;
             for (int day = 0; day < numberOfDays; day++)
             {
+                Dictionary<int, int> groupFirstBlock = new Dictionary<int, int>();
+                Dictionary<int, int> groupLastBlock = new Dictionary<int, int>();
+                Dictionary<int, int> groupBlockCount = new Dictionary<int, int>();
+                List<int> courses = new List<int>();
                 List<int> courseBlackList = new List<int>();
                 Dictionary<int, List<int>> courseBlockStartHours = new Dictionary<int, List<int>>();
 
@@ -464,32 +508,49 @@ namespace TimetablePlanner
                     {
                         if (individual.Courses[course, day, block] != -1)
                         {
-                            //Don't consider dummy courses
-                            if (!ttData.Courses[course].IsDummy)
+                            int group = ttData.Courses[course].Group.Index;
+                            if (!groupFirstBlock.ContainsKey(group))
+                                groupFirstBlock.Add(group, block);
+                            if (!groupLastBlock.ContainsKey(group))
+                                groupLastBlock.Add(group, block);
+                            if (!groupBlockCount.ContainsKey(group))
+                                groupBlockCount.Add(group, 1);
+                            groupLastBlock[group] = block;
+                            groupBlockCount[group]++;
+
+                            //Courses should not appear more than once a day
+                            courseBlackList.Add(course);
+                            if (courseBlackList.Count<int>(p => p == course) > ttData.Courses[course].NumberOfBlocks)
+                                fitness -= 100;
+
+                            //Fill courseList
+                            if (!courses.Contains(course) && ttData.Courses[course].IsDummy)
+                                courses.Add(course);
+
+                            //Courses should start before 13:00
+                            fitness += (ttData.Blocks[block].Start.Hour - 13) * 3 * (ttData.Courses[course].IsDummy ? 2 : -1);
+
+                            //Roompreference
+                            if (ttData.Courses[course].RoomPreference != null)
                             {
-                                //Courses should not appear more than once a day
-                                courseBlackList.Add(course);
-                                if (courseBlackList.Count<int>(p => p == course) > ttData.Courses[course].NumberOfBlocks)
-                                    fitness -= 100;
-
-                                //Courses should start before 13:00
-                                fitness += (ttData.Blocks[block].Start.Hour - 13) * -3;
-
-                                //Roompreference
-                                if (ttData.Courses[course].RoomPreference != null)
-                                {
-                                    if (individual.Courses[course, day, block] == ttData.Courses[course].RoomPreference.Index)
-                                        fitness += 100;
-                                }
-
-                                //A course should not by-pass the lunch break at 13:00
-                                //--> Store the start hours
-                                if (!courseBlockStartHours.ContainsKey(course))
-                                    courseBlockStartHours.Add(course, new List<int>());
-                                courseBlockStartHours[course].Add(ttData.Blocks[block].Start.Hour);
+                                if (individual.Courses[course, day, block] == ttData.Courses[course].RoomPreference.Index)
+                                    fitness += 100;
                             }
+
+                            //A course should not by-pass the lunch break at 13:00
+                            //--> Store the start hours
+                            if (!courseBlockStartHours.ContainsKey(course))
+                                courseBlockStartHours.Add(course, new List<int>());
+                            courseBlockStartHours[course].Add(ttData.Blocks[block].Start.Hour);
                         }
                     }
+                }
+
+                //Groups should not have gaps in their plan
+                for (int group = 0; group < ttData.Groups.Length; group++)
+                {
+                    if(groupFirstBlock.ContainsKey(group))
+                        fitness -= (groupLastBlock[group] - groupFirstBlock[group] - groupBlockCount[group]) * 10;
                 }
 
                 //A course should not by-pass the lunch break at 13:00
@@ -501,21 +562,13 @@ namespace TimetablePlanner
                         fitness -= 50;
                 }
 
-                List<int> courses = new List<int>();
-                //Add all courses of the day that are not flagged as dummy to the course list of the day
-                foreach (var course in courseBlackList)
-                {
-                    if (!courses.Contains(course) && ttData.Courses[course].IsDummy)
-                        courses.Add(course);
-                }
-
                 //There should be no days with only one course
                 if (courses.Count == 1)
-                    fitness -= 50;
+                    fitness -= 100;
 
                 //Prefer free days
                 if (courses.Count == 0)
-                    fitness += 100;
+                    fitness += 200;
             }
             individual.Fitness = fitness;
         }

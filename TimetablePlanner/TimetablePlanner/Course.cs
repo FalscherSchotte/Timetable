@@ -11,7 +11,7 @@ namespace TimetablePlanner
         public string Name { get; private set; }
         public Room RoomPreference { get; private set; }
         public Lecturer[] Lecturers { get; private set; }
-        public LectureTime LectureTimes { get; private set; }
+        //public LectureTime LectureTimes { get; private set; }
         public Group Group { get; private set; }
         //public int RepeatsPerWeek { get; private set; }
         public int NumberOfBlocks { get; private set; }
@@ -42,21 +42,21 @@ namespace TimetablePlanner
             return Id + ": " + Name;
         }
 
-        public class LectureTime
-        {
-            public DateTime Start { get; private set; }
-            public DateTime End { get; private set; }
-            public DayOfWeek Day { get; private set; }
-            public Room Room { get; private set; }
+        //public class LectureTime
+        //{
+        //    public DateTime Start { get; private set; }
+        //    public DateTime End { get; private set; }
+        //    public DayOfWeek Day { get; private set; }
+        //    public Room Room { get; private set; }
 
-            public LectureTime(DateTime start, DateTime end, DayOfWeek day, Room room)
-            {
-                this.Start = start;
-                this.End = end;
-                this.Day = day;
-                this.Room = room;
-            }
-        }
+        //    public LectureTime(DateTime start, DateTime end, DayOfWeek day, Room room)
+        //    {
+        //        this.Start = start;
+        //        this.End = end;
+        //        this.Day = day;
+        //        this.Room = room;
+        //    }
+        //}
 
 
     }

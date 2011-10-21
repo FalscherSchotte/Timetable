@@ -18,9 +18,16 @@ namespace TimetablePlanner
                 {
                     int course = i.Groups[group, day, block];
                     if (course == -1)
-                        System.Diagnostics.Debug.Write("--- ");
+                    {
+                        for (int j = 0; j < 39; j++)
+                        {
+                            System.Diagnostics.Debug.Write("-");   
+                        }
+                    }
                     else
-                        System.Diagnostics.Debug.Write(course.ToString().PadLeft(3, ttData.Courses[course].IsDummy ? 'x' : '0') + " ");
+                        System.Diagnostics.Debug.Write(ttData.Courses[course].Name.PadRight(39, ' ')); //TODO
+                        //System.Diagnostics.Debug.Write(course.ToString().PadLeft(3, ttData.Courses[course].IsDummy ? 'x' : '0') + " ");
+                    System.Diagnostics.Debug.Write("| "); 
                 }
                 System.Diagnostics.Debug.WriteLine("");
             }

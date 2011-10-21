@@ -1,0 +1,388 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<TestRun id="0ea2eee7-8fbc-49bd-8542-58df8fe49419" name="FloLap@FLOLAP-PC 2011-10-21 16:33:55" runUser="FloLap-PC\FloLap" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
+  <TestSettings name="Lokal" id="6ed96bb3-d821-4eee-a79d-3a3069da9890">
+    <Description>Dies sind die standardmäßigen Testeinstellungen für einen lokalen Testlauf.</Description>
+    <Deployment enabled="false" runDeploymentRoot="FloLap_FLOLAP-PC 2011-10-21 16_33_55">
+      <DeploymentItem filename="E:\HsKA\Semester2\Projektarbeit\Stundenplangenerator\TimetablePlanner\TimetablePlanner\bin\Debug\TimetablePlanner.dll" />
+    </Deployment>
+    <Execution>
+      <TestTypeSpecific />
+      <AgentRule name="Execution Agents">
+      </AgentRule>
+    </Execution>
+  </TestSettings>
+  <Times creation="2011-10-21T16:33:55.4742341+02:00" queuing="2011-10-21T16:33:56.4172881+02:00" start="2011-10-21T16:33:56.5262943+02:00" finish="2011-10-21T16:34:04.0317236+02:00" />
+  <ResultSummary outcome="Completed">
+    <Counters total="1" executed="1" passed="1" error="0" failed="0" timeout="0" aborted="0" inconclusive="0" passedButRunAborted="0" notRunnable="0" notExecuted="0" disconnected="0" warning="0" completed="0" inProgress="0" pending="0" />
+  </ResultSummary>
+  <TestDefinitions>
+    <UnitTest name="TimetableManualTester" storage="e:\hska\semester2\projektarbeit\stundenplangenerator\timetableplanner\timetableplannertests\bin\debug\timetableplannertests.dll" id="3ada0cc6-2a4d-2d63-7d9f-97d4d443b0f3">
+      <Execution id="070197fb-69e7-4e91-b2b6-3fc9f91c8be1" />
+      <TestMethod codeBase="E:/HsKA/Semester2/Projektarbeit/Stundenplangenerator/TimetablePlanner/TimetablePlannerTests/bin/Debug/TimetablePlannerTests.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="TimetablePlannerTests.TimetableTest, TimetablePlannerTests, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="TimetableManualTester" />
+    </UnitTest>
+  </TestDefinitions>
+  <TestLists>
+    <TestList name="Nicht in einer Liste enthaltene Ergebnisse" id="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestList name="Alle geladenen Ergebnisse" id="19431567-8539-422a-85d7-44ee4e166bda" />
+  </TestLists>
+  <TestEntries>
+    <TestEntry testId="3ada0cc6-2a4d-2d63-7d9f-97d4d443b0f3" executionId="070197fb-69e7-4e91-b2b6-3fc9f91c8be1" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+  </TestEntries>
+  <Results>
+    <UnitTestResult executionId="070197fb-69e7-4e91-b2b6-3fc9f91c8be1" testId="3ada0cc6-2a4d-2d63-7d9f-97d4d443b0f3" testName="TimetableManualTester" computerName="FLOLAP-PC" duration="00:00:06.1658080" startTime="2011-10-21T16:33:56.5682967+02:00" endTime="2011-10-21T16:34:03.9157169+02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="070197fb-69e7-4e91-b2b6-3fc9f91c8be1">
+      <Output>
+        <DebugTrace>Time to create population of size 75: 574ms
+1810
+1480
+1370
+1320
+1310
+1280
+1240
+1220
+1170
+1170
+1160
+1140
+1130
+1090
+1090
+1080
+1060
+1030
+1030
+1000
+1000
+1000
+990
+980
+980
+980
+930
+930
+910
+900
+880
+870
+850
+850
+850
+850
+840
+820
+810
+800
+790
+760
+750
+730
+720
+720
+720
+710
+700
+700
+700
+700
+650
+640
+630
+580
+560
+550
+540
+540
+520
+510
+510
+480
+430
+400
+350
+340
+340
+320
+300
+240
+40
+20
+10
+Early abort after 162 generations.
+Mean time per generation: 31ms
+Mean fitness increase per generation
+264
+141
+119
+102
+132
+125
+105
+48
+42
+34
+42
+39
+30
+34
+32
+25
+22
+21
+18
+24
+25
+24
+35
+26
+31
+34
+25
+24
+20
+17
+25
+23
+22
+19
+14
+13
+18
+14
+17
+14
+15
+15
+10
+16
+14
+13
+13
+15
+17
+13
+15
+13
+16
+16
+9
+11
+12
+14
+10
+8
+10
+12
+6
+7
+11
+12
+9
+8
+10
+7
+7
+10
+11
+8
+6
+6
+7
+10
+5
+7
+9
+9
+5
+7
+6
+9
+9
+12
+7
+3
+5
+6
+4
+8
+3
+4
+4
+5
+4
+5
+6
+6
+3
+3
+8
+3
+5
+6
+4
+2
+3
+1
+4
+2
+5
+4
+2
+3
+4
+2
+4
+2
+3
+4
+3
+3
+2
+5
+4
+2
+1
+4
+4
+1
+4
+1
+3
+1
+2
+3
+2
+2
+1
+0
+1
+2
+2
+1
+1
+1
+3
+1
+1
+3
+1
+2
+5
+4
+2
+4
+2
+3
+5
+Evolution time: 5246ms
+3460
+3450
+3450
+3440
+3440
+3430
+3430
+3420
+3420
+3410
+3410
+3400
+3400
+3400
+3400
+3400
+3400
+3400
+3390
+3390
+3390
+3390
+3390
+3390
+3390
+3390
+3390
+3390
+3390
+3390
+3380
+3380
+3380
+3380
+3380
+3380
+3380
+3380
+3380
+3370
+3370
+3370
+3370
+3370
+3370
+3370
+3370
+3370
+3370
+3370
+3370
+3370
+3370
+3370
+3370
+3360
+3360
+3360
+3360
+3360
+3360
+3360
+3360
+3360
+3360
+3360
+3360
+3360
+3360
+3360
+3360
+3360
+3350
+3350
+3350
+
+Group 0
+Block 0: Informatik 1 Übung            Mathematik 1 Labor            Mathematik 1                  Fremdsprachen                 Informatik 1                  
+Block 1: Technische Informatik 1       Technische Informatik 1 Übung Theoretische Informatik 1     Fremdsprachen                 Informatik 1                  
+Block 2: Mathematik 1 Labor            Mathematik 1                               ----             Technische Informatik 1       Theoretische Informatik 1     
+Block 3:              ----                          ----                          ----                          ----                          ----             
+Block 4:              ----                          ----                          ----                          ----                          ----             
+Block 5:              ----                          ----                          ----                          ----                          ----             
+
+Group 1
+Block 0: Sprachen und Metasprachen     Informatik 2 Übung            Informatik 2 Übung            Mathematik 2                  Softwarelabor                 
+Block 1: Digital-Labor                 Softwarelabor                 Web-Programming               Informatik 2                  Softwarelabor                 
+Block 2: Digital-Labor                 Softwarelabor                              ----             Technische Informatik 2       Mathematik 2 Labor            
+Block 3: Digital-Labor                 Technische Informatik 2                    ----                          ----             Informatik 2                  
+Block 4:              ----                          ----                          ----                          ----                          ----             
+Block 5:              ----                          ----                          ----                          ----                          ----             
+
+Group 2
+Block 0: Visualization and Semantics LabIntelligente Systeme          IT Projektmanagement          Mobile Systeme                Datenrepräsentation und -übertragung
+Block 1: IT Service Management                      ----             Modellierung und Simulation   Verteilte Informationssysteme              ----             
+Block 2: Visualization and Semantics                ----                          ----                          ----                          ----             
+Block 3:              ----                          ----                          ----                          ----             Projektarbeit1                
+Block 4:              ----                          ----                          ----                          ----             Projektarbeit1                
+Block 5: Führungskräftetraining                     ----                          ----                          ----             Projektarbeit1                
+
+Group 3
+Block 0: Data Mining                   Algorithmenentwurf            Algorithmen Übung             IT-Sicherheit                 Labor Verteilte Systeme       
+Block 1:              ----             Labor Benutzeroberflächen                  ----             Angewandte Kryptografie       Dialog Systems                
+Block 2:              ----                          ----                          ----                          ----                          ----             
+Block 3:              ----                          ----                          ----                          ----                          ----             
+Block 4:              ----                          ----             Projektarbeit2                             ----                          ----             
+Block 5:              ----                          ----             Projektarbeit2                Seminar                                    ----             
+</DebugTrace>
+      </Output>
+    </UnitTestResult>
+  </Results>
+</TestRun>

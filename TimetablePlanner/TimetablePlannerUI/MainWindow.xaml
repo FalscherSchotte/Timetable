@@ -1,0 +1,18 @@
+﻿<Window x:Class="TimetablePlannerUI.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:tt="clr-namespace:TimetablePlannerUI"
+        Title="Timetable Generator" 
+        Height="600" Width="800">
+    <TabControl TabStripPlacement="Bottom">
+        <TabItem Header="Timetable configuration">
+            <tt:ConfigControl />
+        </TabItem>
+        <TabItem Header="Timetable output">
+            <tt:OutputControl />
+        </TabItem>
+        <TabItem Header="Settings">
+
+        </TabItem>
+    </TabControl>
+</Window>

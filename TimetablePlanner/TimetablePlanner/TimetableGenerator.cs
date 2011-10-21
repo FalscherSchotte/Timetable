@@ -220,15 +220,15 @@ namespace TimetablePlanner
                 List<Individual> individuals = new List<Individual>();
                 foreach (Individual individual in Population)
                 {
-                    if (random.Next(0, 100) < 15)
-                    {
-                        List<Individual> selection = RouletteSelection(2);
-                        Individual[] recombination = PerformRecombination(selection[0], selection[1]);
-                        individuals.Add(recombination[0]);
-                        individuals.Add(recombination[1]);
-                    }
-                    else
-                        individuals.Add(PerformMutation(individual));
+                    //if (random.Next(0, 100) < 15)
+                    //{
+                    //    List<Individual> selection = RouletteSelection(2);
+                    //    Individual[] recombination = PerformRecombination(selection[0], selection[1]);
+                    //    individuals.Add(recombination[0]);
+                    //    individuals.Add(recombination[1]);
+                    //}
+                    //else
+                    individuals.Add(PerformMutation(individual));
                 }
                 CalculateFitness(individuals);
                 individuals.AddRange(Population);
@@ -499,7 +499,8 @@ namespace TimetablePlanner
                 Dictionary<int, int> groupLastBlock = new Dictionary<int, int>();
                 Dictionary<int, int> groupBlockCount = new Dictionary<int, int>();
                 List<int> courses = new List<int>();
-                List<int> courseBlackList = new List<int>();
+                //List<int> courseBlackList = new List<int>();
+                Dictionary<string, int> courseIdBlackList = new Dictionary<string, int>();
                 Dictionary<int, List<int>> courseBlockStartHours = new Dictionary<int, List<int>>();
 
                 for (int block = 0; block < ttData.Blocks.Length; block++)
@@ -508,27 +509,16 @@ namespace TimetablePlanner
                     {
                         if (individual.Courses[course, day, block] != -1)
                         {
-                            int group = ttData.Courses[course].Group.Index;
-                            if (!groupFirstBlock.ContainsKey(group))
-                                groupFirstBlock.Add(group, block);
-                            if (!groupLastBlock.ContainsKey(group))
-                                groupLastBlock.Add(group, block);
-                            if (!groupBlockCount.ContainsKey(group))
-                                groupBlockCount.Add(group, 1);
-                            groupLastBlock[group] = block;
-                            groupBlockCount[group]++;
-
                             //Courses should not appear more than once a day
-                            courseBlackList.Add(course);
-                            if (courseBlackList.Count<int>(p => p == course) > ttData.Courses[course].NumberOfBlocks)
+                            if (!courseIdBlackList.ContainsKey(ttData.Courses[course].Id))
+                                courseIdBlackList[ttData.Courses[course].Id] = 0;
+                            courseIdBlackList[ttData.Courses[course].Id]++;
+                            if (courseIdBlackList[ttData.Courses[course].Id] > ttData.Courses[course].NumberOfBlocks)
                                 fitness -= 100;
 
-                            //Fill courseList
-                            if (!courses.Contains(course) && ttData.Courses[course].IsDummy)
-                                courses.Add(course);
-
                             //Courses should start before 13:00
-                            fitness += (ttData.Blocks[block].Start.Hour - 13) * 3 * (ttData.Courses[course].IsDummy ? 2 : -1);
+                            //Opposite for dummy courses
+                            fitness += (ttData.Blocks[block].Start.Hour - 13) * 10 * (ttData.Courses[course].IsDummy ? 2 : -1);
 
                             //Roompreference
                             if (ttData.Courses[course].RoomPreference != null)
@@ -537,11 +527,30 @@ namespace TimetablePlanner
                                     fitness += 100;
                             }
 
-                            //A course should not by-pass the lunch break at 13:00
-                            //--> Store the start hours
-                            if (!courseBlockStartHours.ContainsKey(course))
-                                courseBlockStartHours.Add(course, new List<int>());
-                            courseBlockStartHours[course].Add(ttData.Blocks[block].Start.Hour);
+                            //Measurements that are not applied on dummys
+                            if (!ttData.Courses[course].IsDummy)
+                            {
+                                //Store the first and last block of the group
+                                int group = ttData.Courses[course].Group.Index;
+                                if (!groupFirstBlock.ContainsKey(group))
+                                    groupFirstBlock.Add(group, block);
+                                if (!groupLastBlock.ContainsKey(group))
+                                    groupLastBlock.Add(group, block);
+                                if (!groupBlockCount.ContainsKey(group))
+                                    groupBlockCount.Add(group, 1);
+                                groupLastBlock[group] = block;
+                                groupBlockCount[group]++;
+
+                                //A course should not by-pass the lunch break at 13:00
+                                //--> Store the start hours
+                                if (!courseBlockStartHours.ContainsKey(course))
+                                    courseBlockStartHours.Add(course, new List<int>());
+                                courseBlockStartHours[course].Add(ttData.Blocks[block].Start.Hour);
+
+                                //Fill courseList (List of courses that are lectured this day
+                                if (!courses.Contains(course) && !ttData.Courses[course].IsDummy)
+                                    courses.Add(course);
+                            }
                         }
                     }
                 }
@@ -549,8 +558,8 @@ namespace TimetablePlanner
                 //Groups should not have gaps in their plan
                 for (int group = 0; group < ttData.Groups.Length; group++)
                 {
-                    if(groupFirstBlock.ContainsKey(group))
-                        fitness -= (groupLastBlock[group] - groupFirstBlock[group] - groupBlockCount[group]) * 10;
+                    if (groupFirstBlock.ContainsKey(group))
+                        fitness -= (groupLastBlock[group] - groupFirstBlock[group] - groupBlockCount[group]) * 30;
                 }
 
                 //A course should not by-pass the lunch break at 13:00
@@ -564,11 +573,31 @@ namespace TimetablePlanner
 
                 //There should be no days with only one course
                 if (courses.Count == 1)
-                    fitness -= 100;
+                    fitness -= 155;
 
                 //Prefer free days
                 if (courses.Count == 0)
-                    fitness += 200;
+                    fitness += 155;
+
+
+
+
+
+
+
+                //Forschungsaktivitäten - prof frei ein tag die woche
+                //  --> Mittwoch nicht
+                //Profklasse 1 - belieibig freio
+                // Klasse2 - frei außer mittwoch
+
+
+                //Treffen immer freitags 
+
+
+
+
+
+
             }
             individual.Fitness = fitness;
         }

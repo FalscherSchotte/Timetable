@@ -189,8 +189,11 @@ namespace TimetablePlanner
                 //Lecturers available?
                 for (int neededLecturer = 0; neededLecturer < ttData.Courses[course].Lecturers.Length; neededLecturer++)
                 {
-                    if (individual.Lecturers[ttData.Courses[course].Lecturers[neededLecturer].Index, day, block + blockOffset] != -1)
-                        return false;
+                    if (!ttData.Courses[course].Lecturers[neededLecturer].IsDummy)
+                    {
+                        if (individual.Lecturers[ttData.Courses[course].Lecturers[neededLecturer].Index, day, block + blockOffset] != -1)
+                            return false;
+                    }
                 }
 
                 //group available?
@@ -498,8 +501,6 @@ namespace TimetablePlanner
                 Dictionary<int, int> groupFirstBlock = new Dictionary<int, int>();
                 Dictionary<int, int> groupLastBlock = new Dictionary<int, int>();
                 Dictionary<int, int> groupBlockCount = new Dictionary<int, int>();
-                List<int> courses = new List<int>();
-                //List<int> courseBlackList = new List<int>();
                 Dictionary<string, int> courseIdBlackList = new Dictionary<string, int>();
                 Dictionary<int, List<int>> courseBlockStartHours = new Dictionary<int, List<int>>();
 
@@ -546,10 +547,6 @@ namespace TimetablePlanner
                                 if (!courseBlockStartHours.ContainsKey(course))
                                     courseBlockStartHours.Add(course, new List<int>());
                                 courseBlockStartHours[course].Add(ttData.Blocks[block].Start.Hour);
-
-                                //Fill courseList (List of courses that are lectured this day
-                                if (!courses.Contains(course) && !ttData.Courses[course].IsDummy)
-                                    courses.Add(course);
                             }
                         }
                     }
@@ -570,35 +567,55 @@ namespace TimetablePlanner
                     if (start - 13 < 0 && !(end - 13 < 0))
                         fitness -= 50;
                 }
-
-                //There should be no days with only one course
-                if (courses.Count == 1)
-                    fitness -= 155;
-
-                //Prefer free days
-                if (courses.Count == 0)
-                    fitness += 155;
-
-
-
-
-
-
-
-                //Forschungsaktivitäten - prof frei ein tag die woche
-                //  --> Mittwoch nicht
-                //Profklasse 1 - belieibig freio
-                // Klasse2 - frei außer mittwoch
-
-
-                //Treffen immer freitags 
-
-
-
-
-
-
             }
+
+            //Check time for research activities for lecturers
+            for (int l = 0; l < individual.Lecturers.GetLength(0); l++)
+            {
+                if (ttData.Lecturers[l].NeededNumberOfResearchDays > 0 && !ttData.Lecturers[l].IsDummy)
+                {
+                    Dictionary<int, int> lecturerOccupacy = new Dictionary<int, int>();
+                    foreach (int d in ttData.Lecturers[l].AvailableResearchDays)
+                    {
+                        lecturerOccupacy.Add(d, 0);
+                        for (int b = 0; b < individual.Lecturers.GetLength(2); b++)
+                        {
+                            if (individual.Lecturers[l, d, b] != -1)
+                                lecturerOccupacy[d]++;
+                        }
+                    }
+                    int numberOfFreeDays = 0;
+                    foreach (int d in ttData.Lecturers[l].AvailableResearchDays)
+                    {
+                        if (lecturerOccupacy[d] == 0)
+                        {
+                            numberOfFreeDays++;
+                        }
+                    }
+                    if (ttData.Lecturers[l].NeededNumberOfResearchDays > numberOfFreeDays)
+                        fitness -= 1000;
+                }
+            }
+
+            for (int g = 0; g < individual.Groups.GetLength(0); g++)
+            {
+                for (int d = 0; d < individual.Groups.GetLength(1); d++)
+                {
+                    int count = 0;
+                    for (int b = 0; b < individual.Groups.GetLength(2); b++)
+                    {
+                        if (individual.Groups[g, d, b] != -1)
+                        {
+                            if (!ttData.Courses[individual.Groups[g, d, b]].IsDummy)
+                                count++;
+                        }
+                    }
+                    //Increase fitness when a group gets a free day
+                    if (count == 0)
+                        fitness += 100;
+                }
+            }
+
             individual.Fitness = fitness;
         }
 

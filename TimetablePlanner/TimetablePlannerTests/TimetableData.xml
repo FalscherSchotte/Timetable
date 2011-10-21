@@ -13,10 +13,10 @@
         </blocks>
     </parameters>
     <lecturers>
-        <lecturer pId="ALL" lastName="Alle Professoren"/>
-        <lecturer pId="WILDCARD" lastname="Mehrere Professoren" />
-        <lecturer pId="DUMMY" lastName="!!Noch nicht angelegt" />
-        <lecturer pId="brö01" lastName="Bröckl" />
+        <lecturer pId="ALL" lastName="Alle Professoren" numberOfResearchDays="0" isDummy="true"/>
+        <lecturer pId="WILDCARD" lastname="Mehrere Professoren" numberOfResearchDays="0" isDummy="true"/>
+        <lecturer pId="DUMMY" lastName="!!Noch nicht angelegt" numberOfResearchDays="0" isDummy="true"/>
+        <lecturer pId="brö01" lastName="Bröckl"/>
         <lecturer pId="dit01" lastName="Ditzinger" />
         <lecturer pId="düb01" lastName="Dübon" />
         <lecturer pId="fuc01" lastName="Fuchß" />
@@ -25,7 +25,9 @@
         <lecturer pId="gre01" lastName="Gremminger" />
         <lecturer pId="han01" lastName="Haneke" />
         <lecturer pId="heb01" lastName="Heberle" />
-        <lecturer pId="hen01" lastName="Henning" />
+        <lecturer pId="hen01" lastName="Henning">
+            <researchException day="Wednesday" />
+        </lecturer>
         <lecturer pId="hof01" lastName="Hoffmann" />
         <lecturer pId="hof02" lastName="Hofmann" />
         <lecturer pId="hüt01" lastName="Hüttel" />

@@ -1,0 +1,396 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<TestRun id="fffb56ff-6562-4a33-9c5a-9fca9f7bcb34" name="FloLap@FLOLAP-PC 2011-10-21 22:03:11" runUser="FloLap-PC\FloLap" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
+  <TestSettings name="Lokal" id="6ed96bb3-d821-4eee-a79d-3a3069da9890">
+    <Description>Dies sind die standardmäßigen Testeinstellungen für einen lokalen Testlauf.</Description>
+    <Deployment enabled="false" runDeploymentRoot="FloLap_FLOLAP-PC 2011-10-21 22_03_11">
+      <DeploymentItem filename="E:\HsKA\Semester2\Projektarbeit\Stundenplangenerator\TimetablePlanner\TimetablePlanner\bin\Debug\TimetablePlanner.dll" />
+    </Deployment>
+    <Execution>
+      <TestTypeSpecific />
+      <AgentRule name="Execution Agents">
+      </AgentRule>
+    </Execution>
+  </TestSettings>
+  <Times creation="2011-10-21T22:03:11.8776193+02:00" queuing="2011-10-21T22:03:13.0788214+02:00" start="2011-10-21T22:03:13.2504217+02:00" finish="2011-10-21T22:03:24.2952411+02:00" />
+  <ResultSummary outcome="Completed">
+    <Counters total="1" executed="1" passed="1" error="0" failed="0" timeout="0" aborted="0" inconclusive="0" passedButRunAborted="0" notRunnable="0" notExecuted="0" disconnected="0" warning="0" completed="0" inProgress="0" pending="0" />
+  </ResultSummary>
+  <TestDefinitions>
+    <UnitTest name="TimetableManualTester" storage="e:\hska\semester2\projektarbeit\stundenplangenerator\timetableplanner\timetableplannertests\bin\debug\timetableplannertests.dll" id="3ada0cc6-2a4d-2d63-7d9f-97d4d443b0f3">
+      <Execution id="0fb109f6-020e-4494-9aa6-7a7d95d2be4d" />
+      <TestMethod codeBase="E:/HsKA/Semester2/Projektarbeit/Stundenplangenerator/TimetablePlanner/TimetablePlannerTests/bin/Debug/TimetablePlannerTests.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="TimetablePlannerTests.TimetableTest, TimetablePlannerTests, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="TimetableManualTester" />
+    </UnitTest>
+  </TestDefinitions>
+  <TestLists>
+    <TestList name="Nicht in einer Liste enthaltene Ergebnisse" id="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestList name="Alle geladenen Ergebnisse" id="19431567-8539-422a-85d7-44ee4e166bda" />
+  </TestLists>
+  <TestEntries>
+    <TestEntry testId="3ada0cc6-2a4d-2d63-7d9f-97d4d443b0f3" executionId="0fb109f6-020e-4494-9aa6-7a7d95d2be4d" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+  </TestEntries>
+  <Results>
+    <UnitTestResult executionId="0fb109f6-020e-4494-9aa6-7a7d95d2be4d" testId="3ada0cc6-2a4d-2d63-7d9f-97d4d443b0f3" testName="TimetableManualTester" computerName="FLOLAP-PC" duration="00:00:09.6120202" startTime="2011-10-21T22:03:13.4220220+02:00" endTime="2011-10-21T22:03:24.2172410+02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="0fb109f6-020e-4494-9aa6-7a7d95d2be4d">
+      <Output>
+        <DebugTrace>Time to create population of size 75: 592ms
+1400
+1210
+1180
+1130
+1100
+1080
+1040
+970
+960
+960
+890
+840
+790
+780
+780
+770
+770
+770
+750
+700
+650
+650
+620
+610
+540
+520
+510
+500
+490
+490
+490
+480
+480
+480
+430
+390
+320
+300
+290
+280
+270
+260
+200
+110
+90
+80
+80
+50
+50
+50
+0
+-70
+-80
+-90
+-210
+-290
+-300
+-320
+-340
+-370
+-460
+-470
+-550
+-570
+-570
+-620
+-680
+-700
+-710
+-720
+-800
+-980
+-1110
+-1180
+-1250
+Early abort after 170 generations.
+Mean time per generation: 39ms
+Mean fitness increase per generation
+505
+222
+145
+119
+98
+92
+90
+80
+58
+50
+60
+47
+59
+47
+40
+36
+32
+37
+28
+34
+38
+29
+28
+29
+21
+22
+19
+28
+28
+28
+27
+18
+20
+19
+17
+18
+16
+12
+15
+20
+10
+11
+18
+12
+13
+12
+14
+13
+11
+14
+9
+7
+9
+10
+8
+11
+7
+9
+4
+11
+10
+14
+6
+13
+6
+9
+12
+10
+8
+7
+7
+11
+10
+8
+11
+7
+13
+8
+5
+7
+8
+6
+2
+4
+8
+6
+5
+2
+7
+9
+4
+8
+4
+4
+6
+5
+4
+2
+3
+6
+6
+7
+6
+2
+2
+3
+6
+6
+4
+4
+5
+5
+5
+6
+3
+8
+6
+6
+3
+5
+6
+2
+8
+7
+7
+2
+8
+8
+8
+5
+6
+8
+7
+8
+5
+5
+5
+6
+3
+3
+5
+3
+5
+2
+2
+5
+1
+4
+0
+3
+2
+1
+2
+3
+3
+4
+3
+0
+1
+3
+1
+2
+3
+1
+2
+2
+2
+3
+2
+4
+1
+Evolution time: 6864ms
+3430
+3430
+3410
+3390
+3370
+3370
+3370
+3360
+3360
+3360
+3360
+3350
+3350
+3350
+3350
+3350
+3340
+3340
+3340
+3340
+3340
+3340
+3340
+3340
+3340
+3340
+3340
+3340
+3340
+3340
+3330
+3330
+3330
+3330
+3330
+3330
+3330
+3330
+3330
+3330
+3330
+3330
+3330
+3330
+3320
+3320
+3320
+3320
+3320
+3320
+3320
+3320
+3320
+3320
+3320
+3320
+3320
+3320
+3320
+3310
+3310
+3310
+3310
+3310
+3310
+3310
+3310
+3310
+3310
+3310
+3310
+3310
+3310
+3310
+3310
+
+Group 0
+Block 0: Fremdsprachen                          | Theoretische Informatik 1              | Mathematik 1                           | Informatik 1                           | Mathematik 1 Labor                     | 
+Block 1: Fremdsprachen                          | Technische Informatik 1                | Mathematik 1 Labor                     | Mathematik 1                           | Theoretische Informatik 1              | 
+Block 2: Informatik 1                           | Technische Informatik 1 Übung          | ---------------------------------------| Technische Informatik 1                | Informatik 1 Übung                     | 
+Block 3: ---------------------------------------| ---------------------------------------| ---------------------------------------| ---------------------------------------| ---------------------------------------| 
+Block 4: ---------------------------------------| ---------------------------------------| ---------------------------------------| ---------------------------------------| ---------------------------------------| 
+Block 5: ---------------------------------------| ---------------------------------------| ---------------------------------------| ---------------------------------------| ---------------------------------------| 
+
+Group 1
+Block 0: Technische Informatik 2                | Technische Informatik 2                | Informatik 2                           | Sprachen und Metasprachen              | Web-Programming                        | 
+Block 1: Mathematik 2 Labor                     | Informatik 2                           | Informatik 2 Übung                     | Digital-Labor                          | Softwarelabor                          | 
+Block 2: Mathematik 2                           | Informatik 2 Übung                     | ---------------------------------------| Digital-Labor                          | Softwarelabor                          | 
+Block 3: Softwarelabor                          | ---------------------------------------| ---------------------------------------| Digital-Labor                          | ---------------------------------------| 
+Block 4: Softwarelabor                          | ---------------------------------------| ---------------------------------------| ---------------------------------------| ---------------------------------------| 
+Block 5: ---------------------------------------| ---------------------------------------| ---------------------------------------| ---------------------------------------| ---------------------------------------| 
+
+Group 2
+Block 0: IT Service Management                  | Mobile Systeme                         | Visualization and Semantics            | ---------------------------------------| Intelligente Systeme                   | 
+Block 1: ---------------------------------------| Visualization and Semantics Lab        | IT Projektmanagement                   | Modellierung und Simulation            | Datenrepräsentation und -übertragung   | 
+Block 2: ---------------------------------------| ---------------------------------------| ---------------------------------------| ---------------------------------------| Verteilte Informationssysteme          | 
+Block 3: ---------------------------------------| ---------------------------------------| ---------------------------------------| Projektarbeit1                         | ---------------------------------------| 
+Block 4: ---------------------------------------| ---------------------------------------| ---------------------------------------| Projektarbeit1                         | ---------------------------------------| 
+Block 5: Führungskräftetraining                 | ---------------------------------------| ---------------------------------------| Projektarbeit1                         | ---------------------------------------| 
+
+Group 3
+Block 0: Data Mining                            | Algorithmen Übung                      | Dialog Systems                         | Labor Verteilte Systeme                | ---------------------------------------| 
+Block 1: Labor Benutzeroberflächen              | Angewandte Kryptografie                | Algorithmenentwurf                     | ---------------------------------------| IT-Sicherheit                          | 
+Block 2: ---------------------------------------| ---------------------------------------| ---------------------------------------| ---------------------------------------| ---------------------------------------| 
+Block 3: ---------------------------------------| ---------------------------------------| ---------------------------------------| ---------------------------------------| ---------------------------------------| 
+Block 4: ---------------------------------------| ---------------------------------------| ---------------------------------------| Projektarbeit2                         | ---------------------------------------| 
+Block 5: ---------------------------------------| Seminar                                | ---------------------------------------| Projektarbeit2                         | ---------------------------------------| 
+</DebugTrace>
+      </Output>
+    </UnitTestResult>
+  </Results>
+</TestRun>

@@ -52,19 +52,25 @@ namespace TimetablePlanner
                 {
                     foreach (XPathNavigator subNode in node.SelectChildren("exception", ""))
                     {
-                        switch (subNode.GetAttribute("day", "").ToLower())
-                        {
-                            case "monday": exceptions.Add(DayOfWeek.Monday); break;
-                            case "tuesday": exceptions.Add(DayOfWeek.Tuesday); break;
-                            case "wednesday": exceptions.Add(DayOfWeek.Wednesday); break;
-                            case "thursday": exceptions.Add(DayOfWeek.Thursday); break;
-                            case "friday": exceptions.Add(DayOfWeek.Friday); break;
-                        }
+                        exceptions.Add(ParseDayOfWeek(subNode.GetAttribute("day", "")));
                     }
                 }
                 blocks.Add(new Block(DateTime.Parse(start), DateTime.Parse(end), exceptions.ToArray()));
             }
             return blocks.ToArray();
+        }
+
+        private static DayOfWeek ParseDayOfWeek(string day)
+        {
+            switch (day.ToLower())
+            {
+                case "monday": return DayOfWeek.Monday;
+                case "tuesday": return DayOfWeek.Tuesday;
+                case "wednesday": return DayOfWeek.Wednesday;
+                case "thursday": return DayOfWeek.Thursday;
+                case "friday": return DayOfWeek.Friday;
+            }
+            throw new Exception("Day of week not recognized");
         }
 
         private static Lecturer[] parseLecturers(XPathNavigator navigator)
@@ -75,7 +81,21 @@ namespace TimetablePlanner
             {
                 string id = node.GetAttribute("pId", "");
                 string lastName = node.GetAttribute("lastName", "");
-                lecturers.Add(new Lecturer(id, lastName));
+                string isDummy = node.GetAttribute("isDummy", "");
+
+                string numberOfResearchDays = node.GetAttribute("numberOfResearchDays", "");
+                int researchDays = 1;
+                if (numberOfResearchDays != null && numberOfResearchDays.Length > 0)
+                    researchDays = int.Parse(numberOfResearchDays);
+
+                List<DayOfWeek> researchExceptions = new List<DayOfWeek>();
+                foreach (XPathNavigator subNode in node.SelectChildren("researchException", ""))
+                {
+                    researchExceptions.Add(ParseDayOfWeek(subNode.GetAttribute("day", "")));
+                }
+
+                lecturers.Add(new Lecturer(id, lastName, researchExceptions, researchDays, 
+                    (isDummy != null && isDummy.Length > 0) ? true : false));
             }
             return lecturers.ToArray();
         }

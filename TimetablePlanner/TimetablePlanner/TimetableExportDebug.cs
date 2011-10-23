@@ -1,13 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
+﻿
 namespace TimetablePlanner
 {
-    public class TimetablePrinter
+    public class TimetableExportDebug
     {
-        public static void printGroup(int group, Individual i, TimetableData ttData)
+        public static void PrintGroup(int group, Individual i, TimetableData ttData)
         {
             System.Diagnostics.Debug.WriteLine("");
             System.Diagnostics.Debug.WriteLine("Group " + group);
@@ -21,19 +17,18 @@ namespace TimetablePlanner
                     {
                         for (int j = 0; j < 39; j++)
                         {
-                            System.Diagnostics.Debug.Write("-");   
+                            System.Diagnostics.Debug.Write("-");
                         }
                     }
                     else
-                        System.Diagnostics.Debug.Write(ttData.Courses[course].Name.PadRight(39, ' ')); //TODO
-                        //System.Diagnostics.Debug.Write(course.ToString().PadLeft(3, ttData.Courses[course].IsDummy ? 'x' : '0') + " ");
-                    System.Diagnostics.Debug.Write("| "); 
+                        System.Diagnostics.Debug.Write(ttData.Courses[course].Name.PadRight(39, ' '));
+                    System.Diagnostics.Debug.Write("| ");
                 }
                 System.Diagnostics.Debug.WriteLine("");
             }
         }
 
-        public static void printLecturer(int lecturer, Individual i, TimetableData ttData)
+        public static void PrintLecturer(int lecturer, Individual i, TimetableData ttData)
         {
             System.Diagnostics.Debug.WriteLine("");
             System.Diagnostics.Debug.WriteLine("Lecturer " + lecturer);

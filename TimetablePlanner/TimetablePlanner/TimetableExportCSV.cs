@@ -1,13 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Text;
 using System.IO;
-using TimetablePlanner;
 
 namespace TimetablePlanner
 {
-    public class TimetableCSVExporter
+    public class TimetableExportCSV
     {
         public static void ExportGroup(int groupIndex, Individual individual, TimetableData ttData, string filePath)
         {
@@ -195,6 +193,5 @@ namespace TimetablePlanner
 
             return output;
         }
-
     }
 }

@@ -1,19 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 namespace TimetablePlanner
 {
     public class Lecturer : IExportable
     {
+        public bool IsDummy { get; private set; }
+        public int NeededNumberOfResearchDays { get; private set; }
         public string Id { get; private set; }
         public string LastName { get; private set; }
         public string FirstName { get; private set; }
         public string Name { get; private set; }
         public List<int> AvailableResearchDays { get; private set; }
-        public int NeededNumberOfResearchDays { get; private set; }
-        public bool IsDummy { get; private set; }
 
         private static short globalIndex = 0;
         public short Index { get; private set; }
@@ -47,6 +45,5 @@ namespace TimetablePlanner
         {
             return Id + ": " + LastName;
         }
-
     }
 }

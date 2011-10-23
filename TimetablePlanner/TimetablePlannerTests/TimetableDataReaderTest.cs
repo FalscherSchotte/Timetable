@@ -91,20 +91,7 @@ namespace TimetablePlannerTests
                 }
             }
 
-
-            //Print all groups
-            foreach (Group g in ttData.Groups)
-            {
-                TimetablePrinter.printGroup(g.Index, generator.Population[0], ttData);
-            }
-
-            //Print all lecturers
-            //foreach (Lecturer l in data.Lecturers)
-            //{
-            //    TimetablePrinter.printLecturer(l.Index, generator.Population[0], data);
-            //}
-
-            TimetableCSVExporter.ExportAll(generator.Population[0], ttData, basePath + "outputtest.csv");
+            TimetableExportCSV.ExportAll(generator.Population[0], ttData, basePath + "outputtest.csv");
 
             Assert.IsTrue(true);
         }

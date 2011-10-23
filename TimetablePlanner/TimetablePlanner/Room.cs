@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
+﻿
 namespace TimetablePlanner
 {
     public class Room : IExportable
@@ -28,6 +24,5 @@ namespace TimetablePlanner
         {
             return Name + (IsLab ? "(Lab)" : "");
         }
-
     }
 }

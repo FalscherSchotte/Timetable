@@ -193,6 +193,5 @@ namespace TimetablePlanner
             }
             return courses.ToArray();
         }
-
     }
 }

@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:tt="clr-namespace:TimetablePlannerUI"
              mc:Ignorable="d" d:DesignHeight="650" d:DesignWidth="900" >
     <UserControl.Background>
         <LinearGradientBrush EndPoint="1,0.5" StartPoint="0,0.5">
@@ -16,25 +17,25 @@
             <RowDefinition Height="30" />
         </Grid.RowDefinitions>
         <Grid Grid.Row="0">
-            <TabControl Margin="0,2.5,0,0">
+            <TabControl Margin="0,2.5,0,0" >
                 <TabItem Header="Blocks">
-
+                    <tt:BlocksUI/>
                 </TabItem>
                 <TabItem Header="Rooms">
-
+                    <tt:RoomsUI/>
                 </TabItem>
                 <TabItem Header="Lecturers">
-
+                    <tt:LecturersUI/>
                 </TabItem>
                 <TabItem Header="Groups">
-
+                    <tt:GroupsUI/>
                 </TabItem>
                 <TabItem Header="Courses">
-
+                    <tt:CoursesUI/>
                 </TabItem>
             </TabControl>
         </Grid>
-        <Border Grid.Row="1" BorderBrush="Gray" BorderThickness="0,2,0,0">
+        <Border Grid.Row="1" BorderBrush="#505050" BorderThickness="0,2,0,0">
             <Border.Background>
                 <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                     <GradientStop Color="#69316793" Offset="0" />

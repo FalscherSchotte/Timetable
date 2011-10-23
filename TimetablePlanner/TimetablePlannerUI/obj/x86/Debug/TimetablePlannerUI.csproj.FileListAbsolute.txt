@@ -17,3 +17,14 @@ E:\HsKA\Semester2\Projektarbeit\Stundenplangenerator\TimetablePlanner\TimetableP
 E:\HsKA\Semester2\Projektarbeit\Stundenplangenerator\TimetablePlanner\TimetablePlannerUI\obj\x86\Debug\ConfigUI.baml
 E:\HsKA\Semester2\Projektarbeit\Stundenplangenerator\TimetablePlanner\TimetablePlannerUI\obj\x86\Debug\ConfigUI.g.cs
 E:\HsKA\Semester2\Projektarbeit\Stundenplangenerator\TimetablePlanner\TimetablePlannerUI\obj\x86\Debug\GeneratedInternalTypeHelper.g.cs
+E:\HsKA\Semester2\Projektarbeit\Stundenplangenerator\TimetablePlanner\TimetablePlannerUI\obj\x86\Debug\BlocksUI.baml
+E:\HsKA\Semester2\Projektarbeit\Stundenplangenerator\TimetablePlanner\TimetablePlannerUI\obj\x86\Debug\CoursesUI.baml
+E:\HsKA\Semester2\Projektarbeit\Stundenplangenerator\TimetablePlanner\TimetablePlannerUI\obj\x86\Debug\GroupsUI.baml
+E:\HsKA\Semester2\Projektarbeit\Stundenplangenerator\TimetablePlanner\TimetablePlannerUI\obj\x86\Debug\LecturersUI.baml
+E:\HsKA\Semester2\Projektarbeit\Stundenplangenerator\TimetablePlanner\TimetablePlannerUI\obj\x86\Debug\RoomsUI.baml
+E:\HsKA\Semester2\Projektarbeit\Stundenplangenerator\TimetablePlanner\TimetablePlannerUI\obj\x86\Debug\BlocksUI.g.cs
+E:\HsKA\Semester2\Projektarbeit\Stundenplangenerator\TimetablePlanner\TimetablePlannerUI\obj\x86\Debug\CoursesUI.g.cs
+E:\HsKA\Semester2\Projektarbeit\Stundenplangenerator\TimetablePlanner\TimetablePlannerUI\obj\x86\Debug\GroupsUI.g.cs
+E:\HsKA\Semester2\Projektarbeit\Stundenplangenerator\TimetablePlanner\TimetablePlannerUI\obj\x86\Debug\LecturersUI.g.cs
+E:\HsKA\Semester2\Projektarbeit\Stundenplangenerator\TimetablePlanner\TimetablePlannerUI\obj\x86\Debug\RoomsUI.g.cs
+E:\HsKA\Semester2\Projektarbeit\Stundenplangenerator\TimetablePlanner\TimetablePlannerUI\bin\Debug\WPFToolkit.Extended.dll

@@ -49,13 +49,47 @@
     <Reference Include="WindowsBase" />
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
+    <Reference Include="WPFToolkit.Extended">
+      <HintPath>.\WPFToolkit.Extended.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="BlocksUI.xaml.cs">
+      <DependentUpon>BlocksUI.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CoursesUI.xaml.cs">
+      <DependentUpon>CoursesUI.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="GroupsUI.xaml.cs">
+      <DependentUpon>GroupsUI.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="LecturersUI.xaml.cs">
+      <DependentUpon>LecturersUI.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="RoomsUI.xaml.cs">
+      <DependentUpon>RoomsUI.xaml</DependentUpon>
+    </Compile>
+    <Page Include="BlocksUI.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="ConfigUI.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="CoursesUI.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="GroupsUI.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="LecturersUI.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -74,6 +108,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="RoomsUI.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">

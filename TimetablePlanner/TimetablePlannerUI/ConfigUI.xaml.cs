@@ -15,11 +15,11 @@ using System.Windows.Shapes;
 namespace TimetablePlannerUI
 {
     /// <summary>
-    /// Interaktionslogik für ConfigControl.xaml
+    /// Interaktionslogik für ConfigUI.xaml
     /// </summary>
-    public partial class ConfigControl : UserControl
+    public partial class ConfigUI : UserControl
     {
-        public ConfigControl()
+        public ConfigUI()
         {
             InitializeComponent();
         }

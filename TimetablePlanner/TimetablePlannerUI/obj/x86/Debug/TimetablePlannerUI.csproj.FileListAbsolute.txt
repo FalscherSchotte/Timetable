@@ -11,11 +11,9 @@ E:\HsKA\Semester2\Projektarbeit\Stundenplangenerator\TimetablePlanner\TimetableP
 E:\HsKA\Semester2\Projektarbeit\Stundenplangenerator\TimetablePlanner\TimetablePlannerUI\obj\x86\Debug\GenerateResource.write.1.tlog
 E:\HsKA\Semester2\Projektarbeit\Stundenplangenerator\TimetablePlanner\TimetablePlannerUI\obj\x86\Debug\TimetablePlannerUI.exe
 E:\HsKA\Semester2\Projektarbeit\Stundenplangenerator\TimetablePlanner\TimetablePlannerUI\obj\x86\Debug\TimetablePlannerUI.pdb
-E:\HsKA\Semester2\Projektarbeit\Stundenplangenerator\TimetablePlanner\TimetablePlannerUI\obj\x86\Debug\ConfigControl.baml
-E:\HsKA\Semester2\Projektarbeit\Stundenplangenerator\TimetablePlanner\TimetablePlannerUI\obj\x86\Debug\ConfigControl.g.cs
-E:\HsKA\Semester2\Projektarbeit\Stundenplangenerator\TimetablePlanner\TimetablePlannerUI\obj\x86\Debug\GeneratedInternalTypeHelper.g.cs
 E:\HsKA\Semester2\Projektarbeit\Stundenplangenerator\TimetablePlanner\TimetablePlannerUI\obj\x86\Debug\TimetablePlannerUI_MarkupCompile.lref
-E:\HsKA\Semester2\Projektarbeit\Stundenplangenerator\TimetablePlanner\TimetablePlannerUI\obj\x86\Debug\OutputControl.baml
-E:\HsKA\Semester2\Projektarbeit\Stundenplangenerator\TimetablePlanner\TimetablePlannerUI\obj\x86\Debug\OutputControl.g.cs
 E:\HsKA\Semester2\Projektarbeit\Stundenplangenerator\TimetablePlanner\TimetablePlannerUI\bin\Debug\TimetablePlanner.dll
 E:\HsKA\Semester2\Projektarbeit\Stundenplangenerator\TimetablePlanner\TimetablePlannerUI\bin\Debug\TimetablePlanner.pdb
+E:\HsKA\Semester2\Projektarbeit\Stundenplangenerator\TimetablePlanner\TimetablePlannerUI\obj\x86\Debug\ConfigUI.baml
+E:\HsKA\Semester2\Projektarbeit\Stundenplangenerator\TimetablePlanner\TimetablePlannerUI\obj\x86\Debug\ConfigUI.g.cs
+E:\HsKA\Semester2\Projektarbeit\Stundenplangenerator\TimetablePlanner\TimetablePlannerUI\obj\x86\Debug\GeneratedInternalTypeHelper.g.cs

@@ -1,0 +1,61 @@
+﻿<UserControl x:Class="TimetablePlannerUI.ConfigUI"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" d:DesignHeight="650" d:DesignWidth="900" >
+    <UserControl.Background>
+        <LinearGradientBrush EndPoint="1,0.5" StartPoint="0,0.5">
+            <GradientStop Color="#8B5487B0" Offset="0" />
+            <GradientStop Color="#6CA3CFF1" Offset="1" />
+        </LinearGradientBrush>
+    </UserControl.Background>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="30" />
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0">
+            <TabControl Margin="0,2.5,0,0">
+                <TabItem Header="Blocks">
+
+                </TabItem>
+                <TabItem Header="Rooms">
+
+                </TabItem>
+                <TabItem Header="Lecturers">
+
+                </TabItem>
+                <TabItem Header="Groups">
+
+                </TabItem>
+                <TabItem Header="Courses">
+
+                </TabItem>
+            </TabControl>
+        </Grid>
+        <Border Grid.Row="1" BorderBrush="Gray" BorderThickness="0,2,0,0">
+            <Border.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="#69316793" Offset="0" />
+                    <GradientStop Color="#9BB4DFFF" Offset="1" />
+                </LinearGradientBrush>
+            </Border.Background>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="2*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <StackPanel Grid.Column="0" Margin="2.5" Orientation="Horizontal">
+                    <Button Content="Create new configuration" Width="200" Margin="0,0,5,0"/>
+                    <Button Content="Load existing configuration" Width="200"/>
+                </StackPanel>
+                <StackPanel Grid.Column="1" Margin="2.5" Orientation="Horizontal" HorizontalAlignment="Right">
+                    <Button Content="Save" Width="45" HorizontalContentAlignment="Center" Margin="0,0,5,0"/>
+                    <Button Content="Save as" Width="45" HorizontalContentAlignment="Center" Margin="0,0,5,0"/>
+                    <Button Content="Export" HorizontalContentAlignment="Center" Width="45" />
+                </StackPanel>
+            </Grid>
+        </Border>
+    </Grid>
+</UserControl>

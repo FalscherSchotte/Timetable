@@ -8,3 +8,4 @@ E:\HsKA\Semester2\Projektarbeit\Stundenplangenerator\TimetablePlanner\TimetableP
 E:\HsKA\Semester2\Projektarbeit\Stundenplangenerator\TimetablePlanner\TimetablePlanner\bin\Debug\TimetablePlanner.dll
 E:\HsKA\Semester2\Projektarbeit\Stundenplangenerator\TimetablePlanner\TimetablePlanner\bin\Debug\TimetablePlanner.pdb
 E:\HsKA\Semester2\Projektarbeit\Stundenplangenerator\TimetablePlanner\TimetablePlanner\obj\Debug\TimetablePlanner.pdb
+E:\HsKA\Semester2\Projektarbeit\Stundenplangenerator\TimetablePlanner\TimetablePlanner\obj\Debug\TimetablePlanner.csproj.ResolveComReference.cache

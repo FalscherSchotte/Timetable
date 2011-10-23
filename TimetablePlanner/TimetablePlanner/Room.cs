@@ -5,17 +5,19 @@ using System.Text;
 
 namespace TimetablePlanner
 {
-    public class Room
+    public class Room : IExportable
     {
-        public string Number { get; private set; }
+        public string Name { get; private set; }
+        public string Id { get; private set; }
         public bool IsLab { get; private set; }
 
         private static short globalIndex = 0;
         public short Index { get; private set; }
 
-        public Room(string number, bool isLab)
+        public Room(string name, bool isLab)
         {
-            this.Number = number;
+            this.Name = name;
+            this.Id = name;
             this.IsLab = isLab;
 
             Index = globalIndex;
@@ -24,7 +26,8 @@ namespace TimetablePlanner
 
         public override string ToString()
         {
-            return Number + (IsLab ? "(Lab)" : "");
+            return Name + (IsLab ? "(Lab)" : "");
         }
+
     }
 }

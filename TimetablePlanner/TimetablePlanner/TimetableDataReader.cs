@@ -94,7 +94,7 @@ namespace TimetablePlanner
                     researchExceptions.Add(ParseDayOfWeek(subNode.GetAttribute("day", "")));
                 }
 
-                lecturers.Add(new Lecturer(id, lastName, researchExceptions, researchDays, 
+                lecturers.Add(new Lecturer(id, lastName, "", researchExceptions, researchDays,
                     (isDummy != null && isDummy.Length > 0) ? true : false));
             }
             return lecturers.ToArray();
@@ -120,7 +120,7 @@ namespace TimetablePlanner
             foreach (XPathNavigator node in nodeIterator)
             {
                 string id = node.GetAttribute("id", "");
-                groups.Add(new Group(id));
+                groups.Add(new Group(id, id));
             }
             return groups.ToArray();
         }
@@ -164,7 +164,7 @@ namespace TimetablePlanner
                 Room preference = null;
                 foreach (Room room in rooms)
                 {
-                    if (room.Number.Equals(roomPreference))
+                    if (room.Name.Equals(roomPreference))
                     {
                         preference = room;
                         break;

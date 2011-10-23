@@ -104,6 +104,8 @@ namespace TimetablePlannerTests
             //    TimetablePrinter.printLecturer(l.Index, generator.Population[0], data);
             //}
 
+            TimetableCSVExporter.ExportAll(generator.Population[0], ttData, basePath + "outputtest.csv");
+
             Assert.IsTrue(true);
         }
 

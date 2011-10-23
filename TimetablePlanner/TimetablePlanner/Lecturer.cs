@@ -5,10 +5,12 @@ using System.Text;
 
 namespace TimetablePlanner
 {
-    public class Lecturer
+    public class Lecturer : IExportable
     {
         public string Id { get; private set; }
         public string LastName { get; private set; }
+        public string FirstName { get; private set; }
+        public string Name { get; private set; }
         public List<int> AvailableResearchDays { get; private set; }
         public int NeededNumberOfResearchDays { get; private set; }
         public bool IsDummy { get; private set; }
@@ -16,10 +18,12 @@ namespace TimetablePlanner
         private static short globalIndex = 0;
         public short Index { get; private set; }
 
-        public Lecturer(string id, string lastName, List<DayOfWeek> researchExceptions, int numberOfResearchDays, bool isDummy)
+        public Lecturer(string id, string lastName, string firstName, List<DayOfWeek> researchExceptions, int numberOfResearchDays, bool isDummy)
         {
             this.Id = id;
             this.LastName = lastName;
+            this.FirstName = firstName;
+            this.Name = firstName + lastName;
             this.NeededNumberOfResearchDays = numberOfResearchDays;
             this.IsDummy = isDummy;
 
@@ -43,5 +47,6 @@ namespace TimetablePlanner
         {
             return Id + ": " + LastName;
         }
+
     }
 }

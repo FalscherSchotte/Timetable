@@ -15,13 +15,16 @@ namespace TimetablePlanner
                     int course = i.Groups[group, day, block];
                     if (course == -1)
                     {
-                        for (int j = 0; j < 39; j++)
+                        for (int j = 0; j < 44; j++)
                         {
                             System.Diagnostics.Debug.Write("-");
                         }
                     }
                     else
-                        System.Diagnostics.Debug.Write(ttData.Courses[course].Name.PadRight(39, ' '));
+                    {
+                        string output = ttData.Courses[course].Name + ", " + ttData.Rooms[i.Courses[course, day, block]].Id;
+                        System.Diagnostics.Debug.Write(output.PadRight(44, ' '));
+                    }
                     System.Diagnostics.Debug.Write("| ");
                 }
                 System.Diagnostics.Debug.WriteLine("");

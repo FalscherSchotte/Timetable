@@ -194,11 +194,45 @@ namespace TimetablePlanner
                     }
                 }
 
-                //group available?
+                //Group available?
                 if (individual.Groups[ttData.Courses[course].Group.Index, day, block + blockOffset] != -1)
                     return false;
             }
+
+            //Researchdays restriction for lecturers
+            foreach (Lecturer l in ttData.Courses[course].Lecturers)
+            {
+                int tmp = individual.Lecturers[l.Index, day, block];
+                individual.Lecturers[l.Index, day, block] = course;
+                int freeDays = GetFreeDaysForLecturer(individual, l.Index, ttData);
+                individual.Lecturers[l.Index, day, block] = tmp;
+                if (freeDays < l.NeededNumberOfResearchDays)
+                    return false;
+            }
+
             return true;
+        }
+
+        private static int GetFreeDaysForLecturer(Individual individual, int lIndex, TimetableData ttData)
+        {
+            int freeDayCount = 0;
+            for (int d = 0; d < individual.Lecturers.GetLength(1); d++)
+            {
+                if (ttData.Lecturers[lIndex].AvailableResearchDays.Contains(d))
+                {
+                    bool isFree = true;
+                    for (int b = 0; b < individual.Lecturers.GetLength(2); b++)
+                    {
+                        if (individual.Lecturers[lIndex, d, b] != -1)
+                        {
+                            isFree = false;
+                        }
+                    }
+                    if (isFree)
+                        freeDayCount++;
+                }
+            }
+            return freeDayCount;
         }
 
         #endregion
@@ -211,8 +245,10 @@ namespace TimetablePlanner
         public void PerformEvolution(int numberOfGenerations)
         {
             List<int> fitnessHistory = new List<int>();
-            int top5FitnessChangesCtr = 0;
-            int top5Fitness = 0;
+            //int top5FitnessChangesCtr = 0;
+            //int top5Fitness = 0;
+            //int historyChangesCtr = 0;
+            
             long start = DateTime.Now.Ticks;
 
             fitnessHistory.Add(CalcAverageFitness(Population));
@@ -237,9 +273,17 @@ namespace TimetablePlanner
                 Population = individuals.GetRange(0, Population.Length).ToArray();
 
                 fitnessHistory.Add(CalcAverageFitness(Population));
-
-                if (TestEarlyAbortOfEvolution(ref top5FitnessChangesCtr, ref top5Fitness, CurrentGeneration))
-                    break;
+                int generationSpan = 10;
+                if(fitnessHistory.Count > generationSpan)
+                {
+                    int averageFitnessChange = 0;
+                    for (int i = fitnessHistory.Count - 1; i >= fitnessHistory.Count - generationSpan; i--)
+                    {
+                        averageFitnessChange += fitnessHistory[i] - fitnessHistory[i - 1];
+                    }
+                    if (averageFitnessChange / generationSpan <= 1)
+                        break;
+                }
             }
 
             long end = DateTime.Now.Ticks;
@@ -268,17 +312,11 @@ namespace TimetablePlanner
             }
         }
 
-        /// <summary>
-        /// Returns true if the fitness of the top 5 individuals does not increase after 50 generations 
-        /// </summary>
-        /// <param name="top5FitnessChangesCtr"></param>
-        /// <param name="top5Fitness"></param>
-        /// <param name="generation"></param>
-        /// <returns></returns>
         private bool TestEarlyAbortOfEvolution(ref int top5FitnessChangesCtr, ref int top5Fitness, int generation)
         {
+            
             int newTop5Fitness = 0;
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < Math.Min(5, Population.Length); i++)
             {
                 newTop5Fitness += Population[i].Fitness;
             }
@@ -517,7 +555,7 @@ namespace TimetablePlanner
 
                             //Courses should start before 13:00
                             //Opposite for dummy courses
-                            fitness += (ttData.Blocks[block].Start.Hour - 13) * 10 * (ttData.Courses[course].IsDummy ? 2 : -1);
+                            fitness += (ttData.Blocks[block].Start.Hour - 13) * 20 * (ttData.Courses[course].IsDummy ? 2 : -1);
 
                             //Roompreference
                             if (ttData.Courses[course].RoomPreference != null)
@@ -564,34 +602,6 @@ namespace TimetablePlanner
                     int end = courseBlockStartHours[key][courseBlockStartHours[key].Count - 1];
                     if (start - 13 < 0 && !(end - 13 < 0))
                         fitness -= 50;
-                }
-            }
-
-            //Check time for research activities for lecturers
-            for (int l = 0; l < individual.Lecturers.GetLength(0); l++)
-            {
-                if (ttData.Lecturers[l].NeededNumberOfResearchDays > 0 && !ttData.Lecturers[l].IsDummy)
-                {
-                    Dictionary<int, int> lecturerOccupacy = new Dictionary<int, int>();
-                    foreach (int d in ttData.Lecturers[l].AvailableResearchDays)
-                    {
-                        lecturerOccupacy.Add(d, 0);
-                        for (int b = 0; b < individual.Lecturers.GetLength(2); b++)
-                        {
-                            if (individual.Lecturers[l, d, b] != -1)
-                                lecturerOccupacy[d]++;
-                        }
-                    }
-                    int numberOfFreeDays = 0;
-                    foreach (int d in ttData.Lecturers[l].AvailableResearchDays)
-                    {
-                        if (lecturerOccupacy[d] == 0)
-                        {
-                            numberOfFreeDays++;
-                        }
-                    }
-                    if (ttData.Lecturers[l].NeededNumberOfResearchDays > numberOfFreeDays)
-                        fitness -= 1000;
                 }
             }
 

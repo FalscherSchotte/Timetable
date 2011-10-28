@@ -1,0 +1,218 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<TestRun id="a394ff28-0d5f-416f-8d89-dfc00a7164b2" name="FloLap@FLOLAP-PC 2011-10-28 09:54:36" runUser="FloLap-PC\FloLap" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
+  <TestSettings name="Lokal" id="6ed96bb3-d821-4eee-a79d-3a3069da9890">
+    <Description>Dies sind die standardmäßigen Testeinstellungen für einen lokalen Testlauf.</Description>
+    <Deployment enabled="false" runDeploymentRoot="FloLap_FLOLAP-PC 2011-10-28 09_54_36">
+      <DeploymentItem filename="E:\HsKA\Semester2\Projektarbeit\Stundenplangenerator\TimetablePlanner\TimetablePlanner\bin\Debug\TimetablePlanner.dll" />
+    </Deployment>
+    <Execution>
+      <TestTypeSpecific />
+      <AgentRule name="Execution Agents">
+      </AgentRule>
+    </Execution>
+  </TestSettings>
+  <Times creation="2011-10-28T09:54:36.5266364+02:00" queuing="2011-10-28T09:54:37.5380389+02:00" start="2011-10-28T09:54:37.6316390+02:00" finish="2011-10-28T09:54:44.9636519+02:00" />
+  <ResultSummary outcome="Completed">
+    <Counters total="1" executed="1" passed="1" error="0" failed="0" timeout="0" aborted="0" inconclusive="0" passedButRunAborted="0" notRunnable="0" notExecuted="0" disconnected="0" warning="0" completed="0" inProgress="0" pending="0" />
+  </ResultSummary>
+  <TestDefinitions>
+    <UnitTest name="TimetableManualTester" storage="e:\hska\semester2\projektarbeit\stundenplangenerator\timetableplanner\timetableplannertests\bin\debug\timetableplannertests.dll" id="3ada0cc6-2a4d-2d63-7d9f-97d4d443b0f3">
+      <Execution id="454ace4c-02c7-45fc-a2af-0e4900c4e673" />
+      <TestMethod codeBase="E:/HsKA/Semester2/Projektarbeit/Stundenplangenerator/TimetablePlanner/TimetablePlannerTests/bin/Debug/TimetablePlannerTests.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="TimetablePlannerTests.TimetableTest, TimetablePlannerTests, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="TimetableManualTester" />
+    </UnitTest>
+  </TestDefinitions>
+  <TestLists>
+    <TestList name="Nicht in einer Liste enthaltene Ergebnisse" id="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestList name="Alle geladenen Ergebnisse" id="19431567-8539-422a-85d7-44ee4e166bda" />
+  </TestLists>
+  <TestEntries>
+    <TestEntry testId="3ada0cc6-2a4d-2d63-7d9f-97d4d443b0f3" executionId="454ace4c-02c7-45fc-a2af-0e4900c4e673" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+  </TestEntries>
+  <Results>
+    <UnitTestResult executionId="454ace4c-02c7-45fc-a2af-0e4900c4e673" testId="3ada0cc6-2a4d-2d63-7d9f-97d4d443b0f3" testName="TimetableManualTester" computerName="FLOLAP-PC" duration="00:00:05.9945717" startTime="2011-10-28T09:54:37.6940392+02:00" endTime="2011-10-28T09:54:44.8700518+02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="454ace4c-02c7-45fc-a2af-0e4900c4e673">
+      <Output>
+        <DebugTrace>Time to create population of size 1: 171ms
+1830
+Early abort after 76 generations.
+Mean time per generation: 1ms
+Mean fitness increase per generation
+0
+0
+40
+60
+40
+20
+0
+0
+0
+0
+0
+0
+60
+120
+0
+0
+0
+0
+0
+60
+0
+0
+0
+0
+0
+0
+0
+40
+0
+0
+50
+60
+60
+10
+0
+170
+0
+60
+160
+0
+0
+0
+30
+0
+30
+120
+10
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+70
+30
+10
+0
+0
+0
+90
+0
+50
+0
+10
+0
+100
+0
+0
+Evolution time: 140ms
+3390
+
+Group 0
+Block 0: ---------------------------------------| Informatik 1, E301                     | Mathematik 1 Labor, LI141              | ---------------------------------------| Fremdsprachen, E301                    | 
+Block 1: ---------------------------------------| Technische Informatik 1, E201          | Informatik 1 Übung, LI137              | Mathematik 1 Labor, LI008              | Fremdsprachen, E301                    | 
+Block 2: ---------------------------------------| ---------------------------------------| ---------------------------------------| Informatik 1, E203                     | Mathematik 1, E201                     | 
+Block 3: ---------------------------------------| ---------------------------------------| ---------------------------------------| ---------------------------------------| ---------------------------------------| 
+Block 4: Mathematik 1, E301                     | Technische Informatik 1, E302          | ---------------------------------------| ---------------------------------------| Technische Informatik 1 Übung, E303    | 
+Block 5: ---------------------------------------| Theoretische Informatik 1, E203        | ---------------------------------------| ---------------------------------------| Theoretische Informatik 1, E203        | 
+
+Group 1
+Block 0: ---------------------------------------| ---------------------------------------| ---------------------------------------| ---------------------------------------| Theoretische Informatik 1, E305        | 
+Block 1: Informatik 1, E303                     | ---------------------------------------| ---------------------------------------| ---------------------------------------| ---------------------------------------| 
+Block 2: Theoretische Informatik 1, E303        | Informatik 1 Übung, LI141              | ---------------------------------------| Technische Informatik 1 Übung, E301    | Technische Informatik 1, E213          | 
+Block 3: Mathematik 1 Labor, LI137              | ---------------------------------------| Mathematik 1, E201                     | Fremdsprachen, E305                    | Mathematik 1 Labor, LI008              | 
+Block 4: Informatik 1, E213                     | ---------------------------------------| Mathematik 1, E201                     | Fremdsprachen, E305                    | ---------------------------------------| 
+Block 5: Technische Informatik 1, E213          | ---------------------------------------| ---------------------------------------| ---------------------------------------| ---------------------------------------| 
+
+Group 2
+Block 0: Informatik 2, E302                     | Sprachen und Metasprachen, E305        | ---------------------------------------| Softwarelabor, E203                    | ---------------------------------------| 
+Block 1: Informatik 2 Übung, E203               | ---------------------------------------| ---------------------------------------| Softwarelabor, E203                    | Softwarelabor, E303                    | 
+Block 2: Web-Programming, E213                  | Technische Informatik 2, E201          | ---------------------------------------| ---------------------------------------| Softwarelabor, E303                    | 
+Block 3: Mathematik 2 Labor, E201               | Mathematik 2, E302                     | Technische Informatik 2, E213          | ---------------------------------------| Digital-Labor, E304                    | 
+Block 4: ---------------------------------------| ---------------------------------------| ---------------------------------------| ---------------------------------------| Digital-Labor, E304                    | 
+Block 5: Informatik 2, E301                     | ---------------------------------------| ---------------------------------------| Informatik 2 Übung, E203               | Digital-Labor, E304                    | 
+
+Group 3
+Block 0: DB1 und K-Netze1, E213                 | DB1 und K-Netze1, E303                 | ---------------------------------------| Systemnah. Progr., LI136               | ---------------------------------------| 
+Block 1: ---------------------------------------| Systemnah. Progr., LI141               | ---------------------------------------| Automatisierung, E301                  | BWL, E203                              | 
+Block 2: BWL, E301                              | Systemnah. Progr., LI008               | ---------------------------------------| DB-Praktikum, E302                     | ---------------------------------------| 
+Block 3: DB1 und K-Netze1, E305                 | ---------------------------------------| Automat. Labor, E304                   | DB-Praktikum, E302                     | ---------------------------------------| 
+Block 4: ---------------------------------------| Mensch-Maschine-Kommunikation, E213    | Automat. Labor, E304                   | ---------------------------------------| ---------------------------------------| 
+Block 5: ---------------------------------------| Mensch-Maschine-Kommunikation, E213    | Automatisierung, E203                  | ---------------------------------------| ---------------------------------------| 
+
+Group 4
+Block 0: Automatisierung, E203                  | BWL, E203                              | DB1 und K-Netze1, E302                 | ---------------------------------------| Systemnah. Progr., LI008               | 
+Block 1: DB1 und K-Netze1, E213                 | ---------------------------------------| ---------------------------------------| ---------------------------------------| ---------------------------------------| 
+Block 2: Mensch-Maschine-Kommunikation, E302    | Automat. Labor, E203                   | ---------------------------------------| ---------------------------------------| ---------------------------------------| 
+Block 3: Mensch-Maschine-Kommunikation, E302    | Automat. Labor, E203                   | DB-Praktikum, E305                     | ---------------------------------------| BWL, E301                              | 
+Block 4: Systemnah. Progr., LI141               | Automatisierung, E301                  | DB-Praktikum, E305                     | Systemnah. Progr., LI137               | ---------------------------------------| 
+Block 5: ---------------------------------------| DB1 und K-Netze1, E303                 | ---------------------------------------| ---------------------------------------| ---------------------------------------| 
+
+Group 5
+Block 0: ---------------------------------------| ---------------------------------------| ---------------------------------------| ---------------------------------------| ---------------------------------------| 
+Block 1: ---------------------------------------| ---------------------------------------| ---------------------------------------| Praxisnachbereitung, E303              | ---------------------------------------| 
+Block 2: ---------------------------------------| ---------------------------------------| ---------------------------------------| Praxisvorbereitung, E213               | ---------------------------------------| 
+Block 3: Praxisvorbereitung, E203               | ---------------------------------------| ---------------------------------------| Praxisvorbereitung, E213               | ---------------------------------------| 
+Block 4: Praxisvorbereitung, E203               | ---------------------------------------| ---------------------------------------| Praxisvorbereitung, E213               | ---------------------------------------| 
+Block 5: Praxisvorbereitung, E203               | ---------------------------------------| ---------------------------------------| ---------------------------------------| ---------------------------------------| 
+
+Group 6
+Block 0: SW-Engineering, LI008                  | ERP-Systeme, E302                      | ---------------------------------------| ERP-Systeme, E301                      | ---------------------------------------| 
+Block 1: SW-Engineering, LI008                  | Autonome Systeme und RA, E303          | ---------------------------------------| ---------------------------------------| DB2 und K-Netze2, E213                 | 
+Block 2: SW-Engineering, LI008                  | Verteilte Informationssysteme Labor, LI136| ---------------------------------------| ---------------------------------------| Verteilte Informationssysteme, E301    | 
+Block 3: SW-Engineering, LI008                  | ERP-Labor, E213                        | ---------------------------------------| Autonome Systeme und RA, E203          | ---------------------------------------| 
+Block 4: ---------------------------------------| ---------------------------------------| ---------------------------------------| ---------------------------------------| ---------------------------------------| 
+Block 5: ---------------------------------------| ---------------------------------------| DB2 und K-Netze2, E305                 | ---------------------------------------| ---------------------------------------| 
+
+Group 7
+Block 0: Verteilte Informationssysteme, E304    | ---------------------------------------| Autonome Systeme und RA, E201          | Verteilte Informationssysteme Labor, LI008| ---------------------------------------| 
+Block 1: ---------------------------------------| ERP-Systeme, E305                      | ERP-Labor, E303                        | DB2 und K-Netze2, E304                 | SW-Engineering, LI137                  | 
+Block 2: DB2 und K-Netze2, E305                 | ---------------------------------------| ---------------------------------------| Autonome Systeme und RA, E305          | SW-Engineering, LI137                  | 
+Block 3: ERP-Systeme, E301                      | ---------------------------------------| ---------------------------------------| ---------------------------------------| SW-Engineering, LI137                  | 
+Block 4: ---------------------------------------| ---------------------------------------| ---------------------------------------| ---------------------------------------| SW-Engineering, LI137                  | 
+Block 5: ---------------------------------------| ---------------------------------------| ---------------------------------------| ---------------------------------------| ---------------------------------------| 
+
+Group 8
+Block 0: Embedded Software, E201                | Computergrafik, E304                   | Advanced Networking, E203              | Modellb. SW-Entw., E201                | Geschäftsprozesse, E203                | 
+Block 1: IT-Consulting, E304                    | Intercultural Comm., E203              | Advanced Networking, E203              | ---------------------------------------| Labor Bildverarbeitung, E305           | 
+Block 2: Computer Vision, E201                  | Geschäftsprozesse, E304                | ---------------------------------------| Robotics, E201                         | ---------------------------------------| 
+Block 3: ---------------------------------------| Spez. Kap. Software Engineering, E304  | ---------------------------------------| Embedded Labor, E304                   | Networksecurity, E305                  | 
+Block 4: Computergrafik, E304                   | Intercultural Comm., E304              | Business Intelligence, E301            | Embedded Labor, E304                   | Benutzeroberflächen, E213              | 
+Block 5: ---------------------------------------| Rhetorik, E302                         | Recht, E213                            | Gameprogramming, E301                  | Seminar, E201                          | 
+
+Group 9
+Block 0: ---------------------------------------| ---------------------------------------| ---------------------------------------| ---------------------------------------| Qualitätssicherung, E213               | 
+Block 1: ---------------------------------------| Projektmanagement, E301                | ---------------------------------------| ---------------------------------------| ---------------------------------------| 
+Block 2: ---------------------------------------| Teamteaching, E213                     | ---------------------------------------| ---------------------------------------| High Performance Computing, E203       | 
+Block 3: ---------------------------------------| Multimedia, E303                       | ---------------------------------------| ---------------------------------------| High Performance Computing, E203       | 
+Block 4: ---------------------------------------| Labor Autonome Systeme, LI141          | ---------------------------------------| ---------------------------------------| ---------------------------------------| 
+Block 5: ---------------------------------------| ---------------------------------------| ---------------------------------------| ---------------------------------------| ---------------------------------------| 
+
+Group 10
+Block 0: IT Service Management, E301            | ---------------------------------------| ---------------------------------------| ---------------------------------------| ---------------------------------------| 
+Block 1: IT Projektmanagement, E301             | ---------------------------------------| ---------------------------------------| Verteilte Informationssysteme, E302    | ---------------------------------------| 
+Block 2: Modellierung und Simulation, E304      | ---------------------------------------| ---------------------------------------| Visualization and Semantics Lab, LI141 | ---------------------------------------| 
+Block 3: Datenrepräsentation und -übertragung, E213| ---------------------------------------| ---------------------------------------| Mobile Systeme, E301                   | Projektarbeit1, E302                   | 
+Block 4: ---------------------------------------| Führungskräftetraining, E303           | ---------------------------------------| ---------------------------------------| Projektarbeit1, E302                   | 
+Block 5: ---------------------------------------| Intelligente Systeme, E304             | Visualization and Semantics, E304      | ---------------------------------------| Projektarbeit1, E302                   | 
+
+Group 11
+Block 0: ---------------------------------------| ---------------------------------------| Algorithmen Übung, E305                | Algorithmenentwurf, E305               | Seminar, E303                          | 
+Block 1: IT-Sicherheit, E305                    | ---------------------------------------| ---------------------------------------| Labor Benutzeroberflächen, E305        | ---------------------------------------| 
+Block 2: ---------------------------------------| ---------------------------------------| ---------------------------------------| ---------------------------------------| ---------------------------------------| 
+Block 3: Dialog Systems, E304                   | ---------------------------------------| ---------------------------------------| ---------------------------------------| ---------------------------------------| 
+Block 4: Projektarbeit2, E201                   | ---------------------------------------| ---------------------------------------| ---------------------------------------| Labor Verteilte Systeme, E201          | 
+Block 5: Projektarbeit2, E201                   | ---------------------------------------| ---------------------------------------| Angewandte Kryptografie, E303          | Data Mining, E213                      | 
+</DebugTrace>
+      </Output>
+    </UnitTestResult>
+  </Results>
+</TestRun>

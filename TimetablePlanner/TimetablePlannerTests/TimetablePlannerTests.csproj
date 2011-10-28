@@ -60,7 +60,8 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="TimetableData.xml">
+    <Content Include="TimetableData.xml" />
+    <Content Include="TimetableDataExtended.xml">
       <SubType>Designer</SubType>
     </Content>
   </ItemGroup>

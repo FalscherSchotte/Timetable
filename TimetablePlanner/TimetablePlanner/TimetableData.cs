@@ -18,6 +18,17 @@ namespace TimetablePlanner
             this.Lecturers = lecturers;
             this.Rooms = rooms;
             this.Groups = groups;
+
+            //Array.Sort(courses, SortCoursesByLength);
+        }
+
+        private static int SortCoursesByLength(Course x, Course y)
+        {
+            if (x.NumberOfBlocks > y.NumberOfBlocks)
+                return -1;
+            if (x.NumberOfBlocks < y.NumberOfBlocks)
+                return +1;
+            return 0;
         }
     }
 }

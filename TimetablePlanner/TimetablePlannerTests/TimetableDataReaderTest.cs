@@ -14,11 +14,11 @@ namespace TimetablePlannerTests
         [TestMethod()]
         public void TimetableManualTester()
         {
-            String configurationFile = basePath + "TimetableData.xml";
+            String configurationFile = basePath + "TimetableDataExtended.xml";
             TimetableData ttData = TimetableDataReader.createTimetableInstance(configurationFile);
             Assert.IsNotNull(ttData, "Data could not be loaded.");
 
-            int populationSize = 75;
+            int populationSize = 50;
             int numberOfGenerations = 2000;
 
             long start = DateTime.Now.Ticks;
@@ -30,6 +30,8 @@ namespace TimetablePlannerTests
                 System.Diagnostics.Debug.WriteLine(i.ToString());
             }
 
+            TestRequirements(ttData, generator);
+
             start = DateTime.Now.Ticks;
             generator.PerformEvolution(numberOfGenerations);
             end = DateTime.Now.Ticks;
@@ -39,6 +41,19 @@ namespace TimetablePlannerTests
                 System.Diagnostics.Debug.WriteLine(i.ToString());
             }
 
+            TestRequirements(ttData, generator);
+
+            //for (int groupIndex = 0; groupIndex < generator.Population[0].Groups.GetLength(0); groupIndex++ )
+            //{
+            //    TimetableExportDebug.PrintGroup(groupIndex, generator.Population[0], ttData);
+            //}
+            TimetableExportCSV.ExportAll(generator.Population[0], ttData, basePath + "outputtest.csv");
+
+            Assert.IsTrue(true);
+        }
+
+        private static void TestRequirements(TimetableData ttData, TimetableGenerator generator)
+        {
             //Inspect every result population
             for (int pIndex = 0; pIndex < generator.Population.Length; pIndex++)
             {
@@ -64,9 +79,12 @@ namespace TimetablePlannerTests
 
                 for (int cIndex = 0; cIndex < ttData.Courses.Length; cIndex++)
                 {
-                    //Every course must occupy the specified room (course -> room -> course)
+                    //Every course must occupy the specified room (course -> room -> course) and must be a room (room != -1)
                     Assert.IsTrue(CourseHasRoom(cIndex, generator.Population[pIndex].Courses, generator.Population[pIndex].Rooms, ttData),
                         "Course " + cIndex + " has no room!");
+
+                    int ctr = CountRoomsForCourse(generator, pIndex, cIndex);
+                    Assert.AreEqual(ttData.Courses[cIndex].NumberOfBlocks, ctr, "Not enough rooms specified for course " + cIndex);
                 }
 
                 for (int gIndex = 0; gIndex < ttData.Groups.Length; gIndex++)
@@ -90,10 +108,20 @@ namespace TimetablePlannerTests
                     }
                 }
             }
+        }
 
-            TimetableExportCSV.ExportAll(generator.Population[0], ttData, basePath + "outputtest.csv");
-
-            Assert.IsTrue(true);
+        private static int CountRoomsForCourse(TimetableGenerator generator, int pIndex, int cIndex)
+        {
+            int ctr = 0;
+            for (int d = 0; d < generator.Population[pIndex].Courses.GetLength(1); d++)
+            {
+                for (int b = 0; b < generator.Population[pIndex].Courses.GetLength(2); b++)
+                {
+                    if (generator.Population[pIndex].Courses[cIndex, d, b] != -1)
+                        ctr++;
+                }
+            }
+            return ctr;
         }
 
         private static int GetFreeDaysForLecturer(Individual individual, int lIndex, TimetableData ttData)

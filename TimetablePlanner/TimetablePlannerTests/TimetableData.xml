@@ -72,6 +72,11 @@
     <groups>
         <group id="IB1"/>
         <group id="IB2"/>
+        <group id="IB3"/>
+        <group id="IB4"/>
+        <group id="IB5"/>
+        <group id="IB6"/>
+        <group id="IB7"/>
         <group id="IM1"/>
         <group id="IM2"/>
     </groups>
@@ -96,6 +101,14 @@
         <course cId="IB251" gId="IB2" pId="dit01" name="Technische Informatik 2" repeatsPerWeek="2"/>
         <course cId="IB252" gId="IB2" pId="dit01" pId2="lin01" name="Digital-Labor" numberOfBlocks="3"/>
         <!--BachelorS3-->
+        <course cId="IB" gId="IB3" pId="lau01" name="Mathematik 2" />
+
+
+        IB 351
+        Automat.
+        Raum E201
+        Budwitz
+
         <!--BachelorS4-->
         <!--BachelorS5-->
         <!--BachelorS6-->

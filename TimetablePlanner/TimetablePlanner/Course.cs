@@ -32,7 +32,7 @@ namespace TimetablePlanner
 
         public override string ToString()
         {
-            return Id + ": " + Name;
+            return Id + ", " + Group.Id + ": " + Name;
         }
     }
 }

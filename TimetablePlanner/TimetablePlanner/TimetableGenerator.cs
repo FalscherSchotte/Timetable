@@ -248,7 +248,7 @@ namespace TimetablePlanner
             //int top5FitnessChangesCtr = 0;
             //int top5Fitness = 0;
             //int historyChangesCtr = 0;
-            
+
             long start = DateTime.Now.Ticks;
 
             fitnessHistory.Add(CalcAverageFitness(Population));
@@ -273,16 +273,10 @@ namespace TimetablePlanner
                 Population = individuals.GetRange(0, Population.Length).ToArray();
 
                 fitnessHistory.Add(CalcAverageFitness(Population));
-                int generationSpan = 10;
-                if(fitnessHistory.Count > generationSpan)
+                if (TestEarlyAbortOfEvolution(fitnessHistory))
                 {
-                    int averageFitnessChange = 0;
-                    for (int i = fitnessHistory.Count - 1; i >= fitnessHistory.Count - generationSpan; i--)
-                    {
-                        averageFitnessChange += fitnessHistory[i] - fitnessHistory[i - 1];
-                    }
-                    if (averageFitnessChange / generationSpan <= 1)
-                        break;
+                    System.Diagnostics.Debug.WriteLine("Early abort of evolution after " + CurrentGeneration + " generations");
+                    break;
                 }
             }
 
@@ -312,9 +306,24 @@ namespace TimetablePlanner
             }
         }
 
+        private bool TestEarlyAbortOfEvolution(List<int> fitnessHistory)
+        {
+            int generationSpan = 10;
+            if (fitnessHistory.Count > generationSpan)
+            {
+                int averageFitnessChange = 0;
+                for (int i = fitnessHistory.Count - 1; i >= fitnessHistory.Count - generationSpan; i--)
+                {
+                    averageFitnessChange += fitnessHistory[i] - fitnessHistory[i - 1];
+                }
+                if (averageFitnessChange / generationSpan <= 1)
+                    return true;
+            }
+            return false;
+        }
+
         private bool TestEarlyAbortOfEvolution(ref int top5FitnessChangesCtr, ref int top5Fitness, int generation)
         {
-            
             int newTop5Fitness = 0;
             for (int i = 0; i < Math.Min(5, Population.Length); i++)
             {
@@ -555,7 +564,7 @@ namespace TimetablePlanner
 
                             //Courses should start before 13:00
                             //Opposite for dummy courses
-                            fitness += (ttData.Blocks[block].Start.Hour - 13) * 20 * (ttData.Courses[course].IsDummy ? 2 : -1);
+                            fitness += (ttData.Blocks[block].Start.Hour - 13) * 10 * (ttData.Courses[course].IsDummy ? 2 : -1);
 
                             //Roompreference
                             if (ttData.Courses[course].RoomPreference != null)

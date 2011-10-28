@@ -1,0 +1,321 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<TestRun id="dbe66337-298a-4986-8856-41bec66881d8" name="FloLap@FLOLAP-PC 2011-10-28 11:07:48" runUser="FloLap-PC\FloLap" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
+  <TestSettings name="Lokal" id="6ed96bb3-d821-4eee-a79d-3a3069da9890">
+    <Description>Dies sind die standardmäßigen Testeinstellungen für einen lokalen Testlauf.</Description>
+    <Deployment enabled="false" runDeploymentRoot="FloLap_FLOLAP-PC 2011-10-28 11_07_48">
+      <DeploymentItem filename="E:\HsKA\Semester2\Projektarbeit\Stundenplangenerator\TimetablePlanner\TimetablePlanner\bin\Debug\TimetablePlanner.dll" />
+    </Deployment>
+    <Execution>
+      <TestTypeSpecific />
+      <AgentRule name="Execution Agents">
+      </AgentRule>
+    </Execution>
+  </TestSettings>
+  <Times creation="2011-10-28T11:07:48.7447848+02:00" queuing="2011-10-28T11:07:49.8558484+02:00" start="2011-10-28T11:07:49.9488537+02:00" finish="2011-10-28T11:07:59.8039603+02:00" />
+  <ResultSummary outcome="Completed">
+    <Counters total="1" executed="1" passed="1" error="0" failed="0" timeout="0" aborted="0" inconclusive="0" passedButRunAborted="0" notRunnable="0" notExecuted="0" disconnected="0" warning="0" completed="0" inProgress="0" pending="0" />
+  </ResultSummary>
+  <TestDefinitions>
+    <UnitTest name="TimetableManualTester" storage="e:\hska\semester2\projektarbeit\stundenplangenerator\timetableplanner\timetableplannertests\bin\debug\timetableplannertests.dll" id="3ada0cc6-2a4d-2d63-7d9f-97d4d443b0f3">
+      <Execution id="8e120989-dfdd-4f7c-bfc2-dc479113731f" />
+      <TestMethod codeBase="E:/HsKA/Semester2/Projektarbeit/Stundenplangenerator/TimetablePlanner/TimetablePlannerTests/bin/Debug/TimetablePlannerTests.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="TimetablePlannerTests.TimetableTest, TimetablePlannerTests, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="TimetableManualTester" />
+    </UnitTest>
+  </TestDefinitions>
+  <TestLists>
+    <TestList name="Nicht in einer Liste enthaltene Ergebnisse" id="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestList name="Alle geladenen Ergebnisse" id="19431567-8539-422a-85d7-44ee4e166bda" />
+  </TestLists>
+  <TestEntries>
+    <TestEntry testId="3ada0cc6-2a4d-2d63-7d9f-97d4d443b0f3" executionId="8e120989-dfdd-4f7c-bfc2-dc479113731f" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+  </TestEntries>
+  <Results>
+    <UnitTestResult executionId="8e120989-dfdd-4f7c-bfc2-dc479113731f" testId="3ada0cc6-2a4d-2d63-7d9f-97d4d443b0f3" testName="TimetableManualTester" computerName="FLOLAP-PC" duration="00:00:08.5013746" startTime="2011-10-28T11:07:49.9978565+02:00" endTime="2011-10-28T11:07:59.6959541+02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="8e120989-dfdd-4f7c-bfc2-dc479113731f">
+      <Output>
+        <DebugTrace>Time to create population of size 50: 1590ms
+4560
+4340
+4290
+4280
+4270
+4100
+4080
+4070
+4040
+4040
+3970
+3950
+3930
+3930
+3880
+3850
+3840
+3820
+3790
+3790
+3760
+3680
+3660
+3620
+3580
+3550
+3520
+3490
+3330
+3270
+3260
+3260
+3250
+3220
+3130
+3110
+3070
+3030
+3030
+3020
+2950
+2920
+2810
+2750
+2480
+2450
+2400
+2400
+2290
+2170
+Early abort of evolution after 177 generations
+Mean time per generation: 36ms
+Mean fitness increase per generation
+490
+206
+157
+133
+123
+82
+63
+63
+68
+77
+72
+77
+88
+76
+79
+59
+62
+59
+58
+64
+61
+57
+39
+46
+46
+37
+34
+42
+51
+51
+40
+35
+40
+48
+42
+48
+54
+41
+23
+24
+27
+31
+25
+24
+27
+38
+39
+34
+48
+33
+49
+27
+22
+19
+16
+18
+10
+11
+14
+14
+17
+13
+16
+14
+17
+24
+18
+12
+15
+12
+9
+5
+11
+12
+19
+11
+13
+5
+12
+11
+13
+13
+17
+11
+15
+20
+14
+22
+22
+12
+6
+11
+7
+15
+8
+17
+9
+17
+8
+9
+4
+2
+6
+8
+4
+6
+5
+2
+5
+10
+6
+1
+6
+4
+3
+6
+4
+13
+6
+14
+10
+5
+15
+16
+11
+10
+3
+5
+2
+8
+6
+2
+10
+4
+4
+9
+9
+11
+9
+11
+4
+9
+4
+7
+8
+7
+5
+2
+3
+4
+4
+2
+6
+6
+4
+1
+6
+4
+2
+1
+3
+5
+2
+2
+6
+1
+3
+5
+0
+2
+2
+1
+3
+1
+2
+3
+1
+2
+Evolution time: 6613ms
+8050
+8010
+8000
+7990
+7980
+7970
+7970
+7970
+7970
+7970
+7970
+7960
+7960
+7960
+7950
+7950
+7950
+7950
+7950
+7950
+7950
+7950
+7950
+7950
+7950
+7940
+7940
+7940
+7940
+7930
+7930
+7930
+7930
+7930
+7930
+7930
+7930
+7920
+7920
+7920
+7920
+7920
+7920
+7920
+7920
+7920
+7920
+7920
+7920
+7920
+</DebugTrace>
+      </Output>
+    </UnitTestResult>
+  </Results>
+</TestRun>

@@ -46,7 +46,7 @@ namespace TimetablePlanner
 
         public override string ToString()
         {
-            return Id + ": " + LastName;
+            return Name;
         }
     }
 }

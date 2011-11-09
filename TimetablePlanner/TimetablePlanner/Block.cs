@@ -19,7 +19,7 @@ namespace TimetablePlanner
 
         public override string ToString()
         {
-            return Start.TimeOfDay.ToString() + " - " + End.TimeOfDay.ToString() + " - Exceptions: " + Exceptions.Length;
+            return Start.TimeOfDay.ToString() + " - " + End.TimeOfDay.ToString();
         }
     }
 }

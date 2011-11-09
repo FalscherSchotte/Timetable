@@ -4,6 +4,7 @@
         xmlns:tt="clr-namespace:TimetablePlannerUI"
         Title="Timetable Generator" 
         WindowStartupLocation="CenterScreen"
-        MinHeight="650" MinWidth="900">
+        MinHeight="550" MinWidth="650"
+        Height="550" Width="650">
     <tt:ConfigUI />
 </Window>

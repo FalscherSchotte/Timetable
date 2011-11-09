@@ -73,6 +73,7 @@
     <Compile Include="RoomsUI.xaml.cs">
       <DependentUpon>RoomsUI.xaml</DependentUpon>
     </Compile>
+    <Compile Include="TimetableController.cs" />
     <Page Include="BlocksUI.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -142,6 +143,9 @@
       <Project>{9282E3E6-BA1C-4ACB-8436-8DF632B499C3}</Project>
       <Name>TimetablePlanner</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="HsKaLogo.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

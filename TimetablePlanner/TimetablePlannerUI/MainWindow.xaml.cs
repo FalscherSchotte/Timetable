@@ -23,20 +23,7 @@ namespace TimetablePlannerUI
         public MainWindow()
         {
             InitializeComponent();
-            //this.DataContext = GetGenerator();
+            DataContext = new TimetableController();
         }
-
-        //private object GetGenerator()
-        //{
-        //    string configurationFile = "E:\\HsKA\\Semester2\\Projektarbeit\\Stundenplangenerator\\TimetablePlanner\\TimetablePlanner\\TimetableData.xml";
-        //    TimetableData data = TimetableDataReader.createTimetableInstance(configurationFile);
-
-        //    int populationSize = 75;
-        //    int numberOfGenerations = 2000;
-
-        //    TimetableGenerator generator = new TimetableGenerator(populationSize, data);
-        //    generator.PerformEvolution(numberOfGenerations);
-        //    return generator;
-        //}
     }
 }

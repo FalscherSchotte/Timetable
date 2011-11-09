@@ -4,7 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:tt="clr-namespace:TimetablePlannerUI"
-             mc:Ignorable="d" d:DesignHeight="650" d:DesignWidth="900" >
+             mc:Ignorable="d" d:DesignHeight="550" d:DesignWidth="600" >
     <UserControl.Background>
         <LinearGradientBrush EndPoint="1,0.5" StartPoint="0,0.5">
             <GradientStop Color="#8B5487B0" Offset="0" />
@@ -13,11 +13,31 @@
     </UserControl.Background>
     <Grid>
         <Grid.RowDefinitions>
+            <RowDefinition Height="48" />
             <RowDefinition Height="*" />
             <RowDefinition Height="30" />
         </Grid.RowDefinitions>
-        <Grid Grid.Row="0">
-            <TabControl Margin="0,2.5,0,0" >
+        <Border Margin="5" Padding="10,5,10,5" BorderThickness="1" CornerRadius="12.5" BorderBrush="#FF707070">
+            <Border.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="#17316793" Offset="0" />
+                    <GradientStop Color="#9B175772" Offset="1" />
+                </LinearGradientBrush>
+            </Border.Background>
+            <Grid>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
+                    <Button Content="Save" Width="75" HorizontalContentAlignment="Center" Margin="0,0,5,0"/>
+                    <Button Content="Save as" Width="75" HorizontalContentAlignment="Center" Margin="0,0,5,0"/>
+                    <Button Content="New" Width="75" Margin="0,0,5,0"/>
+                    <Button Content="Load" Width="75"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                    <Button Content="Generate" Width="150" /> 
+                </StackPanel>
+            </Grid>
+        </Border>
+        <Grid Grid.Row="1">
+            <TabControl Margin="5,2.5,5,5" >
                 <TabItem Header="Blocks">
                     <tt:BlocksUI/>
                 </TabItem>
@@ -35,28 +55,8 @@
                 </TabItem>
             </TabControl>
         </Grid>
-        <Border Grid.Row="1" BorderBrush="#505050" BorderThickness="0,2,0,0">
-            <Border.Background>
-                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                    <GradientStop Color="#69316793" Offset="0" />
-                    <GradientStop Color="#9BB4DFFF" Offset="1" />
-                </LinearGradientBrush>
-            </Border.Background>
-            <Grid>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="2*" />
-                    <ColumnDefinition Width="*" />
-                </Grid.ColumnDefinitions>
-                <StackPanel Grid.Column="0" Margin="2.5" Orientation="Horizontal">
-                    <Button Content="Create new configuration" Width="200" Margin="0,0,5,0"/>
-                    <Button Content="Load existing configuration" Width="200"/>
-                </StackPanel>
-                <StackPanel Grid.Column="1" Margin="2.5" Orientation="Horizontal" HorizontalAlignment="Right">
-                    <Button Content="Save" Width="45" HorizontalContentAlignment="Center" Margin="0,0,5,0"/>
-                    <Button Content="Save as" Width="45" HorizontalContentAlignment="Center" Margin="0,0,5,0"/>
-                    <Button Content="Export" HorizontalContentAlignment="Center" Width="45" />
-                </StackPanel>
-            </Grid>
-        </Border>
+        <Image Grid.Row="1" Height="75" Source="/TimetablePlannerUI;component/HsKaLogo.png" 
+               Margin="15" VerticalAlignment="Bottom" HorizontalAlignment="Right"/>
+        <ProgressBar Grid.Row="2" HorizontalAlignment="Stretch" Height="20" VerticalAlignment="Top" Margin="5,0" />
     </Grid>
 </UserControl>

@@ -42,7 +42,7 @@ namespace TimetablePlannerTests
 
             DateTime start = DateTime.Now;
 
-            generator.CreatePopulation(50, 10);
+            generator.CreatePopulation(25, 10);
             TestRequirements(ttData, generator);
             System.Diagnostics.Debug.WriteLine("Population created after " + (DateTime.Now - start).TotalSeconds + " seconds.");
 

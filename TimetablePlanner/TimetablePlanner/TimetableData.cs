@@ -2,14 +2,13 @@
 
 namespace TimetablePlanner
 {
-    [Serializable()]
     public class TimetableData
     {
-        public Block[] Blocks { get; private set; }
-        public Course[] Courses { get; private set; }
-        public Lecturer[] Lecturers { get; private set; }
-        public Room[] Rooms { get; private set; }
-        public Group[] Groups { get; private set; }
+        public Block[] Blocks { get; set; }
+        public Course[] Courses { get; set; }
+        public Lecturer[] Lecturers { get; set; }
+        public Room[] Rooms { get; set; }
+        public Group[] Groups { get; set; }
 
         internal TimetableData(Block[] blocks, Course[] courses, Lecturer[] lecturers, Room[] rooms, Group[] groups)
         {

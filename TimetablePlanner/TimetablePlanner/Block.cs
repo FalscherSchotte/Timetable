@@ -4,8 +4,8 @@ namespace TimetablePlanner
 {
     public class Block
     {
-        public DateTime Start { get; private set; }
-        public DateTime End { get; private set; }
+        public DateTime Start { get; set; }
+        public DateTime End { get; set; }
         public DayOfWeek[] Exceptions { get; set; }
 
         public Block(DateTime start, DateTime end, DayOfWeek[] exceptions)
@@ -14,6 +14,8 @@ namespace TimetablePlanner
             this.End = end;
             this.Exceptions = exceptions;
         }
+
+        public Block() { }
 
         public override string ToString()
         {

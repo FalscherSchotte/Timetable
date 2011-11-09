@@ -50,7 +50,7 @@
     <Compile Include="Room.cs" />
     <Compile Include="TimetableGenerator.cs" />
     <Compile Include="TimetableData.cs" />
-    <Compile Include="TimetableDataReader.cs" />
+    <Compile Include="TimetableConfigIO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TimetableExportDebug.cs" />
   </ItemGroup>

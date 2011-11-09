@@ -51,7 +51,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="TimetableDataReaderTest.cs" />
+    <Compile Include="TimetableTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\TimetablePlanner\TimetablePlanner.csproj">

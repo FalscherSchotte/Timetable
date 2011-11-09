@@ -1,70 +1,69 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <timetableData>
-    <parameters>
-        <blocks>
-            <block start="08:00" end="09:30"/>
-            <block start="09:50" end="11:20"/>
-            <block start="11:30" end="13:00">
-                <exception day="Wednesday" />
-            </block>
-            <block start="14:00" end="15:30"/>
-            <block start="15:40" end="17:10"/>
-            <block start="17:20" end="18:50"/>
-        </blocks>
-    </parameters>
+    <blocks>
+        <block start="08:00" end="09:30"/>
+        <block start="09:50" end="11:20"/>
+        <block start="11:30" end="13:00">
+            <exception day="Wednesday" />
+        </block>
+        <block start="14:00" end="15:30"/>
+        <block start="15:40" end="17:10"/>
+        <block start="17:20" end="18:50"/>
+    </blocks>
     <lecturers>
-        <lecturer pId="ALL" lastName="Alle Professoren" numberOfResearchDays="0" isDummy="true"/>
-        <lecturer pId="WILDCARD" lastname="Mehrere Professoren" numberOfResearchDays="0" isDummy="true"/>
-        <lecturer pId="DUMMY" lastName="!!Noch nicht angelegt" numberOfResearchDays="0" isDummy="true"/>
-        <lecturer pId="brö01" lastName="Bröckl"/>
-        <lecturer pId="dit01" lastName="Ditzinger" />
-        <lecturer pId="düb01" lastName="Dübon" />
-        <lecturer pId="fuc01" lastName="Fuchß" />
-        <lecturer pId="gme01" lastName="Gmeiner" />
-        <lecturer pId="gra01" lastName="Graf" />
-        <lecturer pId="gre01" lastName="Gremminger" />
-        <lecturer pId="han01" lastName="Haneke" />
-        <lecturer pId="heb01" lastName="Heberle" />
-        <lecturer pId="hen01" lastName="Henning">
+        <lecturer lId="ALL" lastName="Alle Professoren" numberOfResearchDays="0" isDummy="true"/>
+        <lecturer lId="WILDCARD" lastname="Mehrere Professoren" numberOfResearchDays="0" isDummy="true"/>
+        <lecturer lId="DUMMY" lastName="!!Noch nicht angelegt" numberOfResearchDays="0" isDummy="true"/>
+        <lecturer lId="brö01" lastName="Bröckl"/>
+        <lecturer lId="dit01" lastName="Ditzinger" />
+        <lecturer lId="düb01" lastName="Dübon" />
+        <lecturer lId="fuc01" lastName="Fuchß" />
+        <lecturer lId="gme01" lastName="Gmeiner" />
+        <lecturer lId="gra01" lastName="Graf" />
+        <lecturer lId="gre01" lastName="Gremminger" />
+        <lecturer lId="han01" lastName="Haneke" />
+        <lecturer lId="heb01" lastName="Heberle" />
+        <lecturer lId="hen01" lastName="Henning">
             <researchException day="Wednesday" />
         </lecturer>
-        <lecturer pId="hof01" lastName="Hoffmann" />
-        <lecturer pId="hof02" lastName="Hofmann" />
-        <lecturer pId="hüt01" lastName="Hüttel" />
-        <lecturer pId="kör01" lastName="Körner" />
-        <lecturer pId="lau01" lastName="Laubenheimer" />
-        <lecturer pId="lin01" lastName="Link" />
-        <lecturer pId="mar01" lastName="Martin" />
-        <lecturer pId="mei01" lastName="Meisel" />
-        <lecturer pId="mor01" lastName="Morgenstern" />
-        <lecturer pId="mül01" lastName="Müller" />
-        <lecturer pId="nee01" lastName="Nees" />
-        <lecturer pId="nes01" lastName="Nestler" />
-        <lecturer pId="neu01" lastName="Neumann" />
-        <lecturer pId="pap01" lastName="Pape" />
-        <lecturer pId="phi01" lastName="Philipp" />
-        <lecturer pId="reg01" lastName="Regier" />
-        <lecturer pId="rei01" lastName="Reichhardt" />
-        <lecturer pId="sch01" lastName="Schaefer" />
-        <lecturer pId="sch02" lastName="Schmauch" />
-        <lecturer pId="sch03" lastName="Schmidt" />
-        <lecturer pId="sei01" lastName="Seifert" />
-        <lecturer pId="sen01" lastName="Senger" />
-        <lecturer pId="vog01" lastName="Vogelsang" />
-        <lecturer pId="wei01" lastName="Weidner" />
-        <lecturer pId="wir01" lastName="Wirth" />
-        <lecturer pId="zim01" lastName="Zimmermann" />
-        <lecturer pId="bud01" lastName="Budwitz" />
-        <lecturer pId="ste01" lastName="Steiniger" />
-        <lecturer pId="mus01" lastName="Mussgnug" />
-        <lecturer pId="thi01" lastName="Thielemann" />
-        <lecturer pId="rot01" lastName="Rotert" />
-        <lecturer pId="bur01" lastName="Burghart" />
-        <lecturer pId="hag01" lastName="Haag" />
-        <lecturer pId="ros01" lastName="Rose" />
-        <lecturer pId="stu01" lastName="Stumpf" />
-        <lecturer pId="sup01" lastName="Supp"/>
-        <lecturer pId="mag01" lastName="Magschok" />
+        <lecturer lId="hof01" lastName="Hoffmann" />
+        <lecturer lId="hof02" lastName="Hofmann" />
+        <lecturer lId="hüt01" lastName="Hüttel" />
+        <lecturer lId="kör01" lastName="Körner" />
+        <lecturer lId="lau01" lastName="Laubenheimer" />
+        <lecturer lId="lin01" lastName="Link" />
+        <lecturer lId="mar01" lastName="Martin" />
+        <lecturer lId="mei01" lastName="Meisel" />
+        <lecturer lId="mor01" lastName="Morgenstern" />
+        <lecturer lId="mül01" lastName="Müller" />
+        <lecturer lId="nee01" lastName="Nees" />
+        <lecturer lId="nes01" lastName="Nestler" />
+        <lecturer lId="neu01" lastName="Neumann" />
+        <lecturer lId="pap01" lastName="Pape" />
+        <lecturer lId="phi01" lastName="Philipp" />
+        <lecturer lId="reg01" lastName="Regier" />
+        <lecturer lId="rei01" lastName="Reichhardt" />
+        <lecturer lId="sch01" lastName="Schaefer" />
+        <lecturer lId="sch02" lastName="Schmauch" />
+        <lecturer lId="sch03" lastName="Schmidt" />
+        <lecturer lId="sei01" lastName="Seifert" />
+        <lecturer lId="sen01" lastName="Senger" />
+        <lecturer lId="vog01" lastName="Vogelsang" />
+        <lecturer lId="wei01" lastName="Weidner" />
+        <lecturer lId="wir01" lastName="Wirth" />
+        <lecturer lId="zim01" lastName="Zimmermann" />
+        <lecturer lId="bud01" lastName="Budwitz" />
+        <lecturer lId="ste01" lastName="Steiniger" />
+        <lecturer lId="mus01" lastName="Mussgnug" />
+        <lecturer lId="thi01" lastName="Thielemann" />
+        <lecturer lId="rot01" lastName="Rotert" />
+        <lecturer lId="bur01" lastName="Burghart" />
+        <lecturer lId="hag01" lastName="Haag" />
+        <lecturer lId="ros01" lastName="Rose" />
+        <lecturer lId="stu01" lastName="Stumpf" />
+        <lecturer lId="sup01" lastName="Supp"/>
+        <lecturer lId="mag01" lastName="Magschok" />
+        <lecturer lId="sut01" lastName="Sutterer" />
     </lecturers>
     <rooms>
         <room number="E201" />
@@ -81,14 +80,14 @@
         <room number="LI141" isLab="true"/>
     </rooms>
     <groups>
-        <group id="IB11"/>
-        <group id="IB12"/>
+        <group id="IB1a"/>
+        <group id="IB1b"/>
         <group id="IB2"/>
-        <group id="IB31"/>
-        <group id="IB32"/>
+        <group id="IB3a"/>
+        <group id="IB3b"/>
         <group id="IB4"/>
-        <group id="IB51"/>
-        <group id="IB52"/>
+        <group id="IB5a"/>
+        <group id="IB5b"/>
         <group id="IB6"/>
         <group id="IB7"/>
         <group id="IM1"/>
@@ -96,118 +95,118 @@
     </groups>
     <courses>
         <!--BachelorS1 Zug1-->
-        <course cId="IB111" pId="pap01" gId="IB11" name="Informatik 1" repeatsPerWeek="2"/>
-        <course cId="IB112" pId="pap01" gId="IB11" name="Informatik 1 Übung" needsLab="true"/>
-        <course cId="IB121" pId="hof01" pId2="sut01" gId="IB11" name="Technische Informatik 1" repeatsPerWeek="2"/>
-        <course cId="IB122" pId="hof01" pId2="sut01" gId="IB11" name="Technische Informatik 1 Übung" />
-        <course cId="IB131" pId="kör01" gId="IB11" name="Theoretische Informatik 1" repeatsPerWeek="2"/>
-        <course cId="IB141" pId="sch01" gId="IB11" name="Mathematik 1" repeatsPerWeek="2"/>
-        <course cId="IB142" pId="sch01" gId="IB11" name="Mathematik 1 Labor" needsLab="true" repeatsPerWeek="2"/>
-        <course cId="IB151" pId="WILDCARD" gId="IB11" name="Fremdsprachen" numberOfBlocks="2"/>
+        <course cId="IB111a" lId0="pap01" gId="IB1a" name="Informatik 1" repeatsPerWeek="2"/>
+        <course cId="IB112a" lId0="pap01" gId="IB1a" name="Informatik 1 Übung" needsLab="true"/>
+        <course cId="IB121a" lId0="hof01" lId1="sut01" gId="IB1a" name="Technische Informatik 1" repeatsPerWeek="2"/>
+        <course cId="IB122a" lId0="hof01" lId1="sut01" gId="IB1a" name="Technische Informatik 1 Übung" />
+        <course cId="IB131a" lId0="kör01" gId="IB1a" name="Theoretische Informatik 1" repeatsPerWeek="2"/>
+        <course cId="IB141a" lId0="sch01" gId="IB1a" name="Mathematik 1" repeatsPerWeek="2"/>
+        <course cId="IB142a" lId0="sch01" gId="IB1a" name="Mathematik 1 Labor" needsLab="true" repeatsPerWeek="2"/>
+        <course cId="IB151a" lId0="WILDCARD" gId="IB1a" name="Fremdsprachen" numberOfBlocks="2"/>
         <!--BachelorS1 Zug2-->
-        <course cId="IB111" pId="pap01" gId="IB12" name="Informatik 1" repeatsPerWeek="2"/>
-        <course cId="IB112" pId="pap01" gId="IB12" name="Informatik 1 Übung" needsLab="true"/>
-        <course cId="IB121" pId="hof01" pId2="sut01" gId="IB12" name="Technische Informatik 1" repeatsPerWeek="2"/>
-        <course cId="IB122" pId="hof01" pId2="sut01" gId="IB12" name="Technische Informatik 1 Übung" />
-        <course cId="IB131" pId="kör01" gId="IB12" name="Theoretische Informatik 1" repeatsPerWeek="2"/>
-        <course cId="IB141" pId="sch01" gId="IB12" name="Mathematik 1" repeatsPerWeek="2"/>
-        <course cId="IB142" pId="sch01" gId="IB12" name="Mathematik 1 Labor" needsLab="true" repeatsPerWeek="2"/>
-        <course cId="IB151" pId="WILDCARD" gId="IB12" name="Fremdsprachen" numberOfBlocks="2"/>
+        <course cId="IB111b" lId0="pap01" gId="IB1b" name="Informatik 1" repeatsPerWeek="2"/>
+        <course cId="IB112b" lId0="pap01" gId="IB1b" name="Informatik 1 Übung" needsLab="true"/>
+        <course cId="IB121b" lId0="hof01" lId1="sut01" gId="IB1b" name="Technische Informatik 1" repeatsPerWeek="2"/>
+        <course cId="IB122b" lId0="hof01" lId1="sut01" gId="IB1b" name="Technische Informatik 1 Übung" />
+        <course cId="IB131b" lId0="kör01" gId="IB1b" name="Theoretische Informatik 1" repeatsPerWeek="2"/>
+        <course cId="IB141b" lId0="sch01" gId="IB1b" name="Mathematik 1" repeatsPerWeek="2"/>
+        <course cId="IB142b" lId0="sch01" gId="IB1b" name="Mathematik 1 Labor" needsLab="true" repeatsPerWeek="2"/>
+        <course cId="IB151b" lId0="WILDCARD" gId="IB1b" name="Fremdsprachen" numberOfBlocks="2"/>
         <!--BachelorS2-->
-        <course cId="IB211" gId="IB2" pId="vog01" name="Informatik 2" repeatsPerWeek="2"/>
-        <course cId="IB212" gId="IB2" pId="vog01" pId2="wei01" name="Informatik 2 Übung" repeatsPerWeek="2"/>
-        <course cId="IB221" gId="IB2" pId="WILDCARD" name="Softwarelabor" repeatsPerWeek="2" numberOfBlocks="2"/>
-        <course cId="IB231a" gId="IB2" pId="pap01" name="Web-Programming" />
-        <course cId="IB231b" gId="IB2" pId="kör01" name="Sprachen und Metasprachen" />
-        <course cId="IB241" gId="IB2" pId="lau01" name="Mathematik 2" />
-        <course cId="IB242" gId="IB2" pId="lau01" name="Mathematik 2 Labor" />
-        <course cId="IB251" gId="IB2" pId="dit01" name="Technische Informatik 2" repeatsPerWeek="2"/>
-        <course cId="IB252" gId="IB2" pId="dit01" pId2="lin01" name="Digital-Labor" numberOfBlocks="3"/>
+        <course cId="IB211" gId="IB2" lId0="vog01" name="Informatik 2" repeatsPerWeek="2"/>
+        <course cId="IB212" gId="IB2" lId0="vog01" lId1="wei01" name="Informatik 2 Übung" repeatsPerWeek="2"/>
+        <course cId="IB221" gId="IB2" lId0="WILDCARD" name="Softwarelabor" repeatsPerWeek="2" numberOfBlocks="2"/>
+        <course cId="IB231a" gId="IB2" lId0="pap01" name="Web-Programming" />
+        <course cId="IB231b" gId="IB2" lId0="kör01" name="Sprachen und Metasprachen" />
+        <course cId="IB241" gId="IB2" lId0="lau01" name="Mathematik 2" />
+        <course cId="IB242" gId="IB2" lId0="lau01" name="Mathematik 2 Labor" />
+        <course cId="IB251" gId="IB2" lId0="dit01" name="Technische Informatik 2" repeatsPerWeek="2"/>
+        <course cId="IB252" gId="IB2" lId0="dit01" lId1="lin01" name="Digital-Labor" numberOfBlocks="3"/>
         <!--BachelorS3 Zug 1-->
-        <course cId="IB351" gId="IB31" pId="bud01" name="Automatisierung" repeatsPerWeek="2" />
-        <course cId="IB361" gId="IB31" pId="han01" name="BWL" repeatsPerWeek="2"/>
-        <course cId="IB331" gId="IB31" pId="gme01" pId2="ste01" name="DB1 und K-Netze1" repeatsPerWeek="3"/>
-        <course cId="IB332" gId="IB31" pId="ste01" name="DB-Praktikum" numberOfBlocks="2"/>
-        <course cId="IB352" gId="IB31" pId="bud01" name="Automat. Labor" numberOfBlocks="2"/>
-        <course cId="IB321" gId="IB31" pId="fuc01" name="Systemnah. Progr." repeatsPerWeek="3" needsLab="true" />
-        <course cId="IB342" gId="IB31" pId="mus01" name="Mensch-Maschine-Kommunikation" numberOfBlocks="2"/>
+        <course cId="IB351a" gId="IB3a" lId0="bud01" name="Automatisierung" repeatsPerWeek="2" />
+        <course cId="IB361a" gId="IB3a" lId0="han01" name="BWL" repeatsPerWeek="2"/>
+        <course cId="IB331a" gId="IB3a" lId0="gme01" lId1="ste01" name="DB1 und K-Netze1" repeatsPerWeek="3"/>
+        <course cId="IB332a" gId="IB3a" lId0="ste01" name="DB-Praktikum" numberOfBlocks="2"/>
+        <course cId="IB352a" gId="IB3a" lId0="bud01" name="Automat. Labor" numberOfBlocks="2"/>
+        <course cId="IB321a" gId="IB3a" lId0="fuc01" name="Systemnah. Progr." repeatsPerWeek="3" needsLab="true" />
+        <course cId="IB342a" gId="IB3a" lId0="mus01" name="Mensch-Maschine-Kommunikation" numberOfBlocks="2"/>
         <!--BachelorS3 Zug 2-->
-        <course cId="IB351" gId="IB32" pId="bud01" name="Automatisierung" repeatsPerWeek="2" />
-        <course cId="IB361" gId="IB32" pId="han01" name="BWL" repeatsPerWeek="2"/>
-        <course cId="IB331" gId="IB32" pId="gme01" pId2="ste01" name="DB1 und K-Netze1" repeatsPerWeek="3"/>
-        <course cId="IB332" gId="IB32" pId="ste01" name="DB-Praktikum" numberOfBlocks="2"/>
-        <course cId="IB352" gId="IB32" pId="bud01" name="Automat. Labor" numberOfBlocks="2"/>
-        <course cId="IB321" gId="IB32" pId="fuc01" name="Systemnah. Progr." repeatsPerWeek="3" needsLab="true" />
-        <course cId="IB342" gId="IB32" pId="mus01" name="Mensch-Maschine-Kommunikation" numberOfBlocks="2"/>
+        <course cId="IB351b" gId="IB3b" lId0="bud01" name="Automatisierung" repeatsPerWeek="2" />
+        <course cId="IB361b" gId="IB3b" lId0="han01" name="BWL" repeatsPerWeek="2"/>
+        <course cId="IB331b" gId="IB3b" lId0="gme01" lId1="ste01" name="DB1 und K-Netze1" repeatsPerWeek="3"/>
+        <course cId="IB332b" gId="IB3b" lId0="ste01" name="DB-Praktikum" numberOfBlocks="2"/>
+        <course cId="IB352b" gId="IB3b" lId0="bud01" name="Automat. Labor" numberOfBlocks="2"/>
+        <course cId="IB321b" gId="IB3b" lId0="fuc01" name="Systemnah. Progr." repeatsPerWeek="3" needsLab="true" />
+        <course cId="IB342b" gId="IB3b" lId0="mus01" name="Mensch-Maschine-Kommunikation" numberOfBlocks="2"/>
         <!--BachelorS4-->
-        <course cId="IB4P1" gId="IB4" pId="kör01" pId2="thi01" name="Praxisvorbereitung" numberOfBlocks="3" repeatsPerWeek="2"/>
-        <course cId="IB4P3" gId="IB4" pId="mor01" name="Praxisnachbereitung"/>
+        <course cId="IB4P1" gId="IB4" lId0="kör01" lId1="thi01" name="Praxisvorbereitung" numberOfBlocks="3" repeatsPerWeek="2"/>
+        <course cId="IB4P3" gId="IB4" lId0="mor01" name="Praxisnachbereitung"/>
         <!--BachelorS5 Zug1-->
-        <course cId="IB521" gId="IB51" pId="rot01" name="DB2 und K-Netze2" repeatsPerWeek="2"/>
-        <course cId="IB5121" gId="IB51" pId="gre01" name="Verteilte Informationssysteme" />
-        <course cId="IB5122" gId="IB51" pId="gre01" name="Verteilte Informationssysteme Labor" needsLab="true"/>
-        <course cId="IB552" gId="IB51" pId="phi01" name="ERP-Labor"/>
-        <course cId="IB531" gId="IB51" pId="bur01" pId2="dit01" name="Autonome Systeme und RA" repeatsPerWeek="2"/>
-        <course cId="IB511" gId="IB51" pId="fuc01" name="SW-Engineering" numberOfBlocks="4" needsLab="true"/>
-        <course cId="IB551" gId="IB51" pId="phi01" name="ERP-Systeme" repeatsPerWeek="2"/>
+        <course cId="IB521a" gId="IB5a" lId0="rot01" name="DB2 und K-Netze2" repeatsPerWeek="2"/>
+        <course cId="IB512a" gId="IB5a" lId0="gre01" name="Verteilte Informationssysteme" />
+        <course cId="IB512a" gId="IB5a" lId0="gre01" name="Verteilte Informationssysteme Labor" needsLab="true"/>
+        <course cId="IB552a" gId="IB5a" lId0="phi01" name="ERP-Labor"/>
+        <course cId="IB531a" gId="IB5a" lId0="bur01" lId1="dit01" name="Autonome Systeme und RA" repeatsPerWeek="2"/>
+        <course cId="IB511a" gId="IB5a" lId0="fuc01" name="SW-Engineering" numberOfBlocks="4" needsLab="true"/>
+        <course cId="IB551a" gId="IB5a" lId0="phi01" name="ERP-Systeme" repeatsPerWeek="2"/>
         <!--BachelorS5 Zug2-->
-        <course cId="IB521" gId="IB52" pId="rot01" name="DB2 und K-Netze2" repeatsPerWeek="2"/>
-        <course cId="IB5121" gId="IB52" pId="gre01" name="Verteilte Informationssysteme" />
-        <course cId="IB5122" gId="IB52" pId="gre01" name="Verteilte Informationssysteme Labor" needsLab="true"/>
-        <course cId="IB552" gId="IB52" pId="phi01" name="ERP-Labor"/>
-        <course cId="IB531" gId="IB52" pId="bur01" pId2="dit01" name="Autonome Systeme und RA" repeatsPerWeek="2"/>
-        <course cId="IB511" gId="IB52" pId="fuc01" name="SW-Engineering" numberOfBlocks="4" needsLab="true"/> <!--Todo: needs lab and room-->
-        <course cId="IB551" gId="IB52" pId="phi01" name="ERP-Systeme" repeatsPerWeek="2"/>
+        <course cId="IB521b" gId="IB5b" lId0="rot01" name="DB2 und K-Netze2" repeatsPerWeek="2"/>
+        <course cId="IB512b" gId="IB5b" lId0="gre01" name="Verteilte Informationssysteme" />
+        <course cId="IB512b" gId="IB5b" lId0="gre01" name="Verteilte Informationssysteme Labor" needsLab="true"/>
+        <course cId="IB552b" gId="IB5b" lId0="phi01" name="ERP-Labor"/>
+        <course cId="IB531b" gId="IB5b" lId0="bur01" lId1="dit01" name="Autonome Systeme und RA" repeatsPerWeek="2"/>
+        <course cId="IB511b" gId="IB5b" lId0="fuc01" name="SW-Engineering" numberOfBlocks="4" needsLab="true"/>
+        <course cId="IB551b" gId="IB5b" lId0="phi01" name="ERP-Systeme" repeatsPerWeek="2"/>
         <!--BachelorS6-->
-        <course cId="IB611" gId="IB6" pId="hof01" name="Embedded Software" />
-        <course cId="IB641" gId="IB6" pId="ros01" name="Intercultural Comm." repeatsPerWeek="2"/>
-        <course cId="IB642" gId="IB6" pId="thi01" name="Rhetorik" isDummy="true"/>
-        <course cId="IB612" gId="IB6" pId="hof01" name="Embedded Labor" numberOfBlocks="2"/> <!-- TODO: Needs specified room-->
-        <course cId="IB621" gId="IB6" pId="hen01" name="Computergrafik" roomPreference="E213" repeatsPerWeek="2"/>
-        <course cId="IB643" gId="IB6" pId="stu01" name="Recht" />
-        <course cId="IB631" gId="IB6" pId="ALL" name="Seminar" isDummy="true"/>
-        <course cId="IW232" gId="IB6" pId="hag01" name="Robotics"/>
-        <course cId="IW433" gId="IB6" pId="phi01" name="IT-Consulting"/>
-        <course cId="IW911" gId="IB6" pId="sup01" name="Modellb. SW-Entw."/>
-        <course cId="IW332" gId="IB6" pId="vog01" name="Benutzeroberflächen"/>
-        <course cId="IW179" gId="IB6" pId="han01" name="Business Intelligence"/>
-        <course cId="IW910" gId="IB6" pId="hen01" name="Gameprogramming" roomPreference="213"/>
-        <course cId="IW854" gId="IB6" pId="han01" name="Geschäftsprozesse"/>
-        <course cId="IW907" gId="IB6" pId="phi01" name="Geschäftsprozesse"/>
-        <course cId="IW210" gId="IB6" pId="mag01" name="Networksecurity" />
-        <course cId="IW772" gId="IB6" pId="lau01" name="Computer Vision"/>
-        <course cId="IW342" gId="IB6" pId="fuc01" name="Spez. Kap. Software Engineering"/>
-        <course cId="IW713" gId="IB6" pId="mag01" name="Advanced Networking" numberOfBlocks="2"/>
-        <course cId="IW773" gId="IB6" pId="lau01" name="Labor Bildverarbeitung"/>
+        <course cId="IB611" gId="IB6" lId0="hof01" name="Embedded Software" />
+        <course cId="IB641" gId="IB6" lId0="ros01" name="Intercultural Comm." repeatsPerWeek="2"/>
+        <course cId="IB642" gId="IB6" lId0="thi01" name="Rhetorik" isDummy="true"/>
+        <course cId="IB612" gId="IB6" lId0="hof01" name="Embedded Labor" numberOfBlocks="2" needsLab="true"/>
+        <course cId="IB621" gId="IB6" lId0="hen01" name="Computergrafik" roomPreference="E213" repeatsPerWeek="2"/>
+        <course cId="IB643" gId="IB6" lId0="stu01" name="Recht" />
+        <course cId="IB631" gId="IB6" lId0="ALL" name="Seminar" isDummy="true"/>
+        <course cId="IW232" gId="IB6" lId0="hag01" name="Robotics"/>
+        <course cId="IW433" gId="IB6" lId0="phi01" name="IT-Consulting"/>
+        <course cId="IW911" gId="IB6" lId0="sup01" name="Modellb. SW-Entw."/>
+        <course cId="IW332" gId="IB6" lId0="vog01" name="Benutzeroberflächen"/>
+        <course cId="IW179" gId="IB6" lId0="han01" name="Business Intelligence"/>
+        <course cId="IW910" gId="IB6" lId0="hen01" name="Gameprogramming" roomPreference="213"/>
+        <course cId="IW854" gId="IB6" lId0="han01" name="Geschäftsprozesse"/>
+        <course cId="IW907" gId="IB6" lId0="phi01" name="Geschäftsprozesse"/>
+        <course cId="IW210" gId="IB6" lId0="mag01" name="Networksecurity" />
+        <course cId="IW772" gId="IB6" lId0="lau01" name="Computer Vision"/>
+        <course cId="IW342" gId="IB6" lId0="fuc01" name="Spez. Kap. Software Engineering"/>
+        <course cId="IW713" gId="IB6" lId0="mag01" name="Advanced Networking" numberOfBlocks="2"/>
+        <course cId="IW773" gId="IB6" lId0="lau01" name="Labor Bildverarbeitung"/>
         <!--BachelorS7-->
-        <course cId="IW275" gId="IB7" pId="lin01" name="Labor Autonome Systeme" needsLab="true"/>
-        <course cId="IW422" gId="IB7" pId="han01" name="Projektmanagement"/>
-        <course cId="IW906" gId="IB7" pId="hen01" name="Multimedia" roomPreference="E213"/>
-        <course cId="IW730" gId="IB7" pId="vog01" name="Teamteaching"/>
-        <course cId="IW392" gId="IB7" pId="hof01" name="Qualitätssicherung"/>
-        <course cId="IW907" gId="IB7" pId="nes01" name="High Performance Computing" numberOfBlocks="2"/>
+        <course cId="IW275" gId="IB7" lId0="lin01" name="Labor Autonome Systeme" needsLab="true"/>
+        <course cId="IW422" gId="IB7" lId0="han01" name="Projektmanagement"/>
+        <course cId="IW906" gId="IB7" lId0="hen01" name="Multimedia" roomPreference="E213"/>
+        <course cId="IW730" gId="IB7" lId0="vog01" name="Teamteaching"/>
+        <course cId="IW392" gId="IB7" lId0="hof01" name="Qualitätssicherung"/>
+        <course cId="IW907" gId="IB7" lId0="nes01" name="High Performance Computing" numberOfBlocks="2"/>
         <!--MasterS1-->
-        <course cId="IM111a" gId="IM1" pId="lin01" name="Intelligente Systeme" />
-        <course cId="IM111b" gId="IM1" pId="hof01" name="Datenrepräsentation und -übertragung"/>
-        <course cId="IM111c" gId="IM1" pId="nes01" name="Modellierung und Simulation"/>
-        <course cId="IM121" gId="IM1" pId="hen01" name="Visualization and Semantics" roomPreference="E213"/>
-        <course cId="IM122" gId="IM1" pId="hen01" name="Visualization and Semantics Lab" needsLab="true"/>
-        <course cId="IM131a" gId="IM1" pId="gre01" name="Verteilte Informationssysteme"/>
-        <course cId="IM131b" gId="IM1" pId="fuc01" name="Mobile Systeme"/>
-        <course cId="IM141" gId="IM1" pId="han01" name="IT Projektmanagement"/>
-        <course cId="IM142" gId="IM1" pId="hüt01" name="Führungskräftetraining" isDummy="true"/>
-        <course cId="IM143" gId="IM1" pId="phi01" name="IT Service Management"/>
-        <course cId="IM151" gId="IM1" pId="ALL" name="Projektarbeit1" isDummy="true" numberOfBlocks="3" />
+        <course cId="IM111a" gId="IM1" lId0="lin01" name="Intelligente Systeme" />
+        <course cId="IM111b" gId="IM1" lId0="hof01" name="Datenrepräsentation und -übertragung"/>
+        <course cId="IM111c" gId="IM1" lId0="nes01" name="Modellierung und Simulation"/>
+        <course cId="IM121" gId="IM1" lId0="hen01" name="Visualization and Semantics" roomPreference="E213"/>
+        <course cId="IM122" gId="IM1" lId0="hen01" name="Visualization and Semantics Lab" needsLab="true"/>
+        <course cId="IM131a" gId="IM1" lId0="gre01" name="Verteilte Informationssysteme"/>
+        <course cId="IM131b" gId="IM1" lId0="fuc01" name="Mobile Systeme"/>
+        <course cId="IM141" gId="IM1" lId0="han01" name="IT Projektmanagement"/>
+        <course cId="IM142" gId="IM1" lId0="hüt01" name="Führungskräftetraining" isDummy="true"/>
+        <course cId="IM143" gId="IM1" lId0="phi01" name="IT Service Management"/>
+        <course cId="IM151" gId="IM1" lId0="ALL" name="Projektarbeit1" isDummy="true" numberOfBlocks="3" />
         <!--MasterS2-->
-        <course cId="IM211" gId="IM2" pId="brö01" name="Dialog Systems"/>
-        <course cId="IM212" gId="IM2" pId="vog01" name="Labor Benutzeroberflächen"/>
-        <course cId="IM213" gId="IM2" pId="gre01" name="Labor Verteilte Systeme"/>
-        <course cId="IM221" gId="IM2" pId="sch01" name="Angewandte Kryptografie"/>
-        <course cId="IM222" gId="IM2" pId="sch01" name="IT-Sicherheit"/>
-        <course cId="IM231" gId="IM2" pId="kör01" name="Algorithmenentwurf"/>
-        <course cId="IM232" gId="IM2" pId="pap01" name="Algorithmen Übung"/>
-        <course cId="IM233" gId="IM2" pId="lau01" name="Data Mining"/>
-        <course cId="IM241" gId="IM2" pId="ALL" name="Projektarbeit2" isDummy="true" numberOfBlocks="2"/>
-        <course cId="IM243" gId="IM2" pId="ALL" name="Seminar" isDummy="true"/>
+        <course cId="IM211" gId="IM2" lId0="brö01" name="Dialog Systems"/>
+        <course cId="IM212" gId="IM2" lId0="vog01" name="Labor Benutzeroberflächen"/>
+        <course cId="IM213" gId="IM2" lId0="gre01" name="Labor Verteilte Systeme"/>
+        <course cId="IM221" gId="IM2" lId0="sch01" name="Angewandte Kryptografie"/>
+        <course cId="IM222" gId="IM2" lId0="sch01" name="IT-Sicherheit"/>
+        <course cId="IM231" gId="IM2" lId0="kör01" name="Algorithmenentwurf"/>
+        <course cId="IM232" gId="IM2" lId0="pap01" name="Algorithmen Übung"/>
+        <course cId="IM233" gId="IM2" lId0="lau01" name="Data Mining"/>
+        <course cId="IM241" gId="IM2" lId0="ALL" name="Projektarbeit2" isDummy="true" numberOfBlocks="2"/>
+        <course cId="IM243" gId="IM2" lId0="ALL" name="Seminar" isDummy="true"/>
     </courses>
 </timetableData>

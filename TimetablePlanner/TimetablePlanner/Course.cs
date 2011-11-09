@@ -1,16 +1,17 @@
 ﻿
+using System.Xml.Serialization;
 namespace TimetablePlanner
 {
     public class Course
     {
-        public bool NeedsLab { get; private set; }
-        public bool IsDummy { get; private set; }
-        public int NumberOfBlocks { get; private set; }
-        public string Id { get; private set; }
-        public string Name { get; private set; }
-        public Room RoomPreference { get; private set; }
-        public Lecturer[] Lecturers { get; private set; }
-        public Group Group { get; private set; }
+        public bool NeedsLab { get; set; }
+        public bool IsDummy { get; set; }
+        public int NumberOfBlocks { get; set; }
+        public string Id { get; set; }
+        public string Name { get; set; }
+        public Room RoomPreference { get; set; }
+        public Lecturer[] Lecturers { get; set; }
+        public Group Group { get; set; }
 
         private static short globalIndex = 0;
         public short Index { get; private set; }
@@ -29,6 +30,8 @@ namespace TimetablePlanner
             Index = globalIndex;
             globalIndex++;
         }
+
+        public Course() { }
 
         public override string ToString()
         {

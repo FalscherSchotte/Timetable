@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
 
 namespace TimetablePlanner
 {
@@ -16,8 +17,57 @@ namespace TimetablePlanner
 
         #region Properties
 
+        /// <summary>
+        /// Current generation in evolution
+        /// </summary>
         public int CurrentGeneration { get; private set; }
+
+        /// <summary>
+        /// Population containing all current available individuals
+        /// </summary>
         public Individual[] Population { get; private set; }
+
+        /// <summary>
+        /// Evolution history
+        /// </summary>
+        public List<HistoryEntry> EvolutionHistory;
+
+        #endregion
+
+        #region Events
+
+        /// <summary>
+        /// Individual created
+        /// </summary>
+        public event Action<int> IndividualCreated;
+
+        /// <summary>
+        /// Generation finished
+        /// </summary>
+        public event Action<HistoryEntry> GenerationTick;
+
+        #endregion
+
+        #region Structs
+
+        /// <summary>
+        /// Evolution history element
+        /// </summary>
+        public struct HistoryEntry
+        {
+            public int Index;
+            public int AverageFitness;
+            public int BestFitness;
+            public DateTime CreationDate;
+
+            public HistoryEntry(int generation, int average, int best, DateTime creation)
+            {
+                Index = generation;
+                AverageFitness = average;
+                BestFitness = best;
+                CreationDate = creation;
+            }
+        }
 
         #endregion
 
@@ -28,13 +78,11 @@ namespace TimetablePlanner
         /// </summary>
         /// <param name="populationSize">size of the population to generate</param>
         /// <param name="tableData">timetable configuration</param>
-        public TimetableGenerator(int populationSize, TimetableData tableData)
+        public TimetableGenerator(TimetableData tableData)
         {
             if (random == null)
                 random = new Random(DateTime.Now.Millisecond);
             this.ttData = tableData;
-            CreatePopulation(populationSize);
-            SortIndividuals(Population);
         }
 
         #endregion
@@ -45,22 +93,57 @@ namespace TimetablePlanner
         /// Create Population with specified size and fill it random
         /// </summary>
         /// <param name="size">Size of the population</param>
-        private void CreatePopulation(int size)
+        public void CreatePopulation(int size, int numberOfThreads)
         {
-            Population = new Individual[size];
-            for (int i = 0; i < size; i++)
+            List<Individual> populationList = new List<Individual>(size);
+            List<Thread> creationThreads = new List<Thread>();
+            for (int i = 0; i < numberOfThreads; i++)
             {
-                Population[i] = new Individual(numberOfDays, ttData.Blocks.Length,
-                    ttData.Courses.Length, ttData.Lecturers.Length,
-                    ttData.Rooms.Length, ttData.Groups.Length);
+                Thread t = new Thread(new ParameterizedThreadStart(CreateIndividualsUntilPopulationFilled));
+                t.Name = "Individual creation thread " + i.ToString("00");
+                creationThreads.Add(t);
+            }
+            foreach (Thread t in creationThreads)
+            {
+                t.Start(populationList);
+            }
+            foreach (Thread t in creationThreads)
+            {
+                t.Join();
+            }
+
+            Population = populationList.ToArray();
+            CalculateFitness(Population);
+            SortIndividuals(Population);
+        }
+
+        /// <summary>
+        /// Creates a new individuals until the population reached its full size
+        /// </summary>
+        private void CreateIndividualsUntilPopulationFilled(Object parameter)
+        {
+            while (true)
+            {
+                int index = 0;
+                lock (parameter)
+                {
+                    if ((parameter as List<Individual>).Count == (parameter as List<Individual>).Capacity)
+                        return;
+                    (parameter as List<Individual>).Add(new Individual(numberOfDays, ttData.Blocks.Length,
+                        ttData.Courses.Length, ttData.Lecturers.Length,
+                        ttData.Rooms.Length, ttData.Groups.Length));
+                    index = (parameter as List<Individual>).Count - 1;
+                }
 
                 bool success = false;
                 do
                 {
-                    success = RandomFillIndividual(Population[i]);
+                    success = RandomFillIndividual((parameter as List<Individual>)[index]);
                 } while (!success);
+
+                if (IndividualCreated != null)
+                    IndividualCreated(index);
             }
-            CalculateFitness(Population);
         }
 
         /// <summary>
@@ -244,101 +327,60 @@ namespace TimetablePlanner
         /// </summary>
         public void PerformEvolution(int numberOfGenerations)
         {
-            List<int> fitnessHistory = new List<int>();
-            //int top5FitnessChangesCtr = 0;
-            //int top5Fitness = 0;
-            //int historyChangesCtr = 0;
+            EvolutionHistory = new List<HistoryEntry>();
+            EvolutionHistory.Add(new HistoryEntry(0, CalcAverageFitness(Population), Population[0].Fitness, DateTime.Now));
 
-            long start = DateTime.Now.Ticks;
-
-            fitnessHistory.Add(CalcAverageFitness(Population));
             for (CurrentGeneration = 0; CurrentGeneration < numberOfGenerations; CurrentGeneration++)
             {
                 List<Individual> individuals = new List<Individual>();
                 foreach (Individual individual in Population)
                 {
-                    //if (random.Next(0, 100) < 15)
-                    //{
-                    //    List<Individual> selection = RouletteSelection(2);
-                    //    Individual[] recombination = PerformRecombination(selection[0], selection[1]);
-                    //    individuals.Add(recombination[0]);
-                    //    individuals.Add(recombination[1]);
-                    //}
-                    //else
                     individuals.Add(PerformMutation(individual));
                 }
                 CalculateFitness(individuals);
                 individuals.AddRange(Population);
                 SortIndividuals(individuals);
+
+                //Population = RouletteSelection(Population.Length, individuals).ToArray(); 
+                //Rouletteselection is not working as good as best of n
                 Population = individuals.GetRange(0, Population.Length).ToArray();
 
-                fitnessHistory.Add(CalcAverageFitness(Population));
-                if (TestEarlyAbortOfEvolution(fitnessHistory))
-                {
-                    System.Diagnostics.Debug.WriteLine("Early abort of evolution after " + CurrentGeneration + " generations");
+                EvolutionHistory.Add(new HistoryEntry(CurrentGeneration, CalcAverageFitness(Population), Population[0].Fitness, DateTime.Now));
+                if (GenerationTick != null)
+                    GenerationTick(EvolutionHistory[EvolutionHistory.Count - 1]);
+
+                if (MeanAverageFitnessIncreaseOfTheLastNGenerations(10) < 2)
                     break;
-                }
-            }
-
-            long end = DateTime.Now.Ticks;
-            System.Diagnostics.Debug.WriteLine("Mean time per generation: " + (end - start) / 10000 / CurrentGeneration + "ms");
-            PrintFitnessIncrease(fitnessHistory);
-        }
-
-        private int CalcAverageFitness(Individual[] population)
-        {
-            int average = 0;
-            foreach (var individual in population)
-            {
-                average += individual.Fitness;
-            }
-            return average / population.Length;
-        }
-
-        private void PrintFitnessIncrease(List<int> fitnessHistory)
-        {
-            System.Diagnostics.Debug.WriteLine("Mean fitness increase per generation");
-            for (int fIndex = 1; fIndex < fitnessHistory.Count; fIndex++)
-            {
-                //System.Diagnostics.Debug.WriteLine((fIndex - 1).ToString().PadLeft(4, '0') + "->" +
-                //    fIndex.ToString().PadLeft(4, '0') + ": " + (fitnessHistory[fIndex] - fitnessHistory[fIndex - 1]));
-                System.Diagnostics.Debug.WriteLine((fitnessHistory[fIndex] - fitnessHistory[fIndex - 1]));
             }
         }
 
-        private bool TestEarlyAbortOfEvolution(List<int> fitnessHistory)
+        /// <summary>
+        /// Calculates the mean average fitness increase of the last n generations in evolution history
+        /// </summary>
+        /// <param name="n">Number of generations</param>
+        /// <returns>Mean increase</returns>
+        private int MeanAverageFitnessIncreaseOfTheLastNGenerations(int n)
         {
-            int generationSpan = 10;
-            if (fitnessHistory.Count > generationSpan)
+            if (EvolutionHistory.Count < 2)
+                return EvolutionHistory[EvolutionHistory.Count - 1].AverageFitness;
+
+            n = Math.Min(n, EvolutionHistory.Count - 1);
+            int sum = 0;
+            for (int generation = 0; generation < n; generation++)
             {
-                int averageFitnessChange = 0;
-                for (int i = fitnessHistory.Count - 1; i >= fitnessHistory.Count - generationSpan; i--)
-                {
-                    averageFitnessChange += fitnessHistory[i] - fitnessHistory[i - 1];
-                }
-                if (averageFitnessChange / generationSpan <= 1)
-                    return true;
+                sum += EvolutionHistory[EvolutionHistory.Count - 1 - generation].AverageFitness - EvolutionHistory[EvolutionHistory.Count - 2 - generation].AverageFitness;
             }
-            return false;
+            return sum / n;
         }
 
-        private bool TestEarlyAbortOfEvolution(ref int top5FitnessChangesCtr, ref int top5Fitness, int generation)
+        /// <summary>
+        /// Calculates the average fitness
+        /// </summary>
+        /// <param name="source">Collection of individuals to inspect</param>
+        /// <returns>Average fitness</returns>
+        private int CalcAverageFitness(IEnumerable<Individual> source)
         {
-            int newTop5Fitness = 0;
-            for (int i = 0; i < Math.Min(5, Population.Length); i++)
-            {
-                newTop5Fitness += Population[i].Fitness;
-            }
-            if (newTop5Fitness == top5Fitness)
-                top5FitnessChangesCtr++;
-            top5Fitness = newTop5Fitness;
-
-            if (top5FitnessChangesCtr == 50)
-            {
-                System.Diagnostics.Debug.WriteLine("Early abort after " + generation + " generations.");
-                return true;
-            }
-            return false;
+            return source.Sum<Individual>(p => p.Fitness) / source.Count<Individual>();
         }
 
         /// <summary>
@@ -377,125 +419,29 @@ namespace TimetablePlanner
             return mutation;
         }
 
-        /// <summary>
-        /// Create two new individuals via crossbreeding of two existing individuals
-        /// </summary>
-        /// <param name="parent1"></param>
-        /// <param name="parent2"></param>
-        /// <returns></returns>
-        private Individual[] PerformRecombination(Individual parent1, Individual parent2)
-        {
-            int crossPoint1 = random.Next(1, parent1.Courses.GetLength(0) - 2);
-            int crossPoint2 = random.Next(crossPoint1, parent1.Courses.GetLength(0) - 1);
-            Individual combination1 = new Individual(numberOfDays, ttData.Blocks.Length, ttData.Courses.Length,
-                ttData.Lecturers.Length, ttData.Rooms.Length, ttData.Groups.Length);
-            Individual combination2 = new Individual(numberOfDays, ttData.Blocks.Length, ttData.Courses.Length,
-                ttData.Lecturers.Length, ttData.Rooms.Length, ttData.Groups.Length);
-
-            for (int i = 0; i < crossPoint1; i++)
-            {
-                if (!AdoptSettingOfCourse(i, ref combination1, parent1))
-                    return new Individual[] { parent1, parent2 };
-                if (!AdoptSettingOfCourse(i, ref combination2, parent2))
-                    return new Individual[] { parent1, parent2 };
-            }
-            for (int i = crossPoint1; i < crossPoint2; i++)
-            {
-                if (!AdoptSettingOfCourse(i, ref combination1, parent2))
-                    return new Individual[] { parent1, parent2 };
-                if (!AdoptSettingOfCourse(i, ref combination2, parent1))
-                    return new Individual[] { parent1, parent2 };
-            }
-            for (int i = crossPoint2; i < parent1.Courses.GetLength(0); i++)
-            {
-                if (!AdoptSettingOfCourse(i, ref combination1, parent1))
-                    return new Individual[] { parent1, parent2 };
-                if (!AdoptSettingOfCourse(i, ref combination2, parent2))
-                    return new Individual[] { parent1, parent2 };
-            }
-
-            return new Individual[] { combination1, combination2 };
-        }
-
-        private bool AdoptSettingOfCourse(int course, ref Individual targetIndividual, Individual sourceIndividual)
-        {
-            List<PlacementContainer> placementList = GetPlacementCopyList(course, targetIndividual, sourceIndividual);
-
-            if (placementList.Count > 0)
-            {
-                foreach (PlacementContainer placement in placementList)
-                {
-                    targetIndividual.SetChromosome(course, placement.day,
-                        placement.block,
-                        placement.room,
-                        ttData.Courses[course].Group.Index,
-                        GetLecturerIndices(course).ToArray());
-                }
-            }
-            else
-            {
-                List<PlacementContainer> availablePlacements = GetPossibilitiesForCourse(course, targetIndividual);
-                if (availablePlacements.Count <= 0)
-                    return false;
-                int chosenPos = random.Next(0, availablePlacements.Count);
-                for (int blockOffset = 0; blockOffset < ttData.Courses[course].NumberOfBlocks; blockOffset++)
-                {
-                    targetIndividual.SetChromosome(course, availablePlacements[chosenPos].day,
-                        availablePlacements[chosenPos].block + blockOffset,
-                        availablePlacements[chosenPos].room,
-                        ttData.Courses[course].Group.Index,
-                        GetLecturerIndices(course).ToArray());
-                }
-            }
-
-            return true;
-        }
-
-        private List<PlacementContainer> GetPlacementCopyList(int course, Individual targetIndividual, Individual sourceIndividual)
-        {
-            List<PlacementContainer> placementList = new List<PlacementContainer>();
-            for (int day = 0; day < sourceIndividual.Courses.GetLength(1); day++)
-            {
-                for (int block = 0; block < sourceIndividual.Courses.GetLength(2); block++)
-                {
-                    if (block + ttData.Courses[course].NumberOfBlocks - 1 < sourceIndividual.Courses.GetLength(2))
-                    {
-                        if (sourceIndividual.Courses[course, day, block] != -1)
-                        {
-                            int room = sourceIndividual.Courses[course, day, block];
-                            if (!IsValidForCourse(course, day, block, room, targetIndividual))
-                                return new List<PlacementContainer>();
-
-                            PlacementContainer container = new PlacementContainer();
-                            container.day = day;
-                            container.block = block;
-                            container.room = room;
-                            placementList.Add(container);
-                        }
-                    }
-                }
-            }
-            return placementList;
-        }
-
-        private List<Individual> RouletteSelection(int numberOfIndividualsToChoose)
+        private List<Individual> RouletteSelection(int numberOfIndividualsToChoose, List<Individual> source)
         {
             List<Individual> individuals = new List<Individual>();
-            int totalFitness = Population.Sum(p => p.Fitness);
-            int ivoryBall = random.Next(1, totalFitness);
+            int totalFitness = 0;
+            for (int i = 0; i < source.Count; i++)
+            {
+                totalFitness += source[i].Fitness * i; //Scaling the values with their ranking
+            }
 
             for (int numberOfRolls = 0; numberOfRolls < numberOfIndividualsToChoose; numberOfRolls++)
             {
+                int ivoryBall = random.Next(1, totalFitness);
                 int currentFitness = 0;
-                for (int individualIndex = 0; individualIndex < Population.Length; individualIndex++)
+                for (int individualIndex = source.Count - 1; individualIndex >= 0; individualIndex--)
                 {
-                    if ((currentFitness += Population[individualIndex].Fitness) >= ivoryBall)
+                    if ((currentFitness += source[individualIndex].Fitness * (source.Count - individualIndex)) >= ivoryBall)
                     {
-                        individuals.Add(Population[individualIndex]);
+                        individuals.Add(source[individualIndex]);
                         break;
                     }
                 }
             }
+            SortIndividuals(individuals);
             return individuals;
         }
 
@@ -564,7 +510,7 @@ namespace TimetablePlanner
 
                             //Courses should start before 13:00
                             //Opposite for dummy courses
-                            fitness += (ttData.Blocks[block].Start.Hour - 13) * 10 * (ttData.Courses[course].IsDummy ? 2 : -1);
+                            fitness += (ttData.Blocks[block].Start.Hour - 13) * 15 * (ttData.Courses[course].IsDummy ? 1 : -1);
 
                             //Roompreference
                             if (ttData.Courses[course].RoomPreference != null)

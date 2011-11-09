@@ -1,10 +1,11 @@
 ﻿
+using System.Xml.Serialization;
 namespace TimetablePlanner
 {
     public class Group : IExportable
     {
-        public string Id { get; private set; }
-        public string Name { get; private set; }
+        public string Id { get; set; }
+        public string Name { get; set; }
 
         private static short globalIndex = 0;
         public short Index { get; private set; }
@@ -16,6 +17,8 @@ namespace TimetablePlanner
             Index = globalIndex;
             globalIndex++;
         }
+
+        public Group() { }
 
         public override string ToString()
         {

@@ -1,17 +1,15 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <timetableData>
-    <parameters>
-        <blocks>
-            <block start="08:00" end="09:30"/>
-            <block start="09:50" end="11:20"/>
-            <block start="11:30" end="13:00">
-                <exception day="Wednesday" />
-            </block>
-            <block start="14:00" end="15:30"/>
-            <block start="15:40" end="17:10"/>
-            <block start="17:20" end="18:50"/>
-        </blocks>
-    </parameters>
+    <blocks>
+        <block start="08:00" end="09:30"/>
+        <block start="09:50" end="11:20"/>
+        <block start="11:30" end="13:00">
+            <exception day="Wednesday" />
+        </block>
+        <block start="14:00" end="15:30"/>
+        <block start="15:40" end="17:10"/>
+        <block start="17:20" end="18:50"/>
+    </blocks>
     <lecturers>
         <lecturer pId="ALL" lastName="Alle Professoren" numberOfResearchDays="0" isDummy="true"/>
         <lecturer pId="WILDCARD" lastname="Mehrere Professoren" numberOfResearchDays="0" isDummy="true"/>

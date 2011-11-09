@@ -38,7 +38,7 @@
         </Border>
         <Grid Grid.Row="1">
             <TabControl Margin="5,2.5,5,5" >
-                <TabItem Header="Blocks">
+                <TabItem Header="Blocks" DataContext="{Binding BlockContext}">
                     <tt:BlocksUI/>
                 </TabItem>
                 <TabItem Header="Rooms">

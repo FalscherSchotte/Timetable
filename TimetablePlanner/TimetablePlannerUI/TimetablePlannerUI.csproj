@@ -58,6 +58,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="ActionCommand.cs" />
+    <Compile Include="BaseController.cs" />
+    <Compile Include="BlockController.cs" />
     <Compile Include="BlocksUI.xaml.cs">
       <DependentUpon>BlocksUI.xaml</DependentUpon>
     </Compile>
@@ -73,7 +76,7 @@
     <Compile Include="RoomsUI.xaml.cs">
       <DependentUpon>RoomsUI.xaml</DependentUpon>
     </Compile>
-    <Compile Include="TimetableController.cs" />
+    <Compile Include="ConfigController.cs" />
     <Page Include="BlocksUI.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

@@ -23,7 +23,7 @@ namespace TimetablePlannerUI
         public MainWindow()
         {
             InitializeComponent();
-            DataContext = new TimetableController();
+            DataContext = new ConfigController();
         }
     }
 }

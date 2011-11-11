@@ -1,7 +1,7 @@
 ﻿
 namespace TimetablePlanner
 {
-    interface IExportable
+    public interface IExportable
     {
         string Name { get; }
         string Id { get; }

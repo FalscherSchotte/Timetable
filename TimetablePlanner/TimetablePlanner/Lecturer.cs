@@ -22,7 +22,7 @@ namespace TimetablePlanner
             this.Id = id;
             this.LastName = lastName;
             this.FirstName = firstName;
-            this.Name = firstName + lastName;
+            this.Name = firstName + " " + lastName;
             this.NeededNumberOfResearchDays = numberOfResearchDays;
             this.IsDummy = isDummy;
 
@@ -46,7 +46,7 @@ namespace TimetablePlanner
 
         public override string ToString()
         {
-            return Name;
+            return FirstName + " " + LastName;
         }
     }
 }

@@ -64,15 +64,20 @@
     <Compile Include="BlocksUI.xaml.cs">
       <DependentUpon>BlocksUI.xaml</DependentUpon>
     </Compile>
+    <Compile Include="CourseController.cs" />
     <Compile Include="CoursesUI.xaml.cs">
       <DependentUpon>CoursesUI.xaml</DependentUpon>
     </Compile>
+    <Compile Include="GroupController.cs" />
     <Compile Include="GroupsUI.xaml.cs">
       <DependentUpon>GroupsUI.xaml</DependentUpon>
     </Compile>
+    <Compile Include="LecturerController.cs" />
     <Compile Include="LecturersUI.xaml.cs">
       <DependentUpon>LecturersUI.xaml</DependentUpon>
     </Compile>
+    <Compile Include="NotifyBase.cs" />
+    <Compile Include="RoomController.cs" />
     <Compile Include="RoomsUI.xaml.cs">
       <DependentUpon>RoomsUI.xaml</DependentUpon>
     </Compile>

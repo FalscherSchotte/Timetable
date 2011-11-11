@@ -10,7 +10,9 @@
             <ColumnDefinition Width="150"/>
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
-        <ListBox Margin="2.5" Grid.Row="0">
+        <ListBox Margin="2.5" Grid.Row="0" 
+                 ItemsSource="{Binding GroupList, UpdateSourceTrigger=PropertyChanged}" 
+                 SelectedIndex="{Binding SelectedIndex, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
             <ListBox.Effect>
                 <DropShadowEffect Color="Black" Direction="320" Opacity="0.5" ShadowDepth="2.5" />
             </ListBox.Effect>
@@ -33,13 +35,13 @@
                 <RowDefinition Height="25" />
                 <RowDefinition Height="25" />
             </Grid.RowDefinitions>
-            <StackPanel Grid.Row="0" Grid.ColumnSpan="4" Orientation="Horizontal" VerticalAlignment="Top">
-                <Button Width="80" Height="25" Content="Add" Margin="2.5,2.5,2.5,2.5"/>
-                <Button Width="80" Height="25" Content="Save" Margin="2.5,2.5,2.5,2.5"/>
-                <Button Width="80" Height="25" Content="Delete" Margin="2.5,2.5,2.5,2.5"/>
+            <StackPanel Grid.ColumnSpan="4" Orientation="Horizontal" VerticalAlignment="Top">
+                <Button Command="{Binding SaveCommand}" Width="80" Height="25" Content="Save" Margin="2.5,2.5,2.5,2.5"/>
+                <Button Command="{Binding NewCommand}" Width="80" Height="25" Content="New" Margin="2.5,2.5,2.5,2.5"/>
+                <Button Command="{Binding DeleteCommand}" Width="80" Height="25" Content="Delete" Margin="2.5,2.5,2.5,2.5"/>
             </StackPanel>
             <Label Grid.Row="1" Content="Name:" />
-            <TextBox Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" Margin="0,1,1,1"/>
+            <TextBox Text="{Binding GroupName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" Margin="0,1,1,1"/>
         </Grid>
     </Grid>
 </UserControl>

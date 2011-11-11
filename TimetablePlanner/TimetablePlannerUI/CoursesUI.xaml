@@ -5,13 +5,16 @@
              xmlns:extToolkit="clr-namespace:Microsoft.Windows.Controls;assembly=WPFToolkit.Extended"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              mc:Ignorable="d" 
-             d:DesignHeight="300" d:DesignWidth="450">
+             d:DesignHeight="300" d:DesignWidth="450"
+             >
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="150"/>
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
-        <ListBox Margin="2.5" Grid.Row="0">
+        <ListBox Margin="2.5" Grid.Row="0" 
+                 ItemsSource="{Binding CourseList, UpdateSourceTrigger=PropertyChanged}" 
+                 SelectedIndex="{Binding SelectedIndex, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
             <ListBox.Effect>
                 <DropShadowEffect Color="Black" Direction="320" Opacity="0.5" ShadowDepth="2.5" />
             </ListBox.Effect>
@@ -36,31 +39,43 @@
                 <RowDefinition Height="25" />
                 <RowDefinition Height="25" />
             </Grid.RowDefinitions>
-            <StackPanel Grid.Row="0" Grid.ColumnSpan="4" Orientation="Horizontal" VerticalAlignment="Top">
-                <Button Width="80" Height="25" Content="Add" Margin="2.5,2.5,2.5,2.5"/>
-                <Button Width="80" Height="25" Content="Save" Margin="2.5,2.5,2.5,2.5"/>
-                <Button Width="80" Height="25" Content="Delete" Margin="2.5,2.5,2.5,2.5"/>
+            <StackPanel Grid.ColumnSpan="4" Orientation="Horizontal" VerticalAlignment="Top">
+                <Button Command="{Binding SaveCommand}" Width="80" Height="25" Content="Save" Margin="2.5,2.5,2.5,2.5"/>
+                <Button Command="{Binding NewCommand}" Width="80" Height="25" Content="New" Margin="2.5,2.5,2.5,2.5"/>
+                <Button Command="{Binding DeleteCommand}" Width="80" Height="25" Content="Delete" Margin="2.5,2.5,2.5,2.5"/>
             </StackPanel>
             <Label Grid.Row="1" Content="Id:" />
-            <TextBox Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" Margin="0,1,1,1"/>
+            <TextBox Text="{Binding CourseId, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" Margin="0,1,1,1"/>
             <Label Grid.Row="2" Content="Name:" />
-            <TextBox Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" Margin="0,1,1,1"/>
+            <TextBox Text="{Binding CourseName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" Margin="0,1,1,1"/>
             <Label Grid.Row="3" Content="No. of Blocks:" />
-            <extToolkit:IntegerUpDown Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="2" Minimum="1" Maximum="5" Value="01" Margin="1"/>
+            <extToolkit:IntegerUpDown Text="{Binding BlockCount, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="2" Minimum="1" Maximum="5" Value="01" Margin="1"/>
             <Label Grid.Row="4" Content="Repetitions:" />
-            <extToolkit:IntegerUpDown Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="2" Minimum="1" Maximum="3" Value="01" Margin="1"/>
+            <extToolkit:IntegerUpDown Text="{Binding RepetitionCount, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="2" Minimum="1" Maximum="3" Value="01" Margin="1"/>
             <Label Grid.Row="5" Content="Lecturer 1:" />
-            <ComboBox Grid.Row="5" Grid.Column="1" Grid.ColumnSpan="2" Margin="1,1.5,1,1.5"/>
+            <ComboBox ItemsSource="{Binding LecturerList, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
+                      SelectedIndex="{Binding SelectedLecturer1Index, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                      Grid.Row="5" Grid.Column="1" Grid.ColumnSpan="2" Margin="1,1.5,1,1.5"/>
             <Label Grid.Row="6" Content="Lecturer 2:" />
-            <ComboBox Grid.Row="6" Grid.Column="1" Grid.ColumnSpan="2" Margin="1,1.5,1,1.5"/>
+            <ComboBox ItemsSource="{Binding LecturerList, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
+                      SelectedIndex="{Binding SelectedLecturer2Index, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                      IsEnabled="{Binding ElementName=SecondLecCB, Path=IsChecked}"
+                      Grid.Row="6" Grid.Column="1" Grid.ColumnSpan="2" Margin="1,1.5,1,1.5"/>
+            <CheckBox Name="SecondLecCB" IsChecked="{Binding HasSecondLecturer}" Grid.Row="6" VerticalAlignment="Center" Grid.Column="4" Margin="5,0,0,0"/>
             <Label Grid.Row="7" Content="Group:" />
-            <ComboBox Grid.Row="7" Grid.Column="1" Grid.ColumnSpan="2" Margin="1,1.5,1,1.5"/>
+            <ComboBox ItemsSource="{Binding GroupList, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
+                      SelectedIndex="{Binding SelectedGroupIndex, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                      Grid.Row="7" Grid.Column="1" Grid.ColumnSpan="2" Margin="1,1.5,1,1.5"/>
             <Label Grid.Row="8" Content="Needs lab:" />
-            <CheckBox Grid.Row="8" Grid.Column="1" Grid.ColumnSpan="2" VerticalAlignment="Center"/>
+            <CheckBox IsChecked="{Binding NeedsLab, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Grid.Row="8" Grid.Column="1" Grid.ColumnSpan="2" VerticalAlignment="Center"/>
             <Label Grid.Row="9" Content="Dummy:" />
-            <CheckBox Grid.Row="9" Grid.Column="1" Grid.ColumnSpan="2" VerticalAlignment="Center"/>
+            <CheckBox IsChecked="{Binding IsDummy, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Grid.Row="9" Grid.Column="1" Grid.ColumnSpan="2" VerticalAlignment="Center"/>
             <Label Grid.Row="10" Content="Preference:" />
-            <ComboBox Grid.Row="10" Grid.Column="1" Grid.ColumnSpan="2" Margin="1,1.5,1,1.5"/>
+            <ComboBox ItemsSource="{Binding RoomPreferenceList, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
+                      SelectedIndex="{Binding SelectedRoomPreferenceIndex, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                      IsEnabled="{Binding ElementName=PreferenceCB, Path=IsChecked}"
+                      Grid.Row="10" Grid.Column="1" Grid.ColumnSpan="2" Margin="1,1.5,1,1.5"/>
+            <CheckBox Name="PreferenceCB" IsChecked="{Binding HasPreference}" Grid.Row="10" VerticalAlignment="Center" Grid.Column="4" Margin="5,0,0,0"/>
         </Grid>
     </Grid>
 </UserControl>

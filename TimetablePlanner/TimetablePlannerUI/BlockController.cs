@@ -1,127 +1,162 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Windows;
 using System.Collections.ObjectModel;
 using TimetablePlanner;
-using System.Windows.Input;
+using System.Text;
+using Microsoft.Windows.Controls;
 
 namespace TimetablePlannerUI
 {
     public class BlockController : BaseController
     {
-        public ObservableCollection<Block> BlockList
-        {
-            get { return (ObservableCollection<Block>)GetValue(BlockListProperty); }
-            set { SetValue(BlockListProperty, value); }
-        }
+        public ObservableCollection<Block> BlockList { get; private set; }
 
-        public static readonly DependencyProperty BlockListProperty =
-            DependencyProperty.Register("BlockList", typeof(ObservableCollection<Block>), typeof(BlockController), new UIPropertyMetadata(new ObservableCollection<Block>()));
-
+        private string _StartTimeHours = "8";
         public string StartTimeHours
         {
-            get { return (string)GetValue(StartTimeHoursProperty); }
-            set { SetValue(StartTimeHoursProperty, value); }
+            get { return _StartTimeHours; }
+            set
+            {
+                _StartTimeHours = value;
+                RaisePropertyChanged(() => StartTimeHours);
+            }
         }
 
-        public static readonly DependencyProperty StartTimeHoursProperty =
-            DependencyProperty.Register("StartTimeHours", typeof(string), typeof(BlockController), new UIPropertyMetadata("08"));
-
-        public string StartTimeMinutes
-        {
-            get { return (string)GetValue(StartTimeMinutesProperty); }
-            set { SetValue(StartTimeMinutesProperty, value); }
-        }
-
-        public static readonly DependencyProperty StartTimeMinutesProperty =
-            DependencyProperty.Register("StartTimeMinutes", typeof(string), typeof(BlockController), new UIPropertyMetadata("00"));
-
+        private string _EndTimeHours = "9";
         public string EndTimeHours
         {
-            get { return (string)GetValue(EndTimeHoursProperty); }
-            set { SetValue(EndTimeHoursProperty, value); }
+            get { return _EndTimeHours; }
+            set
+            {
+                _EndTimeHours = value;
+                RaisePropertyChanged(() => EndTimeHours);
+            }
         }
 
-        public static readonly DependencyProperty EndTimeHoursProperty =
-            DependencyProperty.Register("EndTimeHours", typeof(string), typeof(BlockController), new UIPropertyMetadata("09"));
+        private string _StartTimeMinutes = "0";
+        public string StartTimeMinutes
+        {
+            get { return _StartTimeMinutes; }
+            set
+            {
+                _StartTimeMinutes = value;
+                RaisePropertyChanged(() => StartTimeMinutes);
+            }
+        }
 
+        private string _EndTimeMinutes = "30";
         public string EndTimeMinutes
         {
-            get { return (string)GetValue(EndTimeMinutesProperty); }
-            set { SetValue(EndTimeMinutesProperty, value); }
+            get { return _EndTimeMinutes; }
+            set
+            {
+                _EndTimeMinutes = value;
+                RaisePropertyChanged(() => EndTimeMinutes);
+            }
         }
 
-        public static readonly DependencyProperty EndTimeMinutesProperty =
-            DependencyProperty.Register("EndTimeMinutes", typeof(string), typeof(BlockController), new UIPropertyMetadata("30"));
-
+        private bool _ExceptMonday;
         public bool ExceptMonday
         {
-            get { return (bool)GetValue(ExceptMondayProperty); }
-            set { SetValue(ExceptMondayProperty, value); }
+            get { return _ExceptMonday; }
+            set
+            {
+                _ExceptMonday = value;
+                RaisePropertyChanged(() => ExceptMonday);
+            }
         }
 
-        public static readonly DependencyProperty ExceptMondayProperty =
-            DependencyProperty.Register("ExceptMonday", typeof(bool), typeof(BlockController), new UIPropertyMetadata(false));
-
+        private bool _ExceptTuesday;
         public bool ExceptTuesday
         {
-            get { return (bool)GetValue(ExceptTuesdayProperty); }
-            set { SetValue(ExceptTuesdayProperty, value); }
+            get { return _ExceptTuesday; }
+            set
+            {
+                _ExceptTuesday = value;
+                RaisePropertyChanged(() => ExceptTuesday);
+            }
         }
 
-        public static readonly DependencyProperty ExceptTuesdayProperty =
-            DependencyProperty.Register("ExceptTuesday", typeof(bool), typeof(BlockController), new UIPropertyMetadata(false));
-
+        private bool _ExceptWednesday;
         public bool ExceptWednesday
         {
-            get { return (bool)GetValue(ExceptWednesdayProperty); }
-            set { SetValue(ExceptWednesdayProperty, value); }
+            get { return _ExceptWednesday; }
+            set
+            {
+                _ExceptWednesday = value;
+                RaisePropertyChanged(() => ExceptWednesday);
+            }
         }
 
-        public static readonly DependencyProperty ExceptWednesdayProperty =
-            DependencyProperty.Register("ExceptWednesday", typeof(bool), typeof(BlockController), new UIPropertyMetadata(false));
-
+        private bool _ExceptThursday;
         public bool ExceptThursday
         {
-            get { return (bool)GetValue(ExceptThursdayProperty); }
-            set { SetValue(ExceptThursdayProperty, value); }
+            get { return _ExceptThursday; }
+            set
+            {
+                _ExceptThursday = value;
+                RaisePropertyChanged(() => ExceptThursday);
+            }
         }
 
-        public static readonly DependencyProperty ExceptThursdayProperty =
-            DependencyProperty.Register("ExceptThursday", typeof(bool), typeof(BlockController), new UIPropertyMetadata(false));
-
+        private bool _ExceptFriday;
         public bool ExceptFriday
         {
-            get { return (bool)GetValue(ExceptFridayProperty); }
-            set { SetValue(ExceptFridayProperty, value); }
+            get { return _ExceptFriday; }
+            set
+            {
+                _ExceptFriday = value;
+                RaisePropertyChanged(() => ExceptFriday);
+            }
         }
 
-        public static readonly DependencyProperty ExceptFridayProperty =
-            DependencyProperty.Register("ExceptFriday", typeof(bool), typeof(BlockController), new UIPropertyMetadata(false));
-
+        private int _SelectedIndex;
         public int SelectedIndex
         {
-            get { return (int)GetValue(SelectedIndexProperty); }
-            set { SetValue(SelectedIndexProperty, value); }
+            get { return _SelectedIndex; }
+            set
+            {
+                _SelectedIndex = value;
+                RaisePropertyChanged(() => SelectedIndex);
+                UpdateSelection(value);
+            }
         }
-
-        public static readonly DependencyProperty SelectedIndexProperty =
-            DependencyProperty.Register("SelectedIndex", typeof(int), typeof(BlockController), new UIPropertyMetadata(-1, new PropertyChangedCallback(SelectedIndexChanged)));
-
 
         public BlockController()
             : base()
         {
-            BlockList.Add(new Block(DateTime.Now, DateTime.Now, null));
+            BlockList = new ObservableCollection<Block>();
         }
 
         public override void Save()
         {
+            if (SelectedIndex < 0)
+                return;
+            if (!DataIsValid())
+                return;
+
             BlockList[SelectedIndex].Start = DateTime.Parse(StartTimeHours + ":" + StartTimeMinutes);
             BlockList[SelectedIndex].End = DateTime.Parse(EndTimeHours + ":" + EndTimeMinutes);
-            
+
+            List<DayOfWeek> exceptions = new List<DayOfWeek>();
+            if (ExceptMonday)
+                exceptions.Add(DayOfWeek.Monday);
+            if (ExceptTuesday)
+                exceptions.Add(DayOfWeek.Tuesday);
+            if (ExceptWednesday)
+                exceptions.Add(DayOfWeek.Wednesday);
+            if (ExceptThursday)
+                exceptions.Add(DayOfWeek.Thursday);
+            if (ExceptFriday)
+                exceptions.Add(DayOfWeek.Friday);
+            BlockList[SelectedIndex].Exceptions = exceptions.ToArray();
+
+            Block tmpBlock = BlockList[SelectedIndex];
+            int tmpIndex = SelectedIndex;
+            BlockList.RemoveAt(tmpIndex);
+            BlockList.Insert(tmpIndex, tmpBlock);
+            SelectedIndex = tmpIndex;
         }
 
         public override void Delete()
@@ -133,17 +168,30 @@ namespace TimetablePlannerUI
 
         public override void New()
         {
-            BlockList.Add(new Block());
+            if (!DataIsValid())
+                return;
+
+            DateTime start = DateTime.Parse(StartTimeHours + ":" + StartTimeMinutes);
+            DateTime end = DateTime.Parse(EndTimeHours + ":" + EndTimeMinutes);
+            List<DayOfWeek> exceptions = new List<DayOfWeek>();
+            if (ExceptMonday)
+                exceptions.Add(DayOfWeek.Monday);
+            if (ExceptTuesday)
+                exceptions.Add(DayOfWeek.Tuesday);
+            if (ExceptWednesday)
+                exceptions.Add(DayOfWeek.Wednesday);
+            if (ExceptThursday)
+                exceptions.Add(DayOfWeek.Thursday);
+            if (ExceptFriday)
+                exceptions.Add(DayOfWeek.Friday);
+            BlockList.Add(new Block(start, end, exceptions.ToArray()));
+
+            RaisePropertyChanged(() => this.BlockList);
         }
 
-        public static void SelectedIndexChanged(DependencyObject o, DependencyPropertyChangedEventArgs args)
+        public void UpdateSelection(int newValue)
         {
-            (o as BlockController).UpdateSelection(args.NewValue);
-        }
-
-        public void UpdateSelection(object newValue)
-        {
-            if ((int)newValue < 0)
+            if (newValue < 0)
             {
                 StartTimeHours = "08";
                 StartTimeMinutes = "00";
@@ -158,18 +206,21 @@ namespace TimetablePlannerUI
             }
             else
             {
-                StartTimeHours = BlockList[(int)newValue].Start.TimeOfDay.Hours.ToString();
-                StartTimeMinutes = BlockList[(int)newValue].Start.TimeOfDay.Minutes.ToString();
-                EndTimeHours = BlockList[(int)newValue].End.TimeOfDay.Hours.ToString();
-                EndTimeMinutes = BlockList[(int)newValue].End.TimeOfDay.Minutes.ToString();
+                if (!DataIsValid())
+                    return;
 
-                if (BlockList[(int)newValue].Exceptions != null)
+                StartTimeHours = BlockList[newValue].Start.TimeOfDay.Hours.ToString();
+                StartTimeMinutes = BlockList[newValue].Start.TimeOfDay.Minutes.ToString();
+                EndTimeHours = BlockList[newValue].End.TimeOfDay.Hours.ToString();
+                EndTimeMinutes = BlockList[newValue].End.TimeOfDay.Minutes.ToString();
+
+                if (BlockList[newValue].Exceptions != null)
                 {
-                    ExceptMonday = BlockList[(int)newValue].Exceptions.Contains(DayOfWeek.Monday) ? true : false;
-                    ExceptTuesday = BlockList[(int)newValue].Exceptions.Contains(DayOfWeek.Tuesday) ? true : false;
-                    ExceptWednesday = BlockList[(int)newValue].Exceptions.Contains(DayOfWeek.Wednesday) ? true : false;
-                    ExceptThursday = BlockList[(int)newValue].Exceptions.Contains(DayOfWeek.Thursday) ? true : false;
-                    ExceptFriday = BlockList[(int)newValue].Exceptions.Contains(DayOfWeek.Friday) ? true : false;
+                    ExceptMonday = BlockList[newValue].Exceptions.Contains(DayOfWeek.Monday) ? true : false;
+                    ExceptTuesday = BlockList[newValue].Exceptions.Contains(DayOfWeek.Tuesday) ? true : false;
+                    ExceptWednesday = BlockList[newValue].Exceptions.Contains(DayOfWeek.Wednesday) ? true : false;
+                    ExceptThursday = BlockList[newValue].Exceptions.Contains(DayOfWeek.Thursday) ? true : false;
+                    ExceptFriday = BlockList[newValue].Exceptions.Contains(DayOfWeek.Friday) ? true : false;
                 }
                 else
                 {
@@ -180,6 +231,18 @@ namespace TimetablePlannerUI
                     ExceptFriday = false;
                 }
             }
+        }
+
+        public bool DataIsValid()
+        {
+            DateTime start = DateTime.Parse(StartTimeHours + ":" + StartTimeMinutes);
+            DateTime end = DateTime.Parse(EndTimeHours + ":" + EndTimeMinutes);
+            if ((end - start).TotalMinutes < 1)
+            {
+                MessageBox.Show("Starttime must be before endtime.", "Invalid data", System.Windows.MessageBoxButton.OK, System.Windows.MessageBoxImage.Error);
+                return false;
+            }
+            return true;
         }
     }
 }

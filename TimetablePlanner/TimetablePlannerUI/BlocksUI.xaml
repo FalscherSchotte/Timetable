@@ -12,8 +12,8 @@
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
         <ListBox Margin="2.5" Grid.Row="0" 
-                 ItemsSource="{Binding Mode=TwoWay, Path=BlockList, UpdateSourceTrigger=PropertyChanged}" 
-                 SelectedIndex="{Binding Mode=TwoWay, Path=SelectedIndex, UpdateSourceTrigger=PropertyChanged}">
+                 ItemsSource="{Binding BlockList, UpdateSourceTrigger=PropertyChanged}" 
+                 SelectedIndex="{Binding SelectedIndex, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
             <ListBox.Effect>
                 <DropShadowEffect Color="Black" Direction="320" Opacity="0.5" ShadowDepth="2.5" />
             </ListBox.Effect>
@@ -36,23 +36,23 @@
                 <RowDefinition Height="25" />
                 <RowDefinition Height="25" />
             </Grid.RowDefinitions>
-            <StackPanel Grid.Row="0" Grid.ColumnSpan="4" Orientation="Horizontal" VerticalAlignment="Top">
+            <StackPanel Grid.ColumnSpan="4" Orientation="Horizontal" VerticalAlignment="Top">
                 <Button Command="{Binding SaveCommand}" Width="80" Height="25" Content="Save" Margin="2.5,2.5,2.5,2.5"/>
                 <Button Command="{Binding NewCommand}" Width="80" Height="25" Content="New" Margin="2.5,2.5,2.5,2.5"/>
                 <Button Command="{Binding DeleteCommand}" Width="80" Height="25" Content="Delete" Margin="2.5,2.5,2.5,2.5"/>
             </StackPanel>
             <Label Grid.Row="1" Content="Starttime:" />
-            <extToolkit:IntegerUpDown Text="{Binding StartTimeHours, FallbackValue=08, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Grid.Row="1" Grid.Column="1" Minimum="07" Maximum="20" Value="08" Margin="1.5" FormatString="00"/>
-            <extToolkit:IntegerUpDown Text="{Binding StartTimeMinutes, FallbackValue=00, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Grid.Row="1" Grid.Column="2" Minimum="00" Maximum="59" Value="00" Margin="1.5" FormatString="00"/>
+            <extToolkit:IntegerUpDown Text="{Binding StartTimeHours, FallbackValue=08, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Grid.Row="1" Grid.Column="1" Minimum="07" Maximum="20" Value="08" Margin="1.5"/>
+            <extToolkit:IntegerUpDown Text="{Binding StartTimeMinutes, FallbackValue=00, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Grid.Row="1" Grid.Column="2" Minimum="00" Maximum="59" Value="00" Margin="1.5"/>
             <Label Grid.Row="2" Content="Endtime:" />
-            <extToolkit:IntegerUpDown Text="{Binding EndTimeHours, FallbackValue=09, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"  Grid.Row="2" Grid.Column="1" Minimum="07" Maximum="23" Value="09" Margin="1.5" FormatString="00"/>
-            <extToolkit:IntegerUpDown Text="{Binding EndTimeMinutes, FallbackValue=30, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"  Grid.Row="2" Grid.Column="2" Minimum="00" Maximum="59" Value="30" Margin="1.5" FormatString="00"/>
+            <extToolkit:IntegerUpDown Text="{Binding EndTimeHours, FallbackValue=09, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"  Grid.Row="2" Grid.Column="1" Minimum="07" Maximum="23" Value="09" Margin="1.5"/>
+            <extToolkit:IntegerUpDown Text="{Binding EndTimeMinutes, FallbackValue=30, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"  Grid.Row="2" Grid.Column="2" Minimum="00" Maximum="59" Value="30" Margin="1.5"/>
             <Label Grid.Row="3" Content="Except on:" />
-            <CheckBox IsChecked="{Binding ExceptMonday, FallbackValue=false, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="2" VerticalAlignment="Center" Content="Monday" />
-            <CheckBox IsChecked="{Binding ExceptTuesday, FallbackValue=false, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="2" VerticalAlignment="Center" Content="Tuesday" />
-            <CheckBox IsChecked="{Binding ExceptWednesday, FallbackValue=false, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Grid.Row="5" Grid.Column="1" Grid.ColumnSpan="2" VerticalAlignment="Center" Content="Wednesday" />
-            <CheckBox IsChecked="{Binding ExceptThursday, FallbackValue=false, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Grid.Row="6" Grid.Column="1" Grid.ColumnSpan="2" VerticalAlignment="Center" Content="Thursday" />
-            <CheckBox IsChecked="{Binding ExceptFriday, FallbackValue=false, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Grid.Row="7" Grid.Column="1" Grid.ColumnSpan="2" VerticalAlignment="Center" Content="Friday" />
+            <CheckBox IsChecked="{Binding ExceptMonday, FallbackValue=false, Mode=TwoWay}" Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="2" VerticalAlignment="Center" Content="Monday" />
+            <CheckBox IsChecked="{Binding ExceptTuesday, FallbackValue=false, Mode=TwoWay}" Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="2" VerticalAlignment="Center" Content="Tuesday" />
+            <CheckBox IsChecked="{Binding ExceptWednesday, FallbackValue=false, Mode=TwoWay}" Grid.Row="5" Grid.Column="1" Grid.ColumnSpan="2" VerticalAlignment="Center" Content="Wednesday" />
+            <CheckBox IsChecked="{Binding ExceptThursday, FallbackValue=false, Mode=TwoWay}" Grid.Row="6" Grid.Column="1" Grid.ColumnSpan="2" VerticalAlignment="Center" Content="Thursday" />
+            <CheckBox IsChecked="{Binding ExceptFriday, FallbackValue=false, Mode=TwoWay}" Grid.Row="7" Grid.Column="1" Grid.ColumnSpan="2" VerticalAlignment="Center" Content="Friday" />
         </Grid>
     </Grid>
 </UserControl>

@@ -23,5 +23,10 @@ namespace TimetablePlannerUI
         {
             InitializeComponent();
         }
+
+        private void UserControl_Loaded(object sender, RoutedEventArgs e)
+        {
+            (DataContext as ConfigController).LoadCourseData();
+        }
     }
 }

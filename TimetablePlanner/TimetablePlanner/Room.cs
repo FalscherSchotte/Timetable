@@ -25,7 +25,7 @@ namespace TimetablePlanner
 
         public override string ToString()
         {
-            return Name + (IsLab ? "(Lab)" : "");
+            return Name + (IsLab ? " (Lab)" : "");
         }
     }
 }

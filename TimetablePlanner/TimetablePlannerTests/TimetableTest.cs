@@ -30,7 +30,7 @@ namespace TimetablePlannerTests
         }
 
         [TestMethod()]
-        public void TimetableManualTester()
+        public void TimetableGenerationTest()
         {
             String configurationFile = basePath + "TimetableDataExtended.xml";
             TimetableData ttData = TimetableConfigIO.ImportTimetableConfig(configurationFile);

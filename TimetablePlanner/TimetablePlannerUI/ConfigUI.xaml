@@ -4,6 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:tt="clr-namespace:TimetablePlannerUI"
+             Loaded="UserControl_Loaded"
              mc:Ignorable="d" d:DesignHeight="550" d:DesignWidth="600" >
     <UserControl.Background>
         <LinearGradientBrush EndPoint="1,0.5" StartPoint="0,0.5">
@@ -32,7 +33,7 @@
                     <Button Content="Load" Width="75"/>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
-                    <Button Content="Generate" Width="150" /> 
+                    <Button Content="Generate" Width="150" />
                 </StackPanel>
             </Grid>
         </Border>
@@ -41,16 +42,16 @@
                 <TabItem Header="Blocks" DataContext="{Binding BlockContext}">
                     <tt:BlocksUI/>
                 </TabItem>
-                <TabItem Header="Rooms">
+                <TabItem Header="Rooms" DataContext="{Binding RoomContext}">
                     <tt:RoomsUI/>
                 </TabItem>
-                <TabItem Header="Lecturers">
+                <TabItem Header="Lecturers" DataContext="{Binding LecturerContext}">
                     <tt:LecturersUI/>
                 </TabItem>
-                <TabItem Header="Groups">
+                <TabItem Header="Groups" DataContext="{Binding GroupContext}">
                     <tt:GroupsUI/>
                 </TabItem>
-                <TabItem Header="Courses">
+                <TabItem Header="Courses" DataContext="{Binding CourseContext}">
                     <tt:CoursesUI/>
                 </TabItem>
             </TabControl>

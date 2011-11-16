@@ -95,12 +95,15 @@ namespace TimetablePlanner
                     if (individual.Groups[groupIndex, day, block] != -1)
                     {
                         Course c = ttData.Courses[individual.Groups[groupIndex, day, block]];
-                        Room r = ttData.Rooms[individual.Courses[c.Index, day, block]];
-                        output[block * 3 + 1][day + 1] = c.Name;
-                        output[block * 3 + 2][day + 1] = r.Name;
-                        for (int l = 0; l < c.Lecturers.Length; l++)
+                        if (individual.Courses[c.Index, day, block] != -1)
                         {
-                            output[block * 3 + 3][day + 1] = output[block * 3 + 3][day + 1] + c.Lecturers[l].LastName + (l == c.Lecturers.Length - 1 ? "" : ", ");
+                            Room r = ttData.Rooms[individual.Courses[c.Index, day, block]];
+                            output[block * 3 + 1][day + 1] = c.Name;
+                            output[block * 3 + 2][day + 1] = r.Name;
+                            for (int l = 0; l < c.Lecturers.Length; l++)
+                            {
+                                output[block * 3 + 3][day + 1] = output[block * 3 + 3][day + 1] + c.Lecturers[l].LastName + (l == c.Lecturers.Length - 1 ? "" : ", ");
+                            }
                         }
                     }
                 }
@@ -123,12 +126,15 @@ namespace TimetablePlanner
                     if (individual.Lecturers[lecturerIndex, day, block] != -1)
                     {
                         Course c = ttData.Courses[individual.Lecturers[lecturerIndex, day, block]];
-                        Room r = ttData.Rooms[individual.Courses[c.Index, day, block]];
-                        output[block * 3 + 1][day + 1] = c.Name;
-                        output[block * 3 + 2][day + 1] = r.Name;
-                        for (int l = 0; l < c.Lecturers.Length; l++)
+                        if (individual.Courses[c.Index, day, block] != -1)
                         {
-                            output[block * 3 + 3][day + 1] = output[block * 3 + 3][day + 1] + c.Lecturers[l].LastName + (l == c.Lecturers.Length - 1 ? "" : ", ");
+                            Room r = ttData.Rooms[individual.Courses[c.Index, day, block]];
+                            output[block * 3 + 1][day + 1] = c.Name;
+                            output[block * 3 + 2][day + 1] = r.Name;
+                            for (int l = 0; l < c.Lecturers.Length; l++)
+                            {
+                                output[block * 3 + 3][day + 1] = output[block * 3 + 3][day + 1] + c.Lecturers[l].LastName + (l == c.Lecturers.Length - 1 ? "" : ", ");
+                            }
                         }
                     }
                 }
@@ -151,11 +157,14 @@ namespace TimetablePlanner
                     if (individual.Rooms[roomIndex, day, block] != -1)
                     {
                         Course c = ttData.Courses[individual.Rooms[roomIndex, day, block]];
-                        output[block * 3 + 1][day + 1] = c.Name;
-                        output[block * 3 + 2][day + 1] = c.Group.Name;
-                        for (int l = 0; l < c.Lecturers.Length; l++)
+                        if (individual.Courses[c.Index, day, block] != -1)
                         {
-                            output[block * 3 + 3][day + 1] = output[block * 3 + 3][day + 1] + c.Lecturers[l].LastName + (l == c.Lecturers.Length - 1 ? "" : ", ");
+                            output[block * 3 + 1][day + 1] = c.Name;
+                            output[block * 3 + 2][day + 1] = c.Group.Name;
+                            for (int l = 0; l < c.Lecturers.Length; l++)
+                            {
+                                output[block * 3 + 3][day + 1] = output[block * 3 + 3][day + 1] + c.Lecturers[l].LastName + (l == c.Lecturers.Length - 1 ? "" : ", ");
+                            }
                         }
                     }
                 }

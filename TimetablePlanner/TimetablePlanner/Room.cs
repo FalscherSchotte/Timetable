@@ -27,5 +27,10 @@ namespace TimetablePlanner
         {
             return Name + (IsLab ? " (Lab)" : "");
         }
+
+        internal static void ResetIndexCounter()
+        {
+            globalIndex = 0;
+        }
     }
 }

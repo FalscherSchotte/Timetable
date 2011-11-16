@@ -79,18 +79,9 @@ namespace TimetablePlannerUI
         public void UpdateSelection(int newValue)
         {
             if (newValue < 0)
-            {
                 GroupName = "";
-            }
             else
-            {
-                if (GroupName == null || GroupName.Length <= 0)
-                {
-                    MessageBox.Show("Groupname required.", "Input missing", System.Windows.MessageBoxButton.OK, System.Windows.MessageBoxImage.Error);
-                    return;
-                }
                 GroupName = GroupList[newValue].Name;
-            }
         }
     }
 }

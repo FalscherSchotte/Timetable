@@ -61,7 +61,7 @@
                       SelectedIndex="{Binding SelectedLecturer2Index, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                       IsEnabled="{Binding ElementName=SecondLecCB, Path=IsChecked}"
                       Grid.Row="6" Grid.Column="1" Grid.ColumnSpan="2" Margin="1,1.5,1,1.5"/>
-            <CheckBox Name="SecondLecCB" IsChecked="{Binding HasSecondLecturer}" Grid.Row="6" VerticalAlignment="Center" Grid.Column="4" Margin="5,0,0,0"/>
+            <CheckBox Name="SecondLecCB" IsChecked="{Binding HasSecondLecturer, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Grid.Row="6" VerticalAlignment="Center" Grid.Column="4" Margin="5,0,0,0"/>
             <Label Grid.Row="7" Content="Group:" />
             <ComboBox ItemsSource="{Binding GroupList, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
                       SelectedIndex="{Binding SelectedGroupIndex, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
@@ -75,7 +75,7 @@
                       SelectedIndex="{Binding SelectedRoomPreferenceIndex, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                       IsEnabled="{Binding ElementName=PreferenceCB, Path=IsChecked}"
                       Grid.Row="10" Grid.Column="1" Grid.ColumnSpan="2" Margin="1,1.5,1,1.5"/>
-            <CheckBox Name="PreferenceCB" IsChecked="{Binding HasPreference}" Grid.Row="10" VerticalAlignment="Center" Grid.Column="4" Margin="5,0,0,0"/>
+            <CheckBox Name="PreferenceCB" IsChecked="{Binding HasPreference, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Grid.Row="10" VerticalAlignment="Center" Grid.Column="4" Margin="5,0,0,0"/>
         </Grid>
     </Grid>
 </UserControl>

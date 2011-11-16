@@ -24,5 +24,10 @@ namespace TimetablePlanner
         {
             return Id;
         }
+
+        internal static void ResetIndexCounter()
+        {
+            globalIndex = 0;
+        }
     }
 }

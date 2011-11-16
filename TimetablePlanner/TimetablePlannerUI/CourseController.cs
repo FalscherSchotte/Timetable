@@ -287,10 +287,8 @@ namespace TimetablePlannerUI
                 NeedsLab = CourseList[SelectedIndex].NeedsLab;
                 IsDummy = CourseList[SelectedIndex].IsDummy;
 
-                if (SelectedLecturer2Index >= 0)
-                    HasSecondLecturer = true;
-                if (SelectedRoomPreferenceIndex >= 0)
-                    HasPreference = true;
+                HasSecondLecturer = SelectedLecturer2Index >= 0;
+                HasPreference = SelectedRoomPreferenceIndex >= 0;
             }
         }
 
@@ -302,6 +300,21 @@ namespace TimetablePlannerUI
                 return false;
             }
             return true;
+        }
+
+        internal Course[] GetCourseExportArray()
+        {
+            List<Course> cList = new List<Course>();
+            foreach (var course in CourseList)
+            {
+                for (int i = 0; i < Repetitions[course]; i++)
+                {
+                    Course c = new Course(course.Id, course.Name, course.Lecturers, course.RoomPreference,
+                        course.Group, course.NeedsLab, course.IsDummy, course.NumberOfBlocks);
+                    cList.Add(c);
+                }
+            }
+            return cList.ToArray();
         }
     }
 }

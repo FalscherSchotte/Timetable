@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<TestRun id="c836e799-4ef9-4de3-a9fe-c9ea19fb47a4" name="FloLap@FLOLAP-PC 2011-11-09 14:49:01" runUser="FloLap-PC\FloLap" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
+<TestRun id="c555c00f-e220-42bf-8a7f-f9d4c635f038" name="FloLap@FLOLAP-PC 2011-11-15 10:39:36" runUser="FloLap-PC\FloLap" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
   <TestSettings name="Lokal" id="6ed96bb3-d821-4eee-a79d-3a3069da9890">
     <Description>Dies sind die standardmäßigen Testeinstellungen für einen lokalen Testlauf.</Description>
-    <Deployment enabled="false" runDeploymentRoot="FloLap_FLOLAP-PC 2011-11-09 14_49_01">
+    <Deployment enabled="false" runDeploymentRoot="FloLap_FLOLAP-PC 2011-11-15 10_39_36">
       <DeploymentItem filename="E:\HsKA\Semester2\Projektarbeit\Stundenplangenerator\TimetablePlanner\TimetablePlanner\bin\Debug\TimetablePlanner.dll" />
     </Deployment>
     <Execution>
@@ -11,13 +11,13 @@
       </AgentRule>
     </Execution>
   </TestSettings>
-  <Times creation="2011-11-09T14:49:01.4836099+01:00" queuing="2011-11-09T14:49:01.6490116+01:00" start="2011-11-09T14:49:01.6958117+01:00" finish="2011-11-09T14:49:02.2714394+01:00" />
+  <Times creation="2011-11-15T10:39:36.7309626+01:00" queuing="2011-11-15T10:39:37.7605645+01:00" start="2011-11-15T10:39:37.8385646+01:00" finish="2011-11-15T10:39:39.3673673+01:00" />
   <ResultSummary outcome="Completed">
     <Counters total="1" executed="1" passed="1" error="0" failed="0" timeout="0" aborted="0" inconclusive="0" passedButRunAborted="0" notRunnable="0" notExecuted="0" disconnected="0" warning="0" completed="0" inProgress="0" pending="0" />
   </ResultSummary>
   <TestDefinitions>
     <UnitTest name="TimetableInputExportTest" storage="e:\hska\semester2\projektarbeit\stundenplangenerator\timetableplanner\timetableplannertests\bin\debug\timetableplannertests.dll" id="643aee53-482b-7ddc-6eba-83a04b5cba46">
-      <Execution id="3521dfce-68e6-4f2a-9e16-881ccbf9774f" />
+      <Execution id="2c3b6692-3945-45d9-af48-87da0d753fe5" />
       <TestMethod codeBase="E:/HsKA/Semester2/Projektarbeit/Stundenplangenerator/TimetablePlanner/TimetablePlannerTests/bin/Debug/TimetablePlannerTests.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="TimetablePlannerTests.TimetableTest, TimetablePlannerTests, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="TimetableInputExportTest" />
     </UnitTest>
   </TestDefinitions>
@@ -26,10 +26,10 @@
     <TestList name="Alle geladenen Ergebnisse" id="19431567-8539-422a-85d7-44ee4e166bda" />
   </TestLists>
   <TestEntries>
-    <TestEntry testId="643aee53-482b-7ddc-6eba-83a04b5cba46" executionId="3521dfce-68e6-4f2a-9e16-881ccbf9774f" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="643aee53-482b-7ddc-6eba-83a04b5cba46" executionId="2c3b6692-3945-45d9-af48-87da0d753fe5" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
   </TestEntries>
   <Results>
-    <UnitTestResult executionId="3521dfce-68e6-4f2a-9e16-881ccbf9774f" testId="643aee53-482b-7ddc-6eba-83a04b5cba46" testName="TimetableInputExportTest" computerName="FLOLAP-PC" duration="00:00:00.0589540" startTime="2011-11-09T14:49:01.6958117+01:00" endTime="2011-11-09T14:49:02.1794341+01:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="3521dfce-68e6-4f2a-9e16-881ccbf9774f">
+    <UnitTestResult executionId="2c3b6692-3945-45d9-af48-87da0d753fe5" testId="643aee53-482b-7ddc-6eba-83a04b5cba46" testName="TimetableInputExportTest" computerName="FLOLAP-PC" duration="00:00:00.1299718" startTime="2011-11-15T10:39:37.9321648+01:00" endTime="2011-11-15T10:39:39.2425671+01:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="2c3b6692-3945-45d9-af48-87da0d753fe5">
     </UnitTestResult>
   </Results>
 </TestRun>

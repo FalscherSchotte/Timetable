@@ -22,5 +22,6 @@ namespace TimetablePlanner
             return Start.TimeOfDay.Hours.ToString("00") + ":" + Start.TimeOfDay.Minutes.ToString("00") + " - "
                 + End.TimeOfDay.Hours.ToString("00") + ":" + End.TimeOfDay.Minutes.ToString("00");
         }
+
     }
 }

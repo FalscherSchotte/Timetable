@@ -48,5 +48,10 @@ namespace TimetablePlanner
         {
             return FirstName + " " + LastName;
         }
+
+        internal static void ResetIndexCounter()
+        {
+            globalIndex = 0;
+        }
     }
 }

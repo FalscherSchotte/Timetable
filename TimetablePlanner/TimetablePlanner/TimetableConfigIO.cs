@@ -71,8 +71,9 @@ namespace TimetablePlanner
             {
                 string id = node.GetAttribute("lId", "");
                 string lastName = node.GetAttribute("lastName", "");
+                string firstName = node.GetAttribute("firstName", "");
                 bool isDummy = ParseBoolFromString(node.GetAttribute("isDummy", ""), false);
-                int numberOfReasearchDays = ParseIntFromString(node.GetAttribute("numberOfResearchDays", ""), 0);
+                int numberOfReasearchDays = ParseIntFromString(node.GetAttribute("numberOfResearchDays", ""), 1);
 
                 List<DayOfWeek> researchExceptions = new List<DayOfWeek>();
                 foreach (XPathNavigator subNode in node.SelectChildren("researchException", ""))
@@ -80,7 +81,7 @@ namespace TimetablePlanner
                     researchExceptions.Add(ParseDayOfWeek(subNode.GetAttribute("day", "")));
                 }
 
-                lecturers.Add(new Lecturer(id, lastName, "", researchExceptions, numberOfReasearchDays, isDummy));
+                lecturers.Add(new Lecturer(id, lastName, firstName, researchExceptions, numberOfReasearchDays, isDummy));
             }
             return lecturers.ToArray();
         }
@@ -123,26 +124,12 @@ namespace TimetablePlanner
                 int numberOfBlocks = ParseIntFromString(node.GetAttribute("numberOfBlocks", ""), 1);
                 int repeatsPerWeek = ParseIntFromString(node.GetAttribute("repeatsPerWeek", ""), 1);
 
-                string lId0 = node.GetAttribute("lId0", "");
-                string lId1 = node.GetAttribute("lId1", "");
-                List<Lecturer> courseLecturers = new List<Lecturer>();
-                bool p1Found = false;
-                bool p2Found = lId1.Length == 0;
-                foreach (Lecturer lecturer in lecturers)
-                {
-                    if (lecturer.Id.Equals(lId0))
-                    {
-                        courseLecturers.Add(lecturer);
-                        p1Found = true;
-                    }
-                    if (lecturer.Id.Equals(lId1))
-                    {
-                        courseLecturers.Add(lecturer);
-                        p2Found = true;
-                    }
-                    if (p1Found && p2Found)
-                        break;
-                }
+                List<Lecturer> lecturerList = new List<Lecturer>();
+                Lecturer l0 = GetLecturerWithID(node.GetAttribute("lId0", ""), lecturers);
+                Lecturer l1 = GetLecturerWithID(node.GetAttribute("lId1", ""), lecturers);
+                lecturerList.Add(l0);
+                if (l1 != null)
+                    lecturerList.Add(l1);
 
                 string roomPreference = node.GetAttribute("roomPreference", "");
                 Room preference = null;
@@ -168,11 +155,21 @@ namespace TimetablePlanner
 
                 for (int repetition = 0; repetition < repeatsPerWeek; repetition++)
                 {
-                    courses.Add(new Course(cId, name, courseLecturers.ToArray(), preference, group, needsLab, isDummy, numberOfBlocks));
+                    courses.Add(new Course(cId, name, lecturerList.ToArray(), preference, group, needsLab, isDummy, numberOfBlocks));
                 }
 
             }
             return courses.ToArray();
+        }
+
+        private static Lecturer GetLecturerWithID(string id, Lecturer[] lecturers)
+        {
+            foreach (Lecturer l in lecturers)
+            {
+                if (l.Id.Equals(id))
+                    return l;
+            }
+            return null;
         }
 
         private static DayOfWeek ParseDayOfWeek(string day)
@@ -301,7 +298,7 @@ namespace TimetablePlanner
             foreach (Lecturer l in lecturers)
             {
                 output.Append("<lecturer");
-                output.Append(" lId0=\"" + l.Id + "\"");
+                output.Append(" lId=\"" + l.Id + "\"");
                 output.Append(" lastName=\"" + l.LastName + "\"");
                 if (l.FirstName != null && l.FirstName.Length > 0)
                     output.Append(" firstName=\"" + l.FirstName + "\"");

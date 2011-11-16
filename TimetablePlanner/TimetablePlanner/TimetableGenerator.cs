@@ -163,18 +163,54 @@ namespace TimetablePlanner
                     return false;
                 }
 
-                int chosenPossibility = random.Next(0, possibilities.Count);
+                possibilities.Sort(SortPlacementContainerByBlock);
+                List<PlacementContainer> subset = new List<PlacementContainer>();
+                if (ttData.Courses[courseIndex].IsDummy)
+                {
+                    //choose possibility that is late
+                    subset.Add(possibilities[subset.Count - 1]);
+                    for (int i = possibilities.Count - 2; i >= 0; i--)
+                    {
+                        if (possibilities[i].block >= subset[0].block)
+                            subset.Add(possibilities[i]);
+                        else
+                            break;
+                    }
+                }
+                else
+                {
+                    //choose possibility that is early
+                    subset.Add(possibilities[0]);
+                    for (int i = 1; i < possibilities.Count; i++)
+                    {
+                        if (possibilities[i].block >= subset[0].block)
+                            subset.Add(possibilities[i]);
+                        else
+                            break;
+                    }
+                }
+                int chosenPossibility = random.Next(0, subset.Count);
+
                 for (int blockOffset = 0; blockOffset < ttData.Courses[courseIndex].NumberOfBlocks; blockOffset++)
                 {
                     individual.SetChromosome(courseIndex,
-                        possibilities[chosenPossibility].day,
-                        possibilities[chosenPossibility].block + blockOffset,
-                        possibilities[chosenPossibility].room,
+                        subset[chosenPossibility].day,
+                        subset[chosenPossibility].block + blockOffset,
+                        subset[chosenPossibility].room,
                         ttData.Courses[courseIndex].Group.Index,
                         GetLecturerIndices(courseIndex));
                 }
             }
             return true;
+        }
+
+        private static int SortPlacementContainerByBlock(PlacementContainer x, PlacementContainer y)
+        {
+            if (x.block > y.block)
+                return +1;
+            if (x.block < y.block)
+                return -1;
+            return 0;
         }
 
         /// <summary>
@@ -200,6 +236,11 @@ namespace TimetablePlanner
             public int day;
             public int block;
             public int room;
+
+            public override string ToString()
+            {
+                return "Placement d" + day + " b" + block + " r" + room;
+            }
         }
 
         /// <summary>
@@ -267,6 +308,7 @@ namespace TimetablePlanner
                 if (ttData.Courses[course].NeedsLab != ttData.Rooms[room].IsLab)
                     return false;
 
+                int test = ttData.Courses[course].Lecturers.Length;
                 //Lecturers available?
                 for (int neededLecturer = 0; neededLecturer < ttData.Courses[course].Lecturers.Length; neededLecturer++)
                 {
@@ -510,7 +552,7 @@ namespace TimetablePlanner
 
                             //Courses should start before 13:00
                             //Opposite for dummy courses
-                            fitness += (ttData.Blocks[block].Start.Hour - 13) * 15 * (ttData.Courses[course].IsDummy ? 1 : -1);
+                            fitness += (ttData.Blocks[block].Start.Hour - 13) * 25 * (ttData.Courses[course].IsDummy ? 1 : -1);
 
                             //Roompreference
                             if (ttData.Courses[course].RoomPreference != null)

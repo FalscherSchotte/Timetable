@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<TestRun id="3e8c53e7-09df-4eb0-ae86-601ffaed0fb4" name="FloLap@FLOLAP-PC 2011-11-09 14:51:57" runUser="FloLap-PC\FloLap" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
+<TestRun id="ae784f09-d703-40e9-932b-4a1537a4c1f1" name="FloLap@FLOLAP-PC 2011-11-15 10:32:36" runUser="FloLap-PC\FloLap" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
   <TestSettings name="Lokal" id="6ed96bb3-d821-4eee-a79d-3a3069da9890">
     <Description>Dies sind die standardmäßigen Testeinstellungen für einen lokalen Testlauf.</Description>
-    <Deployment enabled="false" runDeploymentRoot="FloLap_FLOLAP-PC 2011-11-09 14_51_57">
+    <Deployment enabled="false" runDeploymentRoot="FloLap_FLOLAP-PC 2011-11-15 10_32_36">
       <DeploymentItem filename="E:\HsKA\Semester2\Projektarbeit\Stundenplangenerator\TimetablePlanner\TimetablePlanner\bin\Debug\TimetablePlanner.dll" />
     </Deployment>
     <Execution>
@@ -11,13 +11,18 @@
       </AgentRule>
     </Execution>
   </TestSettings>
-  <Times creation="2011-11-09T14:51:57.1737954+01:00" queuing="2011-11-09T14:51:58.3754330+01:00" start="2011-11-09T14:51:58.4864394+01:00" finish="2011-11-09T14:52:00.1329258+01:00" />
-  <ResultSummary outcome="Completed">
-    <Counters total="1" executed="1" passed="1" error="0" failed="0" timeout="0" aborted="0" inconclusive="0" passedButRunAborted="0" notRunnable="0" notExecuted="0" disconnected="0" warning="0" completed="0" inProgress="0" pending="0" />
+  <Times creation="2011-11-15T10:32:36.8383601+01:00" queuing="2011-11-15T10:32:38.0239622+01:00" start="2011-11-15T10:32:38.2267625+01:00" finish="2011-11-15T10:33:35.5412632+01:00" />
+  <ResultSummary outcome="Error">
+    <Counters total="1" executed="1" error="0" failed="0" timeout="0" aborted="1" inconclusive="0" passedButRunAborted="0" notRunnable="0" notExecuted="0" disconnected="0" warning="0" passed="0" completed="0" inProgress="0" pending="0" />
+    <RunInfos>
+      <RunInfo computerName="FLOLAP-PC" outcome="Error" timestamp="2011-11-15T10:33:35.5412632+01:00">
+        <Text>Der Testhostprozess wurde unerwartet beendet.</Text>
+      </RunInfo>
+    </RunInfos>
   </ResultSummary>
   <TestDefinitions>
     <UnitTest name="TimetableInputExportTest" storage="e:\hska\semester2\projektarbeit\stundenplangenerator\timetableplanner\timetableplannertests\bin\debug\timetableplannertests.dll" id="643aee53-482b-7ddc-6eba-83a04b5cba46">
-      <Execution id="35cea837-1307-4e06-8867-35b53c63f0d0" />
+      <Execution id="4c045cfd-df0c-4e14-88c9-7b927c13d17b" />
       <TestMethod codeBase="E:/HsKA/Semester2/Projektarbeit/Stundenplangenerator/TimetablePlanner/TimetablePlannerTests/bin/Debug/TimetablePlannerTests.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="TimetablePlannerTests.TimetableTest, TimetablePlannerTests, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="TimetableInputExportTest" />
     </UnitTest>
   </TestDefinitions>
@@ -26,10 +31,10 @@
     <TestList name="Alle geladenen Ergebnisse" id="19431567-8539-422a-85d7-44ee4e166bda" />
   </TestLists>
   <TestEntries>
-    <TestEntry testId="643aee53-482b-7ddc-6eba-83a04b5cba46" executionId="35cea837-1307-4e06-8867-35b53c63f0d0" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="643aee53-482b-7ddc-6eba-83a04b5cba46" executionId="4c045cfd-df0c-4e14-88c9-7b927c13d17b" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
   </TestEntries>
   <Results>
-    <UnitTestResult executionId="35cea837-1307-4e06-8867-35b53c63f0d0" testId="643aee53-482b-7ddc-6eba-83a04b5cba46" testName="TimetableInputExportTest" computerName="FLOLAP-PC" duration="00:00:00.1283500" startTime="2011-11-09T14:51:58.5514431+01:00" endTime="2011-11-09T14:52:00.0059185+01:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="35cea837-1307-4e06-8867-35b53c63f0d0">
+    <UnitTestResult executionId="4c045cfd-df0c-4e14-88c9-7b927c13d17b" testId="643aee53-482b-7ddc-6eba-83a04b5cba46" testName="TimetableInputExportTest" computerName="FLOLAP-PC" duration="00:00:57.1429004" startTime="2011-11-15T10:32:38.3983628+01:00" endTime="2011-11-15T10:33:35.5412632+01:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Aborted" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="4c045cfd-df0c-4e14-88c9-7b927c13d17b">
     </UnitTestResult>
   </Results>
 </TestRun>

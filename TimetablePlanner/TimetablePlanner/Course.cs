@@ -14,7 +14,7 @@ namespace TimetablePlanner
         public Group Group { get; set; }
 
         private static short globalIndex = 0;
-        public short Index { get; private set; }
+        public short Index { get; set; }
 
         public Course(string id, string name, Lecturer[] lecturers, Room roomPreference, Group group, bool needsLab, bool isDummy, /*int repeatsPerWeek,*/ int numberOfBlocks)
         {
@@ -36,6 +36,11 @@ namespace TimetablePlanner
         public override string ToString()
         {
             return Id + ": " + Name;
+        }
+
+        internal static void ResetIndexCounter()
+        {
+            globalIndex = 0;
         }
     }
 }

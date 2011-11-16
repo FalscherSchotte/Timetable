@@ -10,7 +10,16 @@ namespace TimetablePlanner
         public Room[] Rooms { get; set; }
         public Group[] Groups { get; set; }
 
-        internal TimetableData(Block[] blocks, Course[] courses, Lecturer[] lecturers, Room[] rooms, Group[] groups)
+        public TimetableData()
+        {
+            Course.ResetIndexCounter();
+            Lecturer.ResetIndexCounter();
+            Room.ResetIndexCounter();
+            Group.ResetIndexCounter();
+        }
+
+        public TimetableData(Block[] blocks, Course[] courses, Lecturer[] lecturers, Room[] rooms, Group[] groups)
+            : base()
         {
             this.Blocks = blocks;
             this.Courses = courses;

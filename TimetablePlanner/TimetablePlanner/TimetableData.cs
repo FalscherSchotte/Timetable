@@ -27,7 +27,7 @@ namespace TimetablePlanner
             this.Rooms = rooms;
             this.Groups = groups;
 
-            //Array.Sort(courses, SortCoursesByLength);
+            Array.Sort(courses, SortCoursesByLength);
         }
 
         private static int SortCoursesByLength(Course x, Course y)

@@ -167,6 +167,7 @@ namespace TimetablePlannerUI
             fileDialog.InitialDirectory = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().GetName().CodeBase);
             fileDialog.ShowDialog();
 
+            TimetableData t = new TimetableData();
             TimetableData ttData = TimetableConfigIO.ImportTimetableConfig(fileDialog.FileName);
             if (ttData == null)
             {
@@ -240,6 +241,7 @@ namespace TimetablePlannerUI
 
         public void New()
         {
+            _currentConfigFilepath = "";
             TimetableData ttData = new TimetableData();
             BlockContext = new BlockController();
             RoomContext = new RoomController();

@@ -258,6 +258,7 @@ namespace TimetablePlanner
                 output.Append(" numberOfBlocks=\"" + c.NumberOfBlocks + "\"");
                 output.Append(" needsLab=\"" + c.NeedsLab + "\"");
                 output.Append(" name=\"" + c.Name + "\"");
+                output.Append(" isDummy=\"" + c.IsDummy + "\"");
                 if (c.RoomPreference != null)
                     output.Append(" roomPreference=\"" + c.RoomPreference + "\"");
                 for (int i = 0; i < c.Lecturers.Length; i++)

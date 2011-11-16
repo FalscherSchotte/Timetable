@@ -168,7 +168,7 @@ namespace TimetablePlanner
                 if (ttData.Courses[courseIndex].IsDummy)
                 {
                     //choose possibility that is late
-                    subset.Add(possibilities[subset.Count - 1]);
+                    subset.Add(possibilities[possibilities.Count - 1]);
                     for (int i = possibilities.Count - 2; i >= 0; i--)
                     {
                         if (possibilities[i].block >= subset[0].block)

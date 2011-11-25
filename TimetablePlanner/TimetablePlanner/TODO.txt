@@ -1,0 +1,27 @@
+﻿TODO:
+
+Model:
+- Threading der Generationen
+- Erstellen einer intelligenten Sortierungsmethode für die Erzeugung der Startpopulation
+- Alternativ: Erstellung invalider Ausgangszustände und dynamische Bewertung mittels Fitnessfunktion
+	--> Anfänglich Verletzung der Rahmenbedingungen noch gering bestrafen, gegen Ende sehr stark
+- Mutation zum Tausch von Vorlesungen implementieren
+- Abbruchkriterium bei eventuellen Deadlocks hinzufügen
+- Verarbeitung der Konfiguration ohne Änderung selbiger
+- Optimierungsbedingungen einstellbar machen
+
+Oberfläche:
+- Abbprüfung ob invalide Eingaben vorliegen
+	- Beginn vor Ende der Vorlesung
+	- Ids nicht doppelt eingegeben
+	- Generell nur eindeutige Eingaben zulassen
+- Abbruchmöglichkeit für Berechnungen einpflegen
+- Anzeige automatisch sortierbar 
+- Anzeige manuell sortierbar
+- Optimierungsbedinungen über die Oberfläche einggebar machen
+- Sprache umstellbar auch auf deutsch
+
+Allgemein:
+- Neue Rahmenbedingungen
+- Neue Optimierungsbedingungen
+- Verschiedene Konfigurationen testen

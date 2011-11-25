@@ -30,7 +30,7 @@ namespace TimetablePlanner
         /// <summary>
         /// Evolution history
         /// </summary>
-        public List<HistoryEntry> EvolutionHistory;
+        public List<HistoryEntry> EvolutionHistory { get; private set; }
 
         #endregion
 
@@ -66,6 +66,22 @@ namespace TimetablePlanner
                 AverageFitness = average;
                 BestFitness = best;
                 CreationDate = creation;
+            }
+
+            public static void PrintHistory(List<HistoryEntry> entries)
+            {
+                System.Diagnostics.Debug.WriteLine("------------------------");
+                System.Diagnostics.Debug.WriteLine("Average fitness :");
+                foreach (var entry in entries)
+                {
+                    System.Diagnostics.Debug.WriteLine(entry.AverageFitness);
+                }
+                System.Diagnostics.Debug.WriteLine("------------------------");
+                System.Diagnostics.Debug.WriteLine("Best individual fitness:");
+                foreach (var entry in entries)
+                {
+                    System.Diagnostics.Debug.WriteLine(entry.BestFitness);
+                }
             }
         }
 
@@ -374,6 +390,9 @@ namespace TimetablePlanner
 
             for (CurrentGeneration = 0; CurrentGeneration < numberOfGenerations; CurrentGeneration++)
             {
+                //TODO: Threading of mutation 
+                //i.e.: perform mutations 0-9 in thread 1 and mutation 10-19 in thread 2
+
                 List<Individual> individuals = new List<Individual>();
                 foreach (Individual individual in Population)
                 {

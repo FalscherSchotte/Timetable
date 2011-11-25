@@ -1,0 +1,1704 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<TestRun id="36ce8788-8444-4ef8-97e4-f30fe784774d" name="FloLap@FLOLAP-PC 2011-11-18 15:56:02" runUser="FloLap-PC\FloLap" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
+  <TestSettings name="Lokal" id="6ed96bb3-d821-4eee-a79d-3a3069da9890">
+    <Description>Dies sind die standardmäßigen Testeinstellungen für einen lokalen Testlauf.</Description>
+    <Deployment enabled="false" runDeploymentRoot="FloLap_FLOLAP-PC 2011-11-18 15_56_02">
+      <DeploymentItem filename="E:\HsKA\Semester2\Projektarbeit\Stundenplangenerator\TimetablePlanner\TimetablePlanner\bin\Debug\TimetablePlanner.dll" />
+    </Deployment>
+    <Execution>
+      <TestTypeSpecific />
+      <AgentRule name="Execution Agents">
+      </AgentRule>
+    </Execution>
+  </TestSettings>
+  <Times creation="2011-11-18T15:56:02.3713829+01:00" queuing="2011-11-18T15:56:03.3385846+01:00" start="2011-11-18T15:56:03.4477848+01:00" finish="2011-11-18T15:56:21.1349359+01:00" />
+  <ResultSummary outcome="Completed">
+    <Counters total="2" executed="2" passed="2" error="0" failed="0" timeout="0" aborted="0" inconclusive="0" passedButRunAborted="0" notRunnable="0" notExecuted="0" disconnected="0" warning="0" completed="0" inProgress="0" pending="0" />
+  </ResultSummary>
+  <TestDefinitions>
+    <UnitTest name="TimetableGenerationTest" storage="e:\hska\semester2\projektarbeit\stundenplangenerator\timetableplanner\timetableplannertests\bin\debug\timetableplannertests.dll" id="4689e2d1-87f2-8844-ae95-39072767341d">
+      <Execution id="3339007a-6ec9-4f6a-a94e-0e1a776dcd55" />
+      <TestMethod codeBase="E:/HsKA/Semester2/Projektarbeit/Stundenplangenerator/TimetablePlanner/TimetablePlannerTests/bin/Debug/TimetablePlannerTests.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="TimetablePlannerTests.TimetableTest, TimetablePlannerTests, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="TimetableGenerationTest" />
+    </UnitTest>
+    <UnitTest name="TimetableInputExportTest" storage="e:\hska\semester2\projektarbeit\stundenplangenerator\timetableplanner\timetableplannertests\bin\debug\timetableplannertests.dll" id="643aee53-482b-7ddc-6eba-83a04b5cba46">
+      <Execution id="62873ba6-0514-48aa-8225-0776e6ba669c" />
+      <TestMethod codeBase="E:/HsKA/Semester2/Projektarbeit/Stundenplangenerator/TimetablePlanner/TimetablePlannerTests/bin/Debug/TimetablePlannerTests.DLL" adapterTypeName="Microsoft.VisualStudio.TestTools.TestTypes.Unit.UnitTestAdapter, Microsoft.VisualStudio.QualityTools.Tips.UnitTest.Adapter, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" className="TimetablePlannerTests.TimetableTest, TimetablePlannerTests, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" name="TimetableInputExportTest" />
+    </UnitTest>
+  </TestDefinitions>
+  <TestLists>
+    <TestList name="Nicht in einer Liste enthaltene Ergebnisse" id="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestList name="Alle geladenen Ergebnisse" id="19431567-8539-422a-85d7-44ee4e166bda" />
+  </TestLists>
+  <TestEntries>
+    <TestEntry testId="4689e2d1-87f2-8844-ae95-39072767341d" executionId="3339007a-6ec9-4f6a-a94e-0e1a776dcd55" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="643aee53-482b-7ddc-6eba-83a04b5cba46" executionId="62873ba6-0514-48aa-8225-0776e6ba669c" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+  </TestEntries>
+  <Results>
+    <UnitTestResult executionId="3339007a-6ec9-4f6a-a94e-0e1a776dcd55" testId="4689e2d1-87f2-8844-ae95-39072767341d" testName="TimetableGenerationTest" computerName="FLOLAP-PC" duration="00:00:16.2189171" startTime="2011-11-18T15:56:03.4945849+01:00" endTime="2011-11-18T15:56:20.9945356+01:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="3339007a-6ec9-4f6a-a94e-0e1a776dcd55">
+      <Output>
+        <DebugTrace>Individual 1 created.
+Individual 2 created.
+Individual 5 created.
+Individual 3 created.
+Individual 4 created.
+Individual 6 created.
+Individual 7 created.
+Individual 11 created.
+Individual 8 created.
+Individual 9 created.
+Individual 13 created.
+Individual 14 created.
+Individual 12 created.
+Individual 10 created.
+Individual 20 created.
+Individual 17 created.
+Individual 21 created.
+Individual 18 created.
+Individual 15 created.
+Individual 23 created.
+Individual 22 created.
+Individual 16 created.
+Individual 19 created.
+Individual 0 created.
+Individual 24 created.
+Population created after 1,0072385 seconds.
+Generation 0 finished with best fitness of 5690.
+Generation 1 finished with best fitness of 5700.
+Generation 2 finished with best fitness of 5700.
+Generation 3 finished with best fitness of 5700.
+Generation 4 finished with best fitness of 5790.
+Generation 5 finished with best fitness of 5790.
+Generation 6 finished with best fitness of 6050.
+Generation 7 finished with best fitness of 6270.
+Generation 8 finished with best fitness of 6270.
+Generation 9 finished with best fitness of 6400.
+Generation 10 finished with best fitness of 6400.
+Generation 11 finished with best fitness of 6400.
+Generation 12 finished with best fitness of 6645.
+Generation 13 finished with best fitness of 6645.
+Generation 14 finished with best fitness of 6645.
+Generation 15 finished with best fitness of 6820.
+Generation 16 finished with best fitness of 6820.
+Generation 17 finished with best fitness of 6880.
+Generation 18 finished with best fitness of 6880.
+Generation 19 finished with best fitness of 7125.
+Generation 20 finished with best fitness of 7350.
+Generation 21 finished with best fitness of 7350.
+Generation 22 finished with best fitness of 7350.
+Generation 23 finished with best fitness of 7375.
+Generation 24 finished with best fitness of 7470.
+Generation 25 finished with best fitness of 7470.
+Generation 26 finished with best fitness of 7530.
+Generation 27 finished with best fitness of 7665.
+Generation 28 finished with best fitness of 7680.
+Generation 29 finished with best fitness of 7680.
+Generation 30 finished with best fitness of 7855.
+Generation 31 finished with best fitness of 7855.
+Generation 32 finished with best fitness of 7855.
+Generation 33 finished with best fitness of 8010.
+Generation 34 finished with best fitness of 8050.
+Generation 35 finished with best fitness of 8200.
+Generation 36 finished with best fitness of 8235.
+Generation 37 finished with best fitness of 8295.
+Generation 38 finished with best fitness of 8295.
+Generation 39 finished with best fitness of 8445.
+Generation 40 finished with best fitness of 8445.
+Generation 41 finished with best fitness of 8595.
+Generation 42 finished with best fitness of 8595.
+Generation 43 finished with best fitness of 8595.
+Generation 44 finished with best fitness of 8595.
+Generation 45 finished with best fitness of 8595.
+Generation 46 finished with best fitness of 8595.
+Generation 47 finished with best fitness of 8680.
+Generation 48 finished with best fitness of 8680.
+Generation 49 finished with best fitness of 8680.
+Generation 50 finished with best fitness of 8725.
+Generation 51 finished with best fitness of 8725.
+Generation 52 finished with best fitness of 8760.
+Generation 53 finished with best fitness of 8760.
+Generation 54 finished with best fitness of 8805.
+Generation 55 finished with best fitness of 8905.
+Generation 56 finished with best fitness of 9035.
+Generation 57 finished with best fitness of 9240.
+Generation 58 finished with best fitness of 9555.
+Generation 59 finished with best fitness of 9635.
+Generation 60 finished with best fitness of 9635.
+Generation 61 finished with best fitness of 9635.
+Generation 62 finished with best fitness of 9635.
+Generation 63 finished with best fitness of 9840.
+Generation 64 finished with best fitness of 9840.
+Generation 65 finished with best fitness of 9840.
+Generation 66 finished with best fitness of 9840.
+Generation 67 finished with best fitness of 9840.
+Generation 68 finished with best fitness of 9840.
+Generation 69 finished with best fitness of 9855.
+Generation 70 finished with best fitness of 10030.
+Generation 71 finished with best fitness of 10035.
+Generation 72 finished with best fitness of 10035.
+Generation 73 finished with best fitness of 10035.
+Generation 74 finished with best fitness of 10035.
+Generation 75 finished with best fitness of 10090.
+Generation 76 finished with best fitness of 10275.
+Generation 77 finished with best fitness of 10275.
+Generation 78 finished with best fitness of 10275.
+Generation 79 finished with best fitness of 10330.
+Generation 80 finished with best fitness of 10330.
+Generation 81 finished with best fitness of 10390.
+Generation 82 finished with best fitness of 10390.
+Generation 83 finished with best fitness of 10515.
+Generation 84 finished with best fitness of 10515.
+Generation 85 finished with best fitness of 10515.
+Generation 86 finished with best fitness of 10515.
+Generation 87 finished with best fitness of 10560.
+Generation 88 finished with best fitness of 10560.
+Generation 89 finished with best fitness of 10585.
+Generation 90 finished with best fitness of 10585.
+Generation 91 finished with best fitness of 10695.
+Generation 92 finished with best fitness of 10695.
+Generation 93 finished with best fitness of 10755.
+Generation 94 finished with best fitness of 10775.
+Generation 95 finished with best fitness of 10775.
+Generation 96 finished with best fitness of 10775.
+Generation 97 finished with best fitness of 10815.
+Generation 98 finished with best fitness of 10835.
+Generation 99 finished with best fitness of 10835.
+Generation 100 finished with best fitness of 10905.
+Generation 101 finished with best fitness of 10995.
+Generation 102 finished with best fitness of 10995.
+Generation 103 finished with best fitness of 10995.
+Generation 104 finished with best fitness of 10995.
+Generation 105 finished with best fitness of 10995.
+Generation 106 finished with best fitness of 11010.
+Generation 107 finished with best fitness of 11010.
+Generation 108 finished with best fitness of 11010.
+Generation 109 finished with best fitness of 11185.
+Generation 110 finished with best fitness of 11305.
+Generation 111 finished with best fitness of 11305.
+Generation 112 finished with best fitness of 11305.
+Generation 113 finished with best fitness of 11305.
+Generation 114 finished with best fitness of 11305.
+Generation 115 finished with best fitness of 11305.
+Generation 116 finished with best fitness of 11350.
+Generation 117 finished with best fitness of 11385.
+Generation 118 finished with best fitness of 11385.
+Generation 119 finished with best fitness of 11385.
+Generation 120 finished with best fitness of 11385.
+Generation 121 finished with best fitness of 11450.
+Generation 122 finished with best fitness of 11520.
+Generation 123 finished with best fitness of 11520.
+Generation 124 finished with best fitness of 11520.
+Generation 125 finished with best fitness of 11520.
+Generation 126 finished with best fitness of 11595.
+Generation 127 finished with best fitness of 11595.
+Generation 128 finished with best fitness of 11625.
+Generation 129 finished with best fitness of 11625.
+Generation 130 finished with best fitness of 11640.
+Generation 131 finished with best fitness of 11640.
+Generation 132 finished with best fitness of 11640.
+Generation 133 finished with best fitness of 11735.
+Generation 134 finished with best fitness of 11735.
+Generation 135 finished with best fitness of 11745.
+Generation 136 finished with best fitness of 11745.
+Generation 137 finished with best fitness of 11745.
+Generation 138 finished with best fitness of 11845.
+Generation 139 finished with best fitness of 11845.
+Generation 140 finished with best fitness of 11845.
+Generation 141 finished with best fitness of 11845.
+Generation 142 finished with best fitness of 11880.
+Generation 143 finished with best fitness of 11880.
+Generation 144 finished with best fitness of 11925.
+Generation 145 finished with best fitness of 11925.
+Generation 146 finished with best fitness of 11925.
+Generation 147 finished with best fitness of 11925.
+Generation 148 finished with best fitness of 11925.
+Generation 149 finished with best fitness of 11955.
+Generation 150 finished with best fitness of 11965.
+Generation 151 finished with best fitness of 11965.
+Generation 152 finished with best fitness of 11975.
+Generation 153 finished with best fitness of 11975.
+Generation 154 finished with best fitness of 11975.
+Generation 155 finished with best fitness of 12065.
+Generation 156 finished with best fitness of 12065.
+Generation 157 finished with best fitness of 12065.
+Generation 158 finished with best fitness of 12065.
+Generation 159 finished with best fitness of 12090.
+Generation 160 finished with best fitness of 12115.
+Generation 161 finished with best fitness of 12115.
+Generation 162 finished with best fitness of 12115.
+Generation 163 finished with best fitness of 12145.
+Generation 164 finished with best fitness of 12145.
+Generation 165 finished with best fitness of 12160.
+Generation 166 finished with best fitness of 12160.
+Generation 167 finished with best fitness of 12160.
+Generation 168 finished with best fitness of 12165.
+Generation 169 finished with best fitness of 12165.
+Generation 170 finished with best fitness of 12215.
+Generation 171 finished with best fitness of 12215.
+Generation 172 finished with best fitness of 12215.
+Generation 173 finished with best fitness of 12215.
+Generation 174 finished with best fitness of 12215.
+Generation 175 finished with best fitness of 12280.
+Generation 176 finished with best fitness of 12280.
+Generation 177 finished with best fitness of 12280.
+Generation 178 finished with best fitness of 12280.
+Generation 179 finished with best fitness of 12285.
+Generation 180 finished with best fitness of 12285.
+Generation 181 finished with best fitness of 12285.
+Generation 182 finished with best fitness of 12365.
+Generation 183 finished with best fitness of 12405.
+Generation 184 finished with best fitness of 12405.
+Generation 185 finished with best fitness of 12440.
+Generation 186 finished with best fitness of 12440.
+Generation 187 finished with best fitness of 12450.
+Generation 188 finished with best fitness of 12450.
+Generation 189 finished with best fitness of 12475.
+Generation 190 finished with best fitness of 12485.
+Generation 191 finished with best fitness of 12530.
+Generation 192 finished with best fitness of 12530.
+Generation 193 finished with best fitness of 12530.
+Generation 194 finished with best fitness of 12530.
+Generation 195 finished with best fitness of 12530.
+Generation 196 finished with best fitness of 12645.
+Generation 197 finished with best fitness of 12645.
+Generation 198 finished with best fitness of 12645.
+Generation 199 finished with best fitness of 12645.
+Generation 200 finished with best fitness of 12645.
+Generation 201 finished with best fitness of 12645.
+Generation 202 finished with best fitness of 12645.
+Generation 203 finished with best fitness of 12645.
+Generation 204 finished with best fitness of 12645.
+Generation 205 finished with best fitness of 12645.
+Generation 206 finished with best fitness of 12660.
+Generation 207 finished with best fitness of 12660.
+Generation 208 finished with best fitness of 12660.
+Generation 209 finished with best fitness of 12710.
+Generation 210 finished with best fitness of 12710.
+Generation 211 finished with best fitness of 12710.
+Generation 212 finished with best fitness of 12710.
+Generation 213 finished with best fitness of 12710.
+Generation 214 finished with best fitness of 12710.
+Generation 215 finished with best fitness of 12710.
+Generation 216 finished with best fitness of 12710.
+Generation 217 finished with best fitness of 12725.
+Generation 218 finished with best fitness of 12805.
+Generation 219 finished with best fitness of 12840.
+Generation 220 finished with best fitness of 12840.
+Generation 221 finished with best fitness of 12840.
+Generation 222 finished with best fitness of 12840.
+Generation 223 finished with best fitness of 12865.
+Generation 224 finished with best fitness of 12865.
+Generation 225 finished with best fitness of 12925.
+Generation 226 finished with best fitness of 12925.
+Generation 227 finished with best fitness of 12970.
+Generation 228 finished with best fitness of 12970.
+Generation 229 finished with best fitness of 12970.
+Generation 230 finished with best fitness of 12970.
+Generation 231 finished with best fitness of 12970.
+Generation 232 finished with best fitness of 12970.
+Generation 233 finished with best fitness of 12970.
+Generation 234 finished with best fitness of 12970.
+Generation 235 finished with best fitness of 12970.
+Generation 236 finished with best fitness of 12970.
+Generation 237 finished with best fitness of 12970.
+Generation 238 finished with best fitness of 12970.
+Generation 239 finished with best fitness of 13020.
+Generation 240 finished with best fitness of 13020.
+Generation 241 finished with best fitness of 13085.
+Generation 242 finished with best fitness of 13085.
+Generation 243 finished with best fitness of 13085.
+Generation 244 finished with best fitness of 13135.
+Generation 245 finished with best fitness of 13135.
+Generation 246 finished with best fitness of 13240.
+Generation 247 finished with best fitness of 13240.
+Generation 248 finished with best fitness of 13240.
+Generation 249 finished with best fitness of 13240.
+Generation 250 finished with best fitness of 13240.
+Generation 251 finished with best fitness of 13240.
+Generation 252 finished with best fitness of 13240.
+Generation 253 finished with best fitness of 13240.
+Generation 254 finished with best fitness of 13240.
+Generation 255 finished with best fitness of 13240.
+Generation 256 finished with best fitness of 13240.
+Generation 257 finished with best fitness of 13240.
+Generation 258 finished with best fitness of 13240.
+Generation 259 finished with best fitness of 13240.
+Generation 260 finished with best fitness of 13415.
+Generation 261 finished with best fitness of 13415.
+Generation 262 finished with best fitness of 13415.
+Generation 263 finished with best fitness of 13415.
+Generation 264 finished with best fitness of 13415.
+Generation 265 finished with best fitness of 13415.
+Generation 266 finished with best fitness of 13415.
+Generation 267 finished with best fitness of 13415.
+Generation 268 finished with best fitness of 13415.
+Generation 269 finished with best fitness of 13415.
+Generation 270 finished with best fitness of 13415.
+Generation 271 finished with best fitness of 13415.
+Generation 272 finished with best fitness of 13415.
+Generation 273 finished with best fitness of 13415.
+Generation 274 finished with best fitness of 13415.
+Generation 275 finished with best fitness of 13415.
+Generation 276 finished with best fitness of 13415.
+Generation 277 finished with best fitness of 13415.
+Generation 278 finished with best fitness of 13415.
+Generation 279 finished with best fitness of 13415.
+Generation 280 finished with best fitness of 13435.
+Generation 281 finished with best fitness of 13435.
+Generation 282 finished with best fitness of 13445.
+Generation 283 finished with best fitness of 13445.
+Generation 284 finished with best fitness of 13445.
+Generation 285 finished with best fitness of 13445.
+Generation 286 finished with best fitness of 13460.
+Generation 287 finished with best fitness of 13460.
+Generation 288 finished with best fitness of 13460.
+Generation 289 finished with best fitness of 13460.
+Generation 290 finished with best fitness of 13480.
+Generation 291 finished with best fitness of 13480.
+Generation 292 finished with best fitness of 13510.
+Generation 293 finished with best fitness of 13510.
+Generation 294 finished with best fitness of 13510.
+Generation 295 finished with best fitness of 13510.
+Generation 296 finished with best fitness of 13515.
+Generation 297 finished with best fitness of 13515.
+Generation 298 finished with best fitness of 13515.
+Generation 299 finished with best fitness of 13630.
+Generation 300 finished with best fitness of 13630.
+Generation 301 finished with best fitness of 13630.
+Generation 302 finished with best fitness of 13630.
+Generation 303 finished with best fitness of 13630.
+Generation 304 finished with best fitness of 13630.
+Generation 305 finished with best fitness of 13630.
+Generation 306 finished with best fitness of 13630.
+Generation 307 finished with best fitness of 13630.
+Generation 308 finished with best fitness of 13630.
+Generation 309 finished with best fitness of 13685.
+Generation 310 finished with best fitness of 13685.
+Generation 311 finished with best fitness of 13685.
+Generation 312 finished with best fitness of 13685.
+Generation 313 finished with best fitness of 13685.
+Generation 314 finished with best fitness of 13685.
+Generation 315 finished with best fitness of 13685.
+Generation 316 finished with best fitness of 13685.
+Generation 317 finished with best fitness of 13725.
+Generation 318 finished with best fitness of 13725.
+Generation 319 finished with best fitness of 13725.
+Generation 320 finished with best fitness of 13725.
+Generation 321 finished with best fitness of 13725.
+Generation 322 finished with best fitness of 13725.
+Generation 323 finished with best fitness of 13750.
+Generation 324 finished with best fitness of 13750.
+Generation 325 finished with best fitness of 13750.
+Generation 326 finished with best fitness of 13750.
+Generation 327 finished with best fitness of 13750.
+Generation 328 finished with best fitness of 13750.
+Generation 329 finished with best fitness of 13750.
+Generation 330 finished with best fitness of 13750.
+Generation 331 finished with best fitness of 13750.
+Generation 332 finished with best fitness of 13750.
+Generation 333 finished with best fitness of 13750.
+Generation 334 finished with best fitness of 13750.
+Generation 335 finished with best fitness of 13755.
+Generation 336 finished with best fitness of 13755.
+Generation 337 finished with best fitness of 13755.
+Generation 338 finished with best fitness of 13850.
+Generation 339 finished with best fitness of 13850.
+Generation 340 finished with best fitness of 13850.
+Generation 341 finished with best fitness of 13850.
+Generation 342 finished with best fitness of 13850.
+Generation 343 finished with best fitness of 13850.
+Generation 344 finished with best fitness of 13850.
+Generation 345 finished with best fitness of 13850.
+Generation 346 finished with best fitness of 13850.
+Generation 347 finished with best fitness of 13850.
+Generation 348 finished with best fitness of 13850.
+Generation 349 finished with best fitness of 13850.
+Generation 350 finished with best fitness of 13850.
+Generation 351 finished with best fitness of 13850.
+Generation 352 finished with best fitness of 13850.
+Generation 353 finished with best fitness of 13850.
+Generation 354 finished with best fitness of 13850.
+Generation 355 finished with best fitness of 13850.
+Generation 356 finished with best fitness of 13850.
+Generation 357 finished with best fitness of 13850.
+Generation 358 finished with best fitness of 13850.
+Generation 359 finished with best fitness of 13850.
+Generation 360 finished with best fitness of 13850.
+Generation 361 finished with best fitness of 13860.
+Generation 362 finished with best fitness of 13875.
+Generation 363 finished with best fitness of 13875.
+Generation 364 finished with best fitness of 13900.
+Generation 365 finished with best fitness of 13900.
+Generation 366 finished with best fitness of 13900.
+Generation 367 finished with best fitness of 13900.
+Generation 368 finished with best fitness of 13900.
+Generation 369 finished with best fitness of 13915.
+Generation 370 finished with best fitness of 13915.
+Generation 371 finished with best fitness of 13925.
+Generation 372 finished with best fitness of 13925.
+Generation 373 finished with best fitness of 13925.
+Generation 374 finished with best fitness of 13925.
+Generation 375 finished with best fitness of 13955.
+Generation 376 finished with best fitness of 13955.
+Generation 377 finished with best fitness of 13955.
+Generation 378 finished with best fitness of 13955.
+Generation 379 finished with best fitness of 13980.
+Generation 380 finished with best fitness of 13980.
+Generation 381 finished with best fitness of 13980.
+Generation 382 finished with best fitness of 13980.
+Generation 383 finished with best fitness of 13980.
+Generation 384 finished with best fitness of 13980.
+Generation 385 finished with best fitness of 13980.
+Generation 386 finished with best fitness of 13980.
+Generation 387 finished with best fitness of 13980.
+Generation 388 finished with best fitness of 13985.
+Generation 389 finished with best fitness of 13985.
+Generation 390 finished with best fitness of 13985.
+Generation 391 finished with best fitness of 13985.
+Generation 392 finished with best fitness of 13985.
+Generation 393 finished with best fitness of 13985.
+Generation 394 finished with best fitness of 13985.
+Generation 395 finished with best fitness of 13985.
+Generation 396 finished with best fitness of 13985.
+Generation 397 finished with best fitness of 14025.
+Generation 398 finished with best fitness of 14025.
+Generation 399 finished with best fitness of 14060.
+Generation 400 finished with best fitness of 14060.
+Generation 401 finished with best fitness of 14060.
+Generation 402 finished with best fitness of 14060.
+Generation 403 finished with best fitness of 14060.
+Generation 404 finished with best fitness of 14060.
+Generation 405 finished with best fitness of 14060.
+Generation 406 finished with best fitness of 14060.
+Generation 407 finished with best fitness of 14060.
+Generation 408 finished with best fitness of 14060.
+Generation 409 finished with best fitness of 14060.
+Generation 410 finished with best fitness of 14060.
+Generation 411 finished with best fitness of 14065.
+Generation 412 finished with best fitness of 14065.
+Generation 413 finished with best fitness of 14065.
+Generation 414 finished with best fitness of 14065.
+Generation 415 finished with best fitness of 14090.
+Generation 416 finished with best fitness of 14090.
+Generation 417 finished with best fitness of 14135.
+Generation 418 finished with best fitness of 14160.
+Generation 419 finished with best fitness of 14160.
+Generation 420 finished with best fitness of 14185.
+Generation 421 finished with best fitness of 14185.
+Generation 422 finished with best fitness of 14185.
+Generation 423 finished with best fitness of 14185.
+Generation 424 finished with best fitness of 14185.
+Generation 425 finished with best fitness of 14185.
+Generation 426 finished with best fitness of 14185.
+Generation 427 finished with best fitness of 14185.
+Generation 428 finished with best fitness of 14185.
+Generation 429 finished with best fitness of 14185.
+Generation 430 finished with best fitness of 14185.
+Generation 431 finished with best fitness of 14185.
+Generation 432 finished with best fitness of 14185.
+Generation 433 finished with best fitness of 14185.
+Generation 434 finished with best fitness of 14185.
+Generation 435 finished with best fitness of 14190.
+Generation 436 finished with best fitness of 14190.
+Generation 437 finished with best fitness of 14190.
+Generation 438 finished with best fitness of 14215.
+Generation 439 finished with best fitness of 14215.
+Generation 440 finished with best fitness of 14230.
+Generation 441 finished with best fitness of 14230.
+Generation 442 finished with best fitness of 14230.
+Generation 443 finished with best fitness of 14230.
+Generation 444 finished with best fitness of 14280.
+Generation 445 finished with best fitness of 14280.
+Generation 446 finished with best fitness of 14280.
+Generation 447 finished with best fitness of 14280.
+Generation 448 finished with best fitness of 14280.
+Generation 449 finished with best fitness of 14280.
+Generation 450 finished with best fitness of 14335.
+Generation 451 finished with best fitness of 14335.
+Generation 452 finished with best fitness of 14360.
+Generation 453 finished with best fitness of 14360.
+Generation 454 finished with best fitness of 14360.
+Generation 455 finished with best fitness of 14360.
+Generation 456 finished with best fitness of 14360.
+Generation 457 finished with best fitness of 14360.
+Generation 458 finished with best fitness of 14360.
+Generation 459 finished with best fitness of 14360.
+Generation 460 finished with best fitness of 14360.
+Generation 461 finished with best fitness of 14385.
+Generation 462 finished with best fitness of 14385.
+Generation 463 finished with best fitness of 14385.
+Generation 464 finished with best fitness of 14385.
+Generation 465 finished with best fitness of 14385.
+Generation 466 finished with best fitness of 14385.
+Generation 467 finished with best fitness of 14385.
+Generation 468 finished with best fitness of 14385.
+Generation 469 finished with best fitness of 14385.
+Generation 470 finished with best fitness of 14385.
+Generation 471 finished with best fitness of 14385.
+Generation 472 finished with best fitness of 14385.
+Generation 473 finished with best fitness of 14385.
+Generation 474 finished with best fitness of 14385.
+Generation 475 finished with best fitness of 14385.
+Generation 476 finished with best fitness of 14385.
+Generation 477 finished with best fitness of 14385.
+Generation 478 finished with best fitness of 14385.
+Generation 479 finished with best fitness of 14385.
+Generation 480 finished with best fitness of 14385.
+Generation 481 finished with best fitness of 14475.
+Generation 482 finished with best fitness of 14475.
+Generation 483 finished with best fitness of 14475.
+Generation 484 finished with best fitness of 14475.
+Generation 485 finished with best fitness of 14475.
+Generation 486 finished with best fitness of 14475.
+Generation 487 finished with best fitness of 14475.
+Generation 488 finished with best fitness of 14475.
+Generation 489 finished with best fitness of 14475.
+Generation 490 finished with best fitness of 14475.
+Generation 491 finished with best fitness of 14490.
+Generation 492 finished with best fitness of 14490.
+Generation 493 finished with best fitness of 14490.
+Generation 494 finished with best fitness of 14490.
+Generation 495 finished with best fitness of 14490.
+Generation 496 finished with best fitness of 14490.
+Generation 497 finished with best fitness of 14490.
+Generation 498 finished with best fitness of 14530.
+Generation 499 finished with best fitness of 14560.
+Generation 500 finished with best fitness of 14560.
+Generation 501 finished with best fitness of 14560.
+Generation 502 finished with best fitness of 14590.
+Generation 503 finished with best fitness of 14590.
+Generation 504 finished with best fitness of 14590.
+Generation 505 finished with best fitness of 14590.
+Generation 506 finished with best fitness of 14590.
+Generation 507 finished with best fitness of 14620.
+Generation 508 finished with best fitness of 14620.
+Generation 509 finished with best fitness of 14620.
+Generation 510 finished with best fitness of 14620.
+Generation 511 finished with best fitness of 14620.
+Generation 512 finished with best fitness of 14620.
+Generation 513 finished with best fitness of 14620.
+Generation 514 finished with best fitness of 14620.
+Generation 515 finished with best fitness of 14620.
+Generation 516 finished with best fitness of 14620.
+Generation 517 finished with best fitness of 14620.
+Generation 518 finished with best fitness of 14620.
+Generation 519 finished with best fitness of 14620.
+Generation 520 finished with best fitness of 14620.
+Generation 521 finished with best fitness of 14620.
+Generation 522 finished with best fitness of 14620.
+Generation 523 finished with best fitness of 14620.
+Generation 524 finished with best fitness of 14645.
+Generation 525 finished with best fitness of 14645.
+Generation 526 finished with best fitness of 14645.
+Generation 527 finished with best fitness of 14645.
+Generation 528 finished with best fitness of 14645.
+Generation 529 finished with best fitness of 14645.
+Generation 530 finished with best fitness of 14645.
+Generation 531 finished with best fitness of 14650.
+Generation 532 finished with best fitness of 14650.
+Generation 533 finished with best fitness of 14650.
+Generation 534 finished with best fitness of 14675.
+Generation 535 finished with best fitness of 14675.
+Generation 536 finished with best fitness of 14675.
+Generation 537 finished with best fitness of 14675.
+Generation 538 finished with best fitness of 14675.
+Generation 539 finished with best fitness of 14675.
+Generation 540 finished with best fitness of 14675.
+Generation 541 finished with best fitness of 14675.
+Evolution finished after 15,3817264 seconds.
+------------------------
+Average fitness :
+4706
+5127
+5345
+5468
+5526
+5629
+5715
+5782
+5893
+5972
+6069
+6138
+6233
+6322
+6422
+6498
+6581
+6652
+6714
+6756
+6849
+6930
+7004
+7067
+7175
+7258
+7336
+7402
+7452
+7505
+7523
+7576
+7606
+7683
+7760
+7806
+7881
+7944
+8041
+8112
+8176
+8222
+8278
+8318
+8360
+8388
+8408
+8444
+8519
+8566
+8599
+8632
+8644
+8677
+8691
+8712
+8766
+8822
+8904
+8979
+9057
+9139
+9217
+9329
+9434
+9534
+9586
+9642
+9659
+9678
+9714
+9766
+9821
+9858
+9870
+9912
+9949
+10011
+10043
+10110
+10142
+10176
+10215
+10243
+10286
+10313
+10347
+10380
+10408
+10444
+10468
+10494
+10517
+10531
+10574
+10607
+10634
+10671
+10711
+10734
+10750
+10777
+10803
+10835
+10863
+10886
+10898
+10918
+10935
+10950
+10970
+10999
+11028
+11057
+11080
+11106
+11136
+11179
+11210
+11236
+11261
+11272
+11304
+11336
+11353
+11364
+11373
+11406
+11427
+11454
+11468
+11502
+11530
+11550
+11584
+11602
+11613
+11624
+11636
+11656
+11672
+11683
+11706
+11728
+11747
+11762
+11786
+11793
+11804
+11818
+11840
+11868
+11879
+11893
+11903
+11922
+11944
+11973
+11982
+11998
+12006
+12031
+12046
+12062
+12075
+12082
+12098
+12099
+12100
+12107
+12114
+12125
+12134
+12135
+12145
+12153
+12164
+12173
+12178
+12187
+12197
+12198
+12208
+12223
+12232
+12233
+12252
+12271
+12303
+12310
+12336
+12358
+12379
+12409
+12423
+12446
+12453
+12467
+12482
+12491
+12508
+12517
+12526
+12543
+12558
+12562
+12571
+12584
+12590
+12596
+12606
+12616
+12628
+12634
+12646
+12654
+12659
+12671
+12678
+12689
+12700
+12709
+12720
+12730
+12737
+12755
+12772
+12780
+12790
+12818
+12821
+12829
+12838
+12853
+12854
+12856
+12857
+12871
+12876
+12901
+12911
+12915
+12932
+12936
+12948
+12972
+12975
+12989
+12989
+12999
+13007
+13021
+13042
+13070
+13092
+13104
+13106
+13118
+13118
+13123
+13123
+13151
+13162
+13170
+13178
+13193
+13207
+13228
+13234
+13251
+13275
+13288
+13296
+13302
+13319
+13324
+13334
+13346
+13357
+13364
+13365
+13378
+13382
+13386
+13398
+13402
+13403
+13410
+13415
+13416
+13428
+13433
+13434
+13439
+13439
+13440
+13446
+13450
+13452
+13456
+13470
+13474
+13474
+13474
+13481
+13489
+13492
+13503
+13507
+13514
+13529
+13535
+13548
+13557
+13562
+13567
+13578
+13585
+13607
+13625
+13635
+13643
+13643
+13645
+13659
+13660
+13662
+13671
+13681
+13681
+13686
+13686
+13693
+13702
+13705
+13710
+13716
+13719
+13719
+13729
+13733
+13735
+13741
+13748
+13751
+13753
+13761
+13762
+13766
+13768
+13768
+13775
+13775
+13781
+13784
+13788
+13794
+13796
+13800
+13804
+13805
+13810
+13816
+13819
+13822
+13830
+13832
+13835
+13837
+13839
+13848
+13852
+13857
+13861
+13864
+13870
+13879
+13886
+13889
+13892
+13904
+13908
+13910
+13914
+13918
+13920
+13922
+13924
+13928
+13932
+13939
+13942
+13942
+13942
+13946
+13951
+13955
+13959
+13967
+13969
+13973
+13979
+13982
+13985
+13993
+13993
+13995
+13995
+13997
+14001
+14007
+14010
+14022
+14028
+14038
+14044
+14049
+14049
+14054
+14064
+14066
+14072
+14079
+14084
+14089
+14093
+14100
+14104
+14105
+14109
+14114
+14118
+14126
+14135
+14137
+14141
+14148
+14149
+14152
+14159
+14160
+14169
+14170
+14172
+14174
+14180
+14183
+14184
+14188
+14192
+14195
+14203
+14211
+14218
+14220
+14227
+14239
+14240
+14248
+14253
+14256
+14256
+14266
+14267
+14272
+14273
+14276
+14280
+14282
+14287
+14292
+14303
+14315
+14319
+14323
+14330
+14332
+14336
+14351
+14351
+14354
+14359
+14369
+14369
+14370
+14374
+14378
+14380
+14381
+14382
+14389
+14395
+14401
+14406
+14409
+14412
+14420
+14428
+14430
+14443
+14458
+14463
+14470
+14479
+14480
+14489
+14494
+14495
+14503
+14507
+14513
+14517
+14521
+14528
+14537
+14544
+14546
+14557
+14561
+14567
+14567
+14568
+14568
+14569
+14576
+14582
+14585
+14587
+14591
+14591
+14597
+14599
+14607
+14608
+14609
+14615
+14616
+14617
+14619
+14619
+14620
+14620
+14622
+------------------------
+Best individual fitness:
+5690
+5690
+5700
+5700
+5700
+5790
+5790
+6050
+6270
+6270
+6400
+6400
+6400
+6645
+6645
+6645
+6820
+6820
+6880
+6880
+7125
+7350
+7350
+7350
+7375
+7470
+7470
+7530
+7665
+7680
+7680
+7855
+7855
+7855
+8010
+8050
+8200
+8235
+8295
+8295
+8445
+8445
+8595
+8595
+8595
+8595
+8595
+8595
+8680
+8680
+8680
+8725
+8725
+8760
+8760
+8805
+8905
+9035
+9240
+9555
+9635
+9635
+9635
+9635
+9840
+9840
+9840
+9840
+9840
+9840
+9855
+10030
+10035
+10035
+10035
+10035
+10090
+10275
+10275
+10275
+10330
+10330
+10390
+10390
+10515
+10515
+10515
+10515
+10560
+10560
+10585
+10585
+10695
+10695
+10755
+10775
+10775
+10775
+10815
+10835
+10835
+10905
+10995
+10995
+10995
+10995
+10995
+11010
+11010
+11010
+11185
+11305
+11305
+11305
+11305
+11305
+11305
+11350
+11385
+11385
+11385
+11385
+11450
+11520
+11520
+11520
+11520
+11595
+11595
+11625
+11625
+11640
+11640
+11640
+11735
+11735
+11745
+11745
+11745
+11845
+11845
+11845
+11845
+11880
+11880
+11925
+11925
+11925
+11925
+11925
+11955
+11965
+11965
+11975
+11975
+11975
+12065
+12065
+12065
+12065
+12090
+12115
+12115
+12115
+12145
+12145
+12160
+12160
+12160
+12165
+12165
+12215
+12215
+12215
+12215
+12215
+12280
+12280
+12280
+12280
+12285
+12285
+12285
+12365
+12405
+12405
+12440
+12440
+12450
+12450
+12475
+12485
+12530
+12530
+12530
+12530
+12530
+12645
+12645
+12645
+12645
+12645
+12645
+12645
+12645
+12645
+12645
+12660
+12660
+12660
+12710
+12710
+12710
+12710
+12710
+12710
+12710
+12710
+12725
+12805
+12840
+12840
+12840
+12840
+12865
+12865
+12925
+12925
+12970
+12970
+12970
+12970
+12970
+12970
+12970
+12970
+12970
+12970
+12970
+12970
+13020
+13020
+13085
+13085
+13085
+13135
+13135
+13240
+13240
+13240
+13240
+13240
+13240
+13240
+13240
+13240
+13240
+13240
+13240
+13240
+13240
+13415
+13415
+13415
+13415
+13415
+13415
+13415
+13415
+13415
+13415
+13415
+13415
+13415
+13415
+13415
+13415
+13415
+13415
+13415
+13415
+13435
+13435
+13445
+13445
+13445
+13445
+13460
+13460
+13460
+13460
+13480
+13480
+13510
+13510
+13510
+13510
+13515
+13515
+13515
+13630
+13630
+13630
+13630
+13630
+13630
+13630
+13630
+13630
+13630
+13685
+13685
+13685
+13685
+13685
+13685
+13685
+13685
+13725
+13725
+13725
+13725
+13725
+13725
+13750
+13750
+13750
+13750
+13750
+13750
+13750
+13750
+13750
+13750
+13750
+13750
+13755
+13755
+13755
+13850
+13850
+13850
+13850
+13850
+13850
+13850
+13850
+13850
+13850
+13850
+13850
+13850
+13850
+13850
+13850
+13850
+13850
+13850
+13850
+13850
+13850
+13850
+13860
+13875
+13875
+13900
+13900
+13900
+13900
+13900
+13915
+13915
+13925
+13925
+13925
+13925
+13955
+13955
+13955
+13955
+13980
+13980
+13980
+13980
+13980
+13980
+13980
+13980
+13980
+13985
+13985
+13985
+13985
+13985
+13985
+13985
+13985
+13985
+14025
+14025
+14060
+14060
+14060
+14060
+14060
+14060
+14060
+14060
+14060
+14060
+14060
+14060
+14065
+14065
+14065
+14065
+14090
+14090
+14135
+14160
+14160
+14185
+14185
+14185
+14185
+14185
+14185
+14185
+14185
+14185
+14185
+14185
+14185
+14185
+14185
+14185
+14190
+14190
+14190
+14215
+14215
+14230
+14230
+14230
+14230
+14280
+14280
+14280
+14280
+14280
+14280
+14335
+14335
+14360
+14360
+14360
+14360
+14360
+14360
+14360
+14360
+14360
+14385
+14385
+14385
+14385
+14385
+14385
+14385
+14385
+14385
+14385
+14385
+14385
+14385
+14385
+14385
+14385
+14385
+14385
+14385
+14385
+14475
+14475
+14475
+14475
+14475
+14475
+14475
+14475
+14475
+14475
+14490
+14490
+14490
+14490
+14490
+14490
+14490
+14530
+14560
+14560
+14560
+14590
+14590
+14590
+14590
+14590
+14620
+14620
+14620
+14620
+14620
+14620
+14620
+14620
+14620
+14620
+14620
+14620
+14620
+14620
+14620
+14620
+14620
+14645
+14645
+14645
+14645
+14645
+14645
+14645
+14650
+14650
+14650
+14675
+14675
+14675
+14675
+14675
+14675
+14675
+14675
+</DebugTrace>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="62873ba6-0514-48aa-8225-0776e6ba669c" testId="643aee53-482b-7ddc-6eba-83a04b5cba46" testName="TimetableInputExportTest" computerName="FLOLAP-PC" duration="00:00:00.0236505" startTime="2011-11-18T15:56:21.0101357+01:00" endTime="2011-11-18T15:56:21.0413357+01:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="62873ba6-0514-48aa-8225-0776e6ba669c">
+    </UnitTestResult>
+  </Results>
+</TestRun>

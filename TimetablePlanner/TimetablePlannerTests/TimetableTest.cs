@@ -52,6 +52,8 @@ namespace TimetablePlannerTests
 
             TimetableExportCSV.ExportAll(generator.Population[0], ttData, basePath + "outputtest.csv");
             Assert.IsTrue(true);
+
+            TimetablePlanner.TimetableGenerator.HistoryEntry.PrintHistory(generator.EvolutionHistory);
         }
 
         private void generator_GenerationTick(TimetableGenerator.HistoryEntry generationData)
